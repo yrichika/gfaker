@@ -14,16 +14,17 @@ func TestFake(testingT *testing.T) {
 	t.Describe("just tinkering", func() {
 		f := Create()
 		j := ja_JP.New()
-		local := CreateWithLocale(j)
+		jp := CreateWithLocale(j)
 		t.It("should ...", func() {
 			// fmt.Println(f.Str.Char())
 			// fmt.Println(f.Str.AlphaRange(3, 10))
 			// fmt.Println(f.Num.Int(3, 10))
 			// fmt.Println(f.Bool.Evenly())
 
-			fmt.Println(f.Rand.Bool.WeightedToTrue(0.5))
-			fmt.Println(f.Person.FirstNameMale())
-			fmt.Println(local.Person.FirstNameMale())
+			// fmt.Println(f.Rand.Bool.WeightedToTrue(0.5))
+			// fmt.Println(f.Person.FirstNameMale())
+			fmt.Println(f.Person.Name())
+			fmt.Println(jp.Person.Name())
 			// だいたいこんな感じで
 			// f.Person.FirstName()
 			// f.Person.LastName()

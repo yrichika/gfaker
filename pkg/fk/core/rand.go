@@ -8,6 +8,7 @@ type Rand struct {
 	Str  *RandStr
 	Num  *RandNum
 	Bool *RandBool
+	Arr  *RandArray
 }
 
 func NewRand(rand *rand.Rand) *Rand {
@@ -15,5 +16,6 @@ func NewRand(rand *rand.Rand) *Rand {
 		Str:  NewRandStr(rand),
 		Num:  NewRandNum(rand),
 		Bool: NewRandBool(rand),
+		Arr:  NewRandArray(rand),
 	}
 }
