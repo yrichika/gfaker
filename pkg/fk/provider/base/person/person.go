@@ -9,53 +9,53 @@ import (
 )
 
 type Person struct {
-	rand  *core.Rand
-	local *base.Localized
+	rand *core.Rand
+	data *base.Person
 }
 
 func New(rand *core.Rand, local *base.Localized) *Person {
 	return &Person{
 		rand,
-		local,
+		local.Person,
 	}
 }
 
 func (p *Person) FirstNameMale() string {
-	return p.rand.Arr.StrElem(p.local.FirstNameMale)
+	return p.rand.Arr.StrElem(p.data.FirstNameMale)
 }
 
 func (p *Person) FirstNameFemale() string {
-	return p.rand.Arr.StrElem(p.local.FirstNameFemale)
+	return p.rand.Arr.StrElem(p.data.FirstNameFemale)
 }
 
 func (p *Person) FirstName() string {
 	if p.rand.Bool.Evenly() {
-		return p.rand.Arr.StrElem(p.local.FirstNameMale)
+		return p.rand.Arr.StrElem(p.data.FirstNameMale)
 	}
-	return p.rand.Arr.StrElem(p.local.FirstNameFemale)
+	return p.rand.Arr.StrElem(p.data.FirstNameFemale)
 }
 
 func (p *Person) LastName() string {
-	return p.rand.Arr.StrElem(p.local.LastName)
+	return p.rand.Arr.StrElem(p.data.LastName)
 }
 
 func (p *Person) TitleMale() string {
-	return p.rand.Arr.StrElem(p.local.TitleMale)
+	return p.rand.Arr.StrElem(p.data.TitleMale)
 }
 
 func (p *Person) TitleFemale() string {
-	return p.rand.Arr.StrElem(p.local.TitleFemale)
+	return p.rand.Arr.StrElem(p.data.TitleFemale)
 }
 
 func (p *Person) Title() string {
 	if p.rand.Bool.Evenly() {
-		return p.rand.Arr.StrElem(p.local.TitleMale)
+		return p.rand.Arr.StrElem(p.data.TitleMale)
 	}
-	return p.rand.Arr.StrElem(p.local.TitleFemale)
+	return p.rand.Arr.StrElem(p.data.TitleFemale)
 }
 
 func (p *Person) Suffix() string {
-	return p.rand.Arr.StrElem(p.local.NameSuffixPerson)
+	return p.rand.Arr.StrElem(p.data.NameSuffixPerson)
 }
 
 func (p *Person) FullNameOf(format string, nameData any) string {
@@ -70,14 +70,14 @@ func (p *Person) FullNameOf(format string, nameData any) string {
 }
 
 func (p *Person) MaleName() string {
-	format := p.rand.Arr.StrElem(p.local.MaleNameFormat)
-	nameData := p.local.CreatePersonNameMale(p)
+	format := p.rand.Arr.StrElem(p.data.MaleNameFormat)
+	nameData := p.data.CreatePersonNameMale(p)
 	return p.FullNameOf(format, nameData)
 }
 
 func (p *Person) FemaleName() string {
-	format := p.rand.Arr.StrElem(p.local.FemaleNameFormat)
-	nameData := p.local.CreatePersonNameFemale(p)
+	format := p.rand.Arr.StrElem(p.data.FemaleNameFormat)
+	nameData := p.data.CreatePersonNameFemale(p)
 	return p.FullNameOf(format, nameData)
 }
 

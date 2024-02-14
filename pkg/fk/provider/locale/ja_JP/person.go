@@ -1,5 +1,25 @@
 package ja_JP
 
+import (
+	"github.com/yrichika/gfaker/pkg/fk/provider/base"
+	"github.com/yrichika/gfaker/pkg/fk/provider/base/person"
+)
+
+func CreatePerson() *base.Person {
+	return &base.Person{
+		FirstNameMale:          firstNameMale,
+		FirstNameFemale:        firstNameFemale,
+		LastName:               lastName,
+		FirstKanaNameMale:      firstKanaNameMale,
+		FirstKanaNameFemale:    firstKanaNameFemale,
+		LastKanaName:           lastKanaName,
+		MaleNameFormat:         maleNameFormat,
+		FemaleNameFormat:       femaleNameFormat,
+		CreatePersonNameMale:   createJaJpPersonNameMale,
+		CreatePersonNameFemale: createJaJpPersonNameFemale,
+	}
+}
+
 var firstNameMale = []string{
 	"晃", "篤司", "治", "和也", "京助", "健一", "修平", "翔太", "淳", "聡太郎", "太一", "太郎", "拓真", "翼", "智也",
 	"直樹", "直人", "英樹", "浩", "学", "充", "稔", "裕樹", "裕太", "康弘", "陽一", "洋介", "亮介", "涼平", "零",
@@ -43,4 +63,33 @@ var lastKanaName = []string{
 	"マツモト", "ミヤケ", "ミヤザワ", "ムラヤマ",
 	"ヤマギシ", "ヤマグチ", "ヤマダ", "ヤマモト", "ヨシダ", "ヨシモト",
 	"ワカマツ", "ワタナベ",
+}
+
+var maleNameFormat = []string{
+	"{{.LastName}} {{.FirstName}}",
+}
+
+var femaleNameFormat = []string{
+	"{{.LastName}} {{.FirstName}}",
+}
+
+type JaJpPersonName struct {
+	FirstName string
+	LastName  string
+}
+
+func createJaJpPersonNameMale(p interface{}) any {
+	a := p.(*person.Person)
+	return JaJpPersonName{
+		FirstName: a.FirstNameMale(),
+		LastName:  a.LastName(),
+	}
+}
+
+func createJaJpPersonNameFemale(p interface{}) any {
+	a := p.(*person.Person)
+	return JaJpPersonName{
+		FirstName: a.FirstNameFemale(),
+		LastName:  a.LastName(),
+	}
 }
