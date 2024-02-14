@@ -1,23 +1,24 @@
 package base
 
 type Localized struct {
-	// Person, Addressごとに、入れ子の構造体を作る
-	Person *Person
+	// People, Addressesごとに、入れ子の構造体を作る
+	// 名前は、それぞれのカテゴリーの'複数形'にすること
+	People *People
 	// TODO: 全部のロケールのデータを持つ
 }
 
-type Person struct {
-	FirstNameMales         []string
-	FirstNameFemales       []string
-	LastNames              []string
-	TitleMales             []string
-	TitleFemales           []string
-	Suffixes               []string
-	FirstKanaNameMales     []string
-	FirstKanaNameFemales   []string
-	LastKanaNames          []string
-	MaleNameFormats        []string
-	FemaleNameFormats      []string
-	CreatePersonNameMale   func(any) any
-	CreatePersonNameFemale func(any) any
+type People struct {
+	FirstNameMales       []string
+	FirstNameFemales     []string
+	LastNames            []string
+	TitleMales           []string
+	TitleFemales         []string
+	Suffixes             []string
+	FirstKanaNameMales   []string
+	FirstKanaNameFemales []string
+	LastKanaNames        []string
+	MaleNameFormats      []string
+	FemaleNameFormats    []string
+	CreateNameMale       func(any) any
+	CreateNameFemale     func(any) any
 }

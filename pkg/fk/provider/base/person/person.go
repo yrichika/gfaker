@@ -10,13 +10,13 @@ import (
 
 type Person struct {
 	rand *core.Rand
-	data *base.Person
+	data *base.People
 }
 
 func New(rand *core.Rand, local *base.Localized) *Person {
 	return &Person{
 		rand,
-		local.Person,
+		local.People,
 	}
 }
 
@@ -71,13 +71,13 @@ func (p *Person) FullNameOf(format string, nameData any) string {
 
 func (p *Person) MaleName() string {
 	format := p.rand.Arr.StrElem(p.data.MaleNameFormats)
-	nameData := p.data.CreatePersonNameMale(p)
+	nameData := p.data.CreateNameMale(p)
 	return p.FullNameOf(format, nameData)
 }
 
 func (p *Person) FemaleName() string {
 	format := p.rand.Arr.StrElem(p.data.FemaleNameFormats)
-	nameData := p.data.CreatePersonNameFemale(p)
+	nameData := p.data.CreateNameFemale(p)
 	return p.FullNameOf(format, nameData)
 }
 

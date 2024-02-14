@@ -6,6 +6,6 @@ import (
 
 func New() *base.Localized {
 	return &base.Localized{
-		Person: CreatePerson(),
+		People: CreatePeople(),
 	}
 }

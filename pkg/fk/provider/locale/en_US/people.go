@@ -5,18 +5,18 @@ import (
 	"github.com/yrichika/gfaker/pkg/fk/provider/base/person"
 )
 
-func CreatePerson() *base.Person {
-	return &base.Person{
-		FirstNameMales:         firstNameMales,
-		FirstNameFemales:       firstNameFemales,
-		LastNames:              lastNames,
-		TitleMales:             titleMales,
-		TitleFemales:           titleFemales,
-		Suffixes:               suffixes,
-		MaleNameFormats:        maleNameFormats,
-		FemaleNameFormats:      femaleNameFormats,
-		CreatePersonNameMale:   createEnUsPersonNameMale,
-		CreatePersonNameFemale: createEnUsPersonNameFeMale,
+func CreatePeople() *base.People {
+	return &base.People{
+		FirstNameMales:    firstNameMales,
+		FirstNameFemales:  firstNameFemales,
+		LastNames:         lastNames,
+		TitleMales:        titleMales,
+		TitleFemales:      titleFemales,
+		Suffixes:          suffixes,
+		MaleNameFormats:   maleNameFormats,
+		FemaleNameFormats: femaleNameFormats,
+		CreateNameMale:    createEnUsNameMale,
+		CreateNameFemale:  createEnUsNameFeMale,
 	}
 }
 
@@ -142,7 +142,7 @@ type UsPersonName struct {
 	Suffix    string
 }
 
-func createEnUsPersonNameMale(p any) any {
+func createEnUsNameMale(p any) any {
 	a := p.(*person.Person)
 	return UsPersonName{
 		FirstName: a.FirstNameMale(),
@@ -152,7 +152,7 @@ func createEnUsPersonNameMale(p any) any {
 	}
 }
 
-func createEnUsPersonNameFeMale(p any) any {
+func createEnUsNameFeMale(p any) any {
 	a := p.(*person.Person)
 	return UsPersonName{
 		FirstName: a.FirstNameFemale(),

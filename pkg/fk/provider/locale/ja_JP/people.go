@@ -5,18 +5,18 @@ import (
 	"github.com/yrichika/gfaker/pkg/fk/provider/base/person"
 )
 
-func CreatePerson() *base.Person {
-	return &base.Person{
-		FirstNameMales:         firstNameMales,
-		FirstNameFemales:       firstNameFemales,
-		LastNames:              lastNames,
-		FirstKanaNameMales:     firstKanaNameMales,
-		FirstKanaNameFemales:   firstKanaNameFemales,
-		LastKanaNames:          lastKanaNames,
-		MaleNameFormats:        maleNameFormats,
-		FemaleNameFormats:      femaleNameFormats,
-		CreatePersonNameMale:   createJaJpPersonNameMale,
-		CreatePersonNameFemale: createJaJpPersonNameFemale,
+func CreatePeople() *base.People {
+	return &base.People{
+		FirstNameMales:       firstNameMales,
+		FirstNameFemales:     firstNameFemales,
+		LastNames:            lastNames,
+		FirstKanaNameMales:   firstKanaNameMales,
+		FirstKanaNameFemales: firstKanaNameFemales,
+		LastKanaNames:        lastKanaNames,
+		MaleNameFormats:      maleNameFormats,
+		FemaleNameFormats:    femaleNameFormats,
+		CreateNameMale:       createJaJpNameMale,
+		CreateNameFemale:     createJaJpNameFemale,
 	}
 }
 
@@ -78,7 +78,7 @@ type JaJpPersonName struct {
 	LastName  string
 }
 
-func createJaJpPersonNameMale(p interface{}) any {
+func createJaJpNameMale(p interface{}) any {
 	a := p.(*person.Person)
 	return JaJpPersonName{
 		FirstName: a.FirstNameMale(),
@@ -86,7 +86,7 @@ func createJaJpPersonNameMale(p interface{}) any {
 	}
 }
 
-func createJaJpPersonNameFemale(p interface{}) any {
+func createJaJpNameFemale(p interface{}) any {
 	a := p.(*person.Person)
 	return JaJpPersonName{
 		FirstName: a.FirstNameFemale(),
