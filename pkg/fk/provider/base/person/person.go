@@ -21,41 +21,41 @@ func New(rand *core.Rand, local *base.Localized) *Person {
 }
 
 func (p *Person) FirstNameMale() string {
-	return p.rand.Arr.StrElem(p.data.FirstNameMale)
+	return p.rand.Arr.StrElem(p.data.FirstNameMales)
 }
 
 func (p *Person) FirstNameFemale() string {
-	return p.rand.Arr.StrElem(p.data.FirstNameFemale)
+	return p.rand.Arr.StrElem(p.data.FirstNameFemales)
 }
 
 func (p *Person) FirstName() string {
 	if p.rand.Bool.Evenly() {
-		return p.rand.Arr.StrElem(p.data.FirstNameMale)
+		return p.rand.Arr.StrElem(p.data.FirstNameMales)
 	}
-	return p.rand.Arr.StrElem(p.data.FirstNameFemale)
+	return p.rand.Arr.StrElem(p.data.FirstNameFemales)
 }
 
 func (p *Person) LastName() string {
-	return p.rand.Arr.StrElem(p.data.LastName)
+	return p.rand.Arr.StrElem(p.data.LastNames)
 }
 
 func (p *Person) TitleMale() string {
-	return p.rand.Arr.StrElem(p.data.TitleMale)
+	return p.rand.Arr.StrElem(p.data.TitleMales)
 }
 
 func (p *Person) TitleFemale() string {
-	return p.rand.Arr.StrElem(p.data.TitleFemale)
+	return p.rand.Arr.StrElem(p.data.TitleFemales)
 }
 
 func (p *Person) Title() string {
 	if p.rand.Bool.Evenly() {
-		return p.rand.Arr.StrElem(p.data.TitleMale)
+		return p.rand.Arr.StrElem(p.data.TitleMales)
 	}
-	return p.rand.Arr.StrElem(p.data.TitleFemale)
+	return p.rand.Arr.StrElem(p.data.TitleFemales)
 }
 
 func (p *Person) Suffix() string {
-	return p.rand.Arr.StrElem(p.data.NameSuffixPerson)
+	return p.rand.Arr.StrElem(p.data.Suffixes)
 }
 
 func (p *Person) FullNameOf(format string, nameData any) string {
@@ -70,13 +70,13 @@ func (p *Person) FullNameOf(format string, nameData any) string {
 }
 
 func (p *Person) MaleName() string {
-	format := p.rand.Arr.StrElem(p.data.MaleNameFormat)
+	format := p.rand.Arr.StrElem(p.data.MaleNameFormats)
 	nameData := p.data.CreatePersonNameMale(p)
 	return p.FullNameOf(format, nameData)
 }
 
 func (p *Person) FemaleName() string {
-	format := p.rand.Arr.StrElem(p.data.FemaleNameFormat)
+	format := p.rand.Arr.StrElem(p.data.FemaleNameFormats)
 	nameData := p.data.CreatePersonNameFemale(p)
 	return p.FullNameOf(format, nameData)
 }

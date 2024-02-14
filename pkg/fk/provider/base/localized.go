@@ -7,17 +7,17 @@ type Localized struct {
 }
 
 type Person struct {
-	FirstNameMale          []string
-	FirstNameFemale        []string
-	LastName               []string
-	TitleMale              []string
-	TitleFemale            []string
-	NameSuffixPerson       []string
-	FirstKanaNameMale      []string
-	FirstKanaNameFemale    []string
-	LastKanaName           []string
-	MaleNameFormat         []string
-	FemaleNameFormat       []string
+	FirstNameMales         []string
+	FirstNameFemales       []string
+	LastNames              []string
+	TitleMales             []string
+	TitleFemales           []string
+	Suffixes               []string
+	FirstKanaNameMales     []string
+	FirstKanaNameFemales   []string
+	LastKanaNames          []string
+	MaleNameFormats        []string
+	FemaleNameFormats      []string
 	CreatePersonNameMale   func(any) any
 	CreatePersonNameFemale func(any) any
 }
