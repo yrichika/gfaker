@@ -17,8 +17,8 @@ func TestFake(testingT *testing.T) {
 		jp := CreateWithLocale(j)
 		t.It("should ...", func() {
 			// fmt.Println(f.Str.Char())
-			// fmt.Println(f.Str.AlphaRange(3, 10))
-			// fmt.Println(f.Num.Int(3, 10))
+			// fmt.Println(f.Rand.Str.AlphaRange(3, 3))
+			// fmt.Println(f.Rand.Num.Int(3, -1))
 			// fmt.Println(f.Bool.Evenly())
 
 			// fmt.Println(f.Rand.Bool.WeightedToTrue(0.5))

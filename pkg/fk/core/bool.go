@@ -1,11 +1,10 @@
 package core
 
 import (
+	"fmt"
 	"math/rand"
 
-	"log"
-
-	"github.com/yrichika/gfaker/pkg/fk/common"
+	"github.com/yrichika/gfaker/pkg/fk/common/log"
 )
 
 type RandBool struct {
@@ -24,10 +23,9 @@ func (r *RandBool) Evenly() bool {
 }
 
 func (r *RandBool) WeightedToTrue(weight float32) bool {
-	file, line := common.GetCallerInfo(1)
-
 	if weight < 0 || weight > 1 {
-		log.Printf("Error at %s: line %d: Invalid weight: %f", file, line, weight)
+		errMsg := fmt.Sprintf("Invalid weight: %f", weight)
+		log.WrongUsage(errMsg, 1)
 		return false
 	}
 	return r.rand.Float32() < weight

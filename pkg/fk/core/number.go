@@ -1,10 +1,10 @@
 package core
 
 import (
-	"log"
+	"fmt"
 	"math/rand"
 
-	"github.com/yrichika/gfaker/pkg/fk/common"
+	"github.com/yrichika/gfaker/pkg/fk/common/log"
 )
 
 type RandNum struct {
@@ -19,8 +19,8 @@ func NewRandNum(rand *rand.Rand) *RandNum {
 
 func (r *RandNum) Int(min int, max int) int {
 	if min > max {
-		file, line := common.GetCallerInfo(1)
-		log.Printf("Error at %s: line %d: Invalid range: min=%d, max=%d", file, line, min, max)
+		errMsg := fmt.Sprintf("Invalid range: min=%d, max=%d", min, max)
+		log.WrongUsage(errMsg, 1)
 		return 0
 	}
 	return r.rand.Intn(max-min) + min

@@ -3,10 +3,10 @@ package core
 // TODO: PHP Fakerを真似る
 // ref: ~/EXPERIMENT/php/exp-faker
 import (
-	"log"
+	"fmt"
 	"math/rand"
 
-	"github.com/yrichika/gfaker/pkg/fk/common"
+	"github.com/yrichika/gfaker/pkg/fk/common/log"
 )
 
 const letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -44,9 +44,9 @@ func (r *RandStr) Digit() string {
 }
 
 func (r *RandStr) AlphaRange(min int, max int) string {
-	if (min < 0) || (max < 0) || (min > max) {
-		file, line := common.GetCallerInfo(1)
-		log.Printf("Error at %s: line %d: Invalid range: min=%d, max=%d", file, line, min, max)
+	if (min < 0) || (max < 0) || (min > max) || (min == max) {
+		errMsg := fmt.Sprintf("Invalid range: min=%d, max=%d", min, max)
+		log.WrongUsage(errMsg, 1)
 		return ""
 	}
 	randomMax := r.rand.Intn(max-min) + min
@@ -60,8 +60,8 @@ func (r *RandStr) AlphaRange(min int, max int) string {
 // 固定の長さの文字列を返す
 func (r *RandStr) AlphaFixedLength(length int) string {
 	if length < 0 {
-		file, line := common.GetCallerInfo(1)
-		log.Printf("Error at %s: line %d: Invalid length: %d", file, line, length)
+		errMsg := fmt.Sprintf("Invalid length: %d", length)
+		log.WrongUsage(errMsg, 1)
 		return ""
 	}
 	var result string

@@ -6,10 +6,11 @@ import (
 	"text/template"
 )
 
-func GetCallerInfo(skip int) (string, int) {
+func GetCallerInfo(skip int) (*runtime.Func, string, int) {
 	trueSkip := skip + 1
-	_, file, line, _ := runtime.Caller(trueSkip)
-	return file, line
+	pc, file, line, _ := runtime.Caller(trueSkip)
+	caller := runtime.FuncForPC(pc)
+	return caller, file, line
 }
 
 // []string, []intなどの配列を[]anyに変換する
@@ -36,5 +37,3 @@ func RenderTemplate(format string, data interface{}) (string, error) {
 
 	return buf.String(), nil
 }
-
-// TODO: エラーメッセージを共通化させる関数
