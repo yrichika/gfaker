@@ -1,17 +1,12 @@
-package common
+package util
 
 import (
 	"bytes"
-	"runtime"
+	"fmt"
 	"text/template"
-)
 
-func GetCallerInfo(skip int) (*runtime.Func, string, int) {
-	trueSkip := skip + 1
-	pc, file, line, _ := runtime.Caller(trueSkip)
-	caller := runtime.FuncForPC(pc)
-	return caller, file, line
-}
+	"github.com/yrichika/gfaker/pkg/fk/common/log"
+)
 
 // []string, []intなどの配列を[]anyに変換する
 // 便利だが、パフォーマンスコストがかかるので、使いどころに注意
@@ -24,16 +19,21 @@ func ConvertToAnyArray[S ~[]E, E any](s S) []any {
 }
 
 // フォーマットの文字列をテンプレートとして扱い、データを埋め込み、文字列を返す
-func RenderTemplate(format string, data interface{}) (string, error) {
+func RenderTemplate(format string, data interface{}) string {
+	errMsgTmpl := "Failed to render locale template: %v"
 	tmpl, err := template.New("name").Parse(format)
 	if err != nil {
-		return "", err
+		errMsg := fmt.Sprintf(errMsgTmpl, err)
+		log.GeneralError(errMsg, 2)
+		return ""
 	}
 
 	var buf bytes.Buffer
 	if err := tmpl.Execute(&buf, data); err != nil {
-		return "", err
+		errMsg := fmt.Sprintf(errMsgTmpl, err)
+		log.GeneralError(errMsg, 2)
+		return ""
 	}
 
-	return buf.String(), nil
+	return buf.String()
 }
