@@ -8,7 +8,7 @@ import (
 	"github.com/yrichika/gfaker/pkg/fk/provider/locale/ja_JP"
 )
 
-func TestFake(testingT *testing.T) {
+func TestFaker(testingT *testing.T) {
 	t := gt.CreateTest(testingT)
 
 	t.Describe("just tinkering", func() {
@@ -25,6 +25,7 @@ func TestFake(testingT *testing.T) {
 			// fmt.Println(f.Person.FirstNameMale())
 			fmt.Println(f.Person.Name())
 			fmt.Println(jp.Person.Name())
+			fmt.Println(f.Person.FirstKanaNameMale())
 			// だいたいこんな感じで
 			// f.Person.FirstName()
 			// f.Person.LastName()
