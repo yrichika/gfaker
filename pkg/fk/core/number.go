@@ -17,7 +17,7 @@ func NewRandNum(rand *rand.Rand) *RandNum {
 	}
 }
 
-func (r *RandNum) Int(min int, max int) int {
+func (r *RandNum) IntBt(min int, max int) int {
 	if min > max {
 		errMsg := fmt.Sprintf("Invalid range: min=%d, max=%d", min, max)
 		log.WrongUsage(errMsg, 1)
@@ -26,4 +26,4 @@ func (r *RandNum) Int(min int, max int) int {
 	return r.rand.Intn(max-min) + min
 }
 
-// floatやcomplexなども作る
+// inや、floatやcomplexなども作る
