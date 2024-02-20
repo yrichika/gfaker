@@ -9,6 +9,7 @@ type Rand struct {
 	Num  *RandNum
 	Bool *RandBool
 	Arr  *RandArray
+	Time *RandTime
 }
 
 func NewRand(rand *rand.Rand) *Rand {
@@ -17,5 +18,6 @@ func NewRand(rand *rand.Rand) *Rand {
 		Num:  NewRandNum(rand),
 		Bool: NewRandBool(rand),
 		Arr:  NewRandArray(rand),
+		Time: NewRandTime(rand),
 	}
 }
