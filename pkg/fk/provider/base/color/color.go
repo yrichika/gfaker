@@ -12,10 +12,10 @@ type Color struct {
 	data *base.Colors
 }
 
-func New(rand *core.Rand, local *base.Localized) *Color {
+func New(rand *core.Rand, global *base.Global) *Color {
 	return &Color{
 		rand,
-		local.Colors,
+		global.Colors,
 	}
 }
 

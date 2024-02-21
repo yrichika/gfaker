@@ -15,12 +15,12 @@ func TestColor(testingT *testing.T) {
 
 	rand := rand.New(rand.NewSource(time.Now().UnixNano()))
 	coreRand := core.NewRand(rand)
-	localized := &base.Localized{
+	global := &base.Global{
 		Colors: global.CreateColors(),
 	}
 
 	t := gt.CreateTest(testingT)
-	color := New(coreRand, localized)
+	color := New(coreRand, global)
 	t.Describe("HexColor", func() {
 		t.It("should return random hex color string", func() {
 			r := color.HexColor()

@@ -1,10 +1,13 @@
 package base
 
+type Global struct {
+	Colors *Colors
+}
+
 type Localized struct {
 	// People, Addressesごとに、入れ子の構造体を作る
 	// 名前は、それぞれのカテゴリーの'複数形'にすること
 	People *People
-	Colors *Colors
 	// TODO: 全部のロケールのデータを持つ
 }
 

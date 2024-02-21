@@ -9,6 +9,7 @@ import (
 	"github.com/yrichika/gfaker/pkg/fk/provider/base/color"
 	"github.com/yrichika/gfaker/pkg/fk/provider/base/person"
 	"github.com/yrichika/gfaker/pkg/fk/provider/locale/en_US"
+	"github.com/yrichika/gfaker/pkg/fk/provider/locale/global"
 )
 
 type Faker struct {
@@ -33,9 +34,10 @@ func Create() *Faker {
 func CreateWithLocale(localized *base.Localized) *Faker {
 	rand := rand.New(rand.NewSource(time.Now().UnixNano()))
 	coreRand := core.NewRand(rand)
+	global := global.New()
 	return &Faker{
 		Rand:   coreRand,
 		Person: person.New(coreRand, localized),
-		Color:  color.New(coreRand, localized),
+		Color:  color.New(coreRand, global),
 	}
 }
