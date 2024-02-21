@@ -4,6 +4,7 @@ type Localized struct {
 	// People, Addressesごとに、入れ子の構造体を作る
 	// 名前は、それぞれのカテゴリーの'複数形'にすること
 	People *People
+	Colors *Colors
 	// TODO: 全部のロケールのデータを持つ
 }
 
@@ -21,4 +22,9 @@ type People struct {
 	FemaleNameFormats    []string
 	CreateNameMale       func(any) any
 	CreateNameFemale     func(any) any
+}
+
+type Colors struct {
+	SafeColors    []string
+	AllColorNames []string
 }
