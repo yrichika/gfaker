@@ -1,22 +1,24 @@
 package ja_JP
 
 import (
-	"github.com/yrichika/gfaker/pkg/fk/provider/base"
-	"github.com/yrichika/gfaker/pkg/fk/provider/base/person"
+	"github.com/yrichika/gfaker/pkg/fk/generator/person"
+	"github.com/yrichika/gfaker/pkg/fk/provider"
 )
 
-func CreatePeople() *base.People {
-	return &base.People{
+func CreatePeople() *provider.People {
+	return &provider.People{
 		FirstNameMales:       firstNameMales,
 		FirstNameFemales:     firstNameFemales,
 		LastNames:            lastNames,
 		FirstKanaNameMales:   firstKanaNameMales,
 		FirstKanaNameFemales: firstKanaNameFemales,
 		LastKanaNames:        lastKanaNames,
-		MaleNameFormats:      maleNameFormats,
-		FemaleNameFormats:    femaleNameFormats,
+		MaleNameFormats:      nameFormats,
+		FemaleNameFormats:    nameFormats,
 		CreateNameMale:       createJaJpNameMale,
 		CreateNameFemale:     createJaJpNameFemale,
+		CreateKanaNameMale:   createKanaNameMale,
+		CreateKanaNameFemale: createKanaNameFemale,
 	}
 }
 
@@ -65,11 +67,7 @@ var lastKanaNames = []string{
 	"ワカマツ", "ワタナベ",
 }
 
-var maleNameFormats = []string{
-	"{{.LastName}} {{.FirstName}}",
-}
-
-var femaleNameFormats = []string{
+var nameFormats = []string{
 	"{{.LastName}} {{.FirstName}}",
 }
 
@@ -91,5 +89,21 @@ func createJaJpNameFemale(p interface{}) any {
 	return JaJpPersonName{
 		FirstName: a.FirstNameFemale(),
 		LastName:  a.LastName(),
+	}
+}
+
+func createKanaNameMale(p interface{}) any {
+	a := p.(*person.Person)
+	return JaJpPersonName{
+		FirstName: a.FirstKanaNameMale(),
+		LastName:  a.LastKanaName(),
+	}
+}
+
+func createKanaNameFemale(p interface{}) any {
+	a := p.(*person.Person)
+	return JaJpPersonName{
+		FirstName: a.FirstKanaNameFemale(),
+		LastName:  a.LastKanaName(),
 	}
 }

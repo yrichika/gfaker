@@ -4,15 +4,15 @@ import (
 	"github.com/yrichika/gfaker/pkg/fk/common/log"
 	"github.com/yrichika/gfaker/pkg/fk/common/util"
 	"github.com/yrichika/gfaker/pkg/fk/core"
-	"github.com/yrichika/gfaker/pkg/fk/provider/base"
+	"github.com/yrichika/gfaker/pkg/fk/provider"
 )
 
 type Person struct {
 	rand *core.Rand
-	data *base.People
+	data *provider.People
 }
 
-func New(rand *core.Rand, local *base.Localized) *Person {
+func New(rand *core.Rand, local *provider.Localized) *Person {
 	return &Person{
 		rand,
 		local.People,
@@ -25,14 +25,6 @@ func (p *Person) FirstNameMale() string {
 		return ""
 	}
 	return p.rand.Arr.StrElem(p.data.FirstNameMales)
-}
-
-func (p *Person) FirstKanaNameMale() string {
-	if len(p.data.FirstKanaNameMales) == 0 {
-		log.UnavailableLocale(1)
-		return ""
-	}
-	return p.rand.Arr.StrElem(p.data.FirstKanaNameMales)
 }
 
 func (p *Person) FirstNameFemale() string {
@@ -143,7 +135,73 @@ func (p *Person) Ssn() string {
 	return p.rand.Str.AlphaDigitsLike("###-##-####")
 }
 
-// TODO: ここに、全てのメソッドを定義する。
-// en_USでは、カナの名前はないが、そういった場合は、値がnilかチェックして
-// log.Printf() でエラーを出すようにする
-// 返す値は、"" か、0 など、型に従って、ゼロ値を返すようにする
+func (p *Person) FirstKanaNameMale() string {
+	if len(p.data.FirstKanaNameMales) == 0 {
+		log.UnavailableLocale(1)
+		return ""
+	}
+	return p.rand.Arr.StrElem(p.data.FirstKanaNameMales)
+}
+
+func (p *Person) FirstKanaNameFemale() string {
+	if len(p.data.FirstKanaNameFemales) == 0 {
+		log.UnavailableLocale(1)
+		return ""
+	}
+	return p.rand.Arr.StrElem(p.data.FirstKanaNameFemales)
+}
+
+func (p *Person) FirstKanaName() string {
+	if len(p.data.FirstKanaNameFemales) == 0 || len(p.data.FirstKanaNameMales) == 0 {
+		log.UnavailableLocale(1)
+		return ""
+	}
+
+	if p.rand.Bool.Evenly() {
+		return p.rand.Arr.StrElem(p.data.FirstKanaNameMales)
+	}
+	return p.rand.Arr.StrElem(p.data.FirstKanaNameFemales)
+}
+
+func (p *Person) LastKanaName() string {
+	if len(p.data.LastKanaNames) == 0 {
+		log.UnavailableLocale(1)
+		return ""
+	}
+
+	return p.rand.Arr.StrElem(p.data.LastKanaNames)
+}
+
+func (p *Person) MaleKanaName() string {
+	if len(p.data.MaleNameFormats) == 0 {
+		log.UnavailableLocale(1)
+		return ""
+	}
+
+	format := p.rand.Arr.StrElem(p.data.MaleNameFormats)
+	nameData := p.data.CreateKanaNameMale(p)
+	return p.FullNameOf(format, nameData)
+}
+
+func (p *Person) FemaleKanaName() string {
+	if len(p.data.FemaleNameFormats) == 0 {
+		log.UnavailableLocale(1)
+		return ""
+	}
+
+	format := p.rand.Arr.StrElem(p.data.FemaleNameFormats)
+	nameData := p.data.CreateKanaNameFemale(p)
+	return p.FullNameOf(format, nameData)
+}
+
+func (p *Person) KanaName() string {
+	if (len(p.data.MaleNameFormats) == 0) || (len(p.data.FemaleNameFormats) == 0) {
+		log.UnavailableLocale(1)
+		return ""
+	}
+
+	if p.rand.Bool.Evenly() {
+		return p.MaleKanaName()
+	}
+	return p.FemaleKanaName()
+}

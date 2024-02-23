@@ -6,13 +6,13 @@ import (
 	"github.com/yrichika/gest/pkg/gt"
 	"github.com/yrichika/gfaker/pkg/fk/common/util"
 	"github.com/yrichika/gfaker/pkg/fk/core"
-	"github.com/yrichika/gfaker/pkg/fk/provider/base"
+	"github.com/yrichika/gfaker/pkg/fk/provider"
 	"github.com/yrichika/gfaker/pkg/fk/provider/locale/global"
 )
 
 func TestColor(testingT *testing.T) {
 	coreRand := core.NewRand(util.RandSeed())
-	global := &base.Global{
+	global := &provider.Global{
 		Colors: global.CreateColors(),
 	}
 

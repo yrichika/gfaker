@@ -1,11 +1,11 @@
 package en_US
 
 import (
-	"github.com/yrichika/gfaker/pkg/fk/provider/base"
+	"github.com/yrichika/gfaker/pkg/fk/provider"
 )
 
-func New() *base.Localized {
-	return &base.Localized{
+func New() *provider.Localized {
+	return &provider.Localized{
 		People: CreatePeople(),
 	}
 }

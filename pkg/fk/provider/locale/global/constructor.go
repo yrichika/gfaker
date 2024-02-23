@@ -1,15 +1,15 @@
 package global
 
-import "github.com/yrichika/gfaker/pkg/fk/provider/base"
+import "github.com/yrichika/gfaker/pkg/fk/provider"
 
-func New() *base.Global {
-	return &base.Global{
+func New() *provider.Global {
+	return &provider.Global{
 		Colors: CreateColors(),
 	}
 }
 
-func CreateColors() *base.Colors {
-	return &base.Colors{
+func CreateColors() *provider.Colors {
+	return &provider.Colors{
 		SafeColorNames: safeColorNames,
 		AllColorNames:  allColorNames,
 	}

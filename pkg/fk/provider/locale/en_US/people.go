@@ -1,12 +1,12 @@
 package en_US
 
 import (
-	"github.com/yrichika/gfaker/pkg/fk/provider/base"
-	"github.com/yrichika/gfaker/pkg/fk/provider/base/person"
+	"github.com/yrichika/gfaker/pkg/fk/generator/person"
+	"github.com/yrichika/gfaker/pkg/fk/provider"
 )
 
-func CreatePeople() *base.People {
-	return &base.People{
+func CreatePeople() *provider.People {
+	return &provider.People{
 		FirstNameMales:    firstNameMales,
 		FirstNameFemales:  firstNameFemales,
 		LastNames:         lastNames,

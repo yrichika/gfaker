@@ -3,9 +3,9 @@ package fk
 import (
 	"github.com/yrichika/gfaker/pkg/fk/common/util"
 	"github.com/yrichika/gfaker/pkg/fk/core"
-	"github.com/yrichika/gfaker/pkg/fk/provider/base"
-	"github.com/yrichika/gfaker/pkg/fk/provider/base/color"
-	"github.com/yrichika/gfaker/pkg/fk/provider/base/person"
+	"github.com/yrichika/gfaker/pkg/fk/generator/color"
+	"github.com/yrichika/gfaker/pkg/fk/generator/person"
+	"github.com/yrichika/gfaker/pkg/fk/provider"
 	"github.com/yrichika/gfaker/pkg/fk/provider/locale/en_US"
 	"github.com/yrichika/gfaker/pkg/fk/provider/locale/global"
 )
@@ -29,7 +29,7 @@ func Create() *Faker {
 	return CreateWithLocale(localized)
 }
 
-func CreateWithLocale(localized *base.Localized) *Faker {
+func CreateWithLocale(localized *provider.Localized) *Faker {
 	coreRand := core.NewRand(util.RandSeed())
 	global := global.New()
 	return &Faker{

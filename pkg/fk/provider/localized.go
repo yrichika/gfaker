@@ -1,4 +1,4 @@
-package base
+package provider
 
 type Global struct {
 	Colors *Colors
@@ -31,4 +31,6 @@ type People struct {
 	FemaleNameFormats    []string
 	CreateNameMale       func(any) any
 	CreateNameFemale     func(any) any
+	CreateKanaNameMale   func(any) any
+	CreateKanaNameFemale func(any) any
 }

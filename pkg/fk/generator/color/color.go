@@ -4,15 +4,15 @@ import (
 	"fmt"
 
 	"github.com/yrichika/gfaker/pkg/fk/core"
-	"github.com/yrichika/gfaker/pkg/fk/provider/base"
+	"github.com/yrichika/gfaker/pkg/fk/provider"
 )
 
 type Color struct {
 	rand *core.Rand
-	data *base.Colors
+	data *provider.Colors
 }
 
-func New(rand *core.Rand, global *base.Global) *Color {
+func New(rand *core.Rand, global *provider.Global) *Color {
 	return &Color{
 		rand,
 		global.Colors,
