@@ -1,7 +1,6 @@
 package ja_JP
 
 import (
-	"github.com/yrichika/gfaker/pkg/fk/generator/person"
 	"github.com/yrichika/gfaker/pkg/fk/provider"
 )
 
@@ -76,32 +75,41 @@ type JaJpPersonName struct {
 	LastName  string
 }
 
-func createJaJpNameMale(p interface{}) any {
-	a := p.(*person.Person)
+type NameGenerator interface {
+	FirstNameMale() string
+	FirstNameFemale() string
+	LastName() string
+	FirstKanaNameMale() string
+	FirstKanaNameFemale() string
+	LastKanaName() string
+}
+
+func createJaJpNameMale(p any) any {
+	a := p.(NameGenerator)
 	return JaJpPersonName{
 		FirstName: a.FirstNameMale(),
 		LastName:  a.LastName(),
 	}
 }
 
-func createJaJpNameFemale(p interface{}) any {
-	a := p.(*person.Person)
+func createJaJpNameFemale(p any) any {
+	a := p.(NameGenerator)
 	return JaJpPersonName{
 		FirstName: a.FirstNameFemale(),
 		LastName:  a.LastName(),
 	}
 }
 
-func createKanaNameMale(p interface{}) any {
-	a := p.(*person.Person)
+func createKanaNameMale(p any) any {
+	a := p.(NameGenerator)
 	return JaJpPersonName{
 		FirstName: a.FirstKanaNameMale(),
 		LastName:  a.LastKanaName(),
 	}
 }
 
-func createKanaNameFemale(p interface{}) any {
-	a := p.(*person.Person)
+func createKanaNameFemale(p any) any {
+	a := p.(NameGenerator)
 	return JaJpPersonName{
 		FirstName: a.FirstKanaNameFemale(),
 		LastName:  a.LastKanaName(),

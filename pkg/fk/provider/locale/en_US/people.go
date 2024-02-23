@@ -1,7 +1,6 @@
 package en_US
 
 import (
-	"github.com/yrichika/gfaker/pkg/fk/generator/person"
 	"github.com/yrichika/gfaker/pkg/fk/provider"
 )
 
@@ -142,8 +141,17 @@ type UsPersonName struct {
 	Suffix    string
 }
 
+type NameGenerator interface {
+	FirstNameMale() string
+	FirstNameFemale() string
+	LastName() string
+	TitleMale() string
+	TitleFemale() string
+	Suffix() string
+}
+
 func createEnUsNameMale(p any) any {
-	a := p.(*person.Person)
+	a := p.(NameGenerator)
 	return UsPersonName{
 		FirstName: a.FirstNameMale(),
 		LastName:  a.LastName(),
@@ -153,7 +161,7 @@ func createEnUsNameMale(p any) any {
 }
 
 func createEnUsNameFeMale(p any) any {
-	a := p.(*person.Person)
+	a := p.(NameGenerator)
 	return UsPersonName{
 		FirstName: a.FirstNameFemale(),
 		LastName:  a.LastName(),
