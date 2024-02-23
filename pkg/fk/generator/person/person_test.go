@@ -1,13 +1,13 @@
 package person
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/yrichika/gest/pkg/gt"
 	"github.com/yrichika/gfaker/pkg/fk/common/util"
 	"github.com/yrichika/gfaker/pkg/fk/core"
 	"github.com/yrichika/gfaker/pkg/fk/provider/locale/ja_JP"
+	"github.com/yrichika/gfaker/pkg/fk/testutil"
 )
 
 func TestPerson(testingT *testing.T) {
@@ -19,7 +19,7 @@ func TestPerson(testingT *testing.T) {
 	t.Describe("KanaName", func() {
 		t.It("should return a kana name", func() {
 			r := person.KanaName()
-			fmt.Println(r)
+			testutil.Output("Person.KanaName", r)
 		})
 	})
 }

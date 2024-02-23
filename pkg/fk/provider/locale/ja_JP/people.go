@@ -86,7 +86,7 @@ type NameGenerator interface {
 
 func createJaJpNameMale(p any) any {
 	a := p.(NameGenerator)
-	return JaJpPersonName{
+	return &JaJpPersonName{
 		FirstName: a.FirstNameMale(),
 		LastName:  a.LastName(),
 	}
@@ -94,7 +94,7 @@ func createJaJpNameMale(p any) any {
 
 func createJaJpNameFemale(p any) any {
 	a := p.(NameGenerator)
-	return JaJpPersonName{
+	return &JaJpPersonName{
 		FirstName: a.FirstNameFemale(),
 		LastName:  a.LastName(),
 	}
@@ -102,7 +102,7 @@ func createJaJpNameFemale(p any) any {
 
 func createKanaNameMale(p any) any {
 	a := p.(NameGenerator)
-	return JaJpPersonName{
+	return &JaJpPersonName{
 		FirstName: a.FirstKanaNameMale(),
 		LastName:  a.LastKanaName(),
 	}
@@ -110,7 +110,7 @@ func createKanaNameMale(p any) any {
 
 func createKanaNameFemale(p any) any {
 	a := p.(NameGenerator)
-	return JaJpPersonName{
+	return &JaJpPersonName{
 		FirstName: a.FirstKanaNameFemale(),
 		LastName:  a.LastKanaName(),
 	}

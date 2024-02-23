@@ -152,7 +152,7 @@ type NameGenerator interface {
 
 func createEnUsNameMale(p any) any {
 	a := p.(NameGenerator)
-	return UsPersonName{
+	return &UsPersonName{
 		FirstName: a.FirstNameMale(),
 		LastName:  a.LastName(),
 		Title:     a.TitleMale(),
@@ -162,7 +162,7 @@ func createEnUsNameMale(p any) any {
 
 func createEnUsNameFeMale(p any) any {
 	a := p.(NameGenerator)
-	return UsPersonName{
+	return &UsPersonName{
 		FirstName: a.FirstNameFemale(),
 		LastName:  a.LastName(),
 		Title:     a.TitleFemale(),
