@@ -19,11 +19,13 @@ func New(rand *core.Rand, global *base.Global) *Color {
 	}
 }
 
+// TEST:
 // example 'blue'
 func (c *Color) SafeColorName() string {
-	return c.rand.Arr.StrElem(c.data.SafeColors)
+	return c.rand.Arr.StrElem(c.data.SafeColorNames)
 }
 
+// TEST:
 // example 'NavajoWhite'
 func (c *Color) ColorName() string {
 	return c.rand.Arr.StrElem(c.data.AllColorNames)
@@ -35,98 +37,77 @@ func (c *Color) HexColor() string {
 	return fmt.Sprintf("#%06x", number)
 }
 
-// 	 /**
-// 	  * @example '#ff0044'
-// 	  *
-// 	  * @return string
-// 	  */
-// 	 public static function safeHexColor()
-// 	 {
-// 		 $color = str_pad(dechex(self::numberBetween(0, 255)), 3, '0', STR_PAD_LEFT);
+// example '#ff0044'
+func (c *Color) SafeHexColor() string {
+	number := c.rand.Num.Intn(256)
+	color := fmt.Sprintf("%03x", number)
+	return "#" + string(color[0]) + string(color[0]) + string(color[1]) + string(color[1]) + string(color[2]) + string(color[2])
+}
 
-// 		 return '#' . $color[0] . $color[0] . $color[1] . $color[1] . $color[2] . $color[2];
-// 	 }
+// TEST:
+// example 0, 255, 122
+func (c *Color) RgbColorAsNum() (int, int, int) {
+	return c.rand.Num.IntBt(0, 255),
+		c.rand.Num.IntBt(0, 255),
+		c.rand.Num.IntBt(0, 255)
+}
 
-// 	 /**
-// 	  * @example 'array(0,255,122)'
-// 	  *
-// 	  * @return array
-// 	  */
-// 	 public static function rgbColorAsArray()
-// 	 {
-// 		 $color = static::hexColor();
+// TEST:
+// example '0,255,122'
+func (c *Color) RgbColorAsStr() string {
+	r, g, b := c.RgbColorAsNum()
+	return fmt.Sprintf("%d,%d,%d", r, g, b)
+}
 
-// 		 return [
-// 			 hexdec(substr($color, 1, 2)),
-// 			 hexdec(substr($color, 3, 2)),
-// 			 hexdec(substr($color, 5, 2)),
-// 		 ];
-// 	 }
+// TEST:
+// example [0, 255, 122]
+func (c *Color) RgbColorAsArr() ([]int, error) {
+	r, g, b := c.RgbColorAsNum()
+	return []int{r, g, b}, nil
 
-// 	 /**
-// 	  * @example '0,255,122'
-// 	  *
-// 	  * @return string
-// 	  */
-// 	 public static function rgbColor()
-// 	 {
-// 		 return implode(',', static::rgbColorAsArray());
-// 	 }
+}
 
-// 	 /**
-// 	  * @example 'rgb(0,255,122)'
-// 	  *
-// 	  * @return string
-// 	  */
-// 	 public static function rgbCssColor()
-// 	 {
-// 		 return 'rgb(' . static::rgbColor() . ')';
-// 	 }
+// TEST:
+// example 'rgb(0,255,122)'
+func (c *Color) RgbCssColor() string {
+	return "rgb(" + c.RgbColorAsStr() + ")"
+}
 
-// 	 /**
-// 	  * @example 'rgba(0,255,122,0.8)'
-// 	  *
-// 	  * @return string
-// 	  */
-// 	 public static function rgbaCssColor()
-// 	 {
-// 		 return 'rgba(' . static::rgbColor() . ',' . static::randomFloat(1, 0, 1) . ')';
-// 	 }
+// example 'rgba(0,255,122,0.8)'
+func (c *Color) RgbaCssColor() string {
+	return "rgba(" + c.RgbColorAsStr() + "," + fmt.Sprintf("%.1f", c.rand.Num.Float32Bt(0, 1)) + ")"
+}
 
-// 	 /**
-// 	  * @example 'blue'
-// 	  *
-// 	  * @return string
-// 	  */
-// 	 public static function safeColorName()
-// 	 {
-// 		 return static::randomElement(static::$safeColorNames);
-// 	 }
+//	 /**
+//	  * @example '340,50,20'
+//	  *
+//	  * @return string
+//	  */
+//	 public static function hslColor()
+//	 {
+//		 return sprintf(
+//			 '%s,%s,%s',
+//			 self::numberBetween(0, 360),
+//			 self::numberBetween(0, 100),
+//			 self::numberBetween(0, 100),
+//		 );
+//	 }
+//
 
-// 	 /**
-// 	  * @example 'NavajoWhite'
-// 	  *
-// 	  * @return string
-// 	  */
-// 	 public static function colorName()
-// 	 {
-// 		 return static::randomElement(static::$allColorNames);
-// 	 }
+// TEST:
+// example 340, 50, 20
+func (c *Color) HslColorAsNum() (int, int, int) {
+	return c.rand.Num.IntBt(0, 360),
+		c.rand.Num.IntBt(0, 100),
+		c.rand.Num.IntBt(0, 100)
+}
 
-// 	 /**
-// 	  * @example '340,50,20'
-// 	  *
-// 	  * @return string
-// 	  */
-// 	 public static function hslColor()
-// 	 {
-// 		 return sprintf(
-// 			 '%s,%s,%s',
-// 			 self::numberBetween(0, 360),
-// 			 self::numberBetween(0, 100),
-// 			 self::numberBetween(0, 100),
-// 		 );
-// 	 }
+// TEST:
+// example '340,50,20'
+func (c *Color) HslColorAsStr() string {
+	h, s, l := c.HslColorAsNum()
+	return fmt.Sprintf("%d,%d,%d", h, s, l)
+}
 
 // 	 /**
 // 	  * @example array(340, 50, 20)
@@ -142,3 +123,10 @@ func (c *Color) HexColor() string {
 // 		 ];
 // 	 }
 //  }
+
+// TEST:
+// example [340, 50, 20]
+func (c *Color) HslColorAsArr() []int {
+	h, s, l := c.HslColorAsNum()
+	return []int{h, s, l}
+}

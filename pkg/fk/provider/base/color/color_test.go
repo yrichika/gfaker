@@ -1,30 +1,58 @@
 package color
 
 import (
-	"math/rand"
 	"testing"
-	"time"
 
 	"github.com/yrichika/gest/pkg/gt"
+	"github.com/yrichika/gfaker/pkg/fk/common/util"
 	"github.com/yrichika/gfaker/pkg/fk/core"
 	"github.com/yrichika/gfaker/pkg/fk/provider/base"
 	"github.com/yrichika/gfaker/pkg/fk/provider/locale/global"
 )
 
 func TestColor(testingT *testing.T) {
-
-	rand := rand.New(rand.NewSource(time.Now().UnixNano()))
-	coreRand := core.NewRand(rand)
+	coreRand := core.NewRand(util.RandSeed())
 	global := &base.Global{
 		Colors: global.CreateColors(),
 	}
 
-	t := gt.CreateTest(testingT)
 	color := New(coreRand, global)
-	t.Describe("HexColor", func() {
-		t.It("should return random hex color string", func() {
+
+	tScn := gt.CreateTest(testingT)
+	tScn.Describe("SafeColorName", func() {
+		tScn.Todo("")
+	})
+
+	tCn := gt.CreateTest(testingT)
+	tCn.Describe("ColorName", func() {
+		tCn.Todo("")
+	})
+
+	tHc := gt.CreateTest(testingT)
+	tHc.Describe("HexColor", func() {
+		tHc.It("should return random hex color string", func() {
 			r := color.HexColor()
-			gt.Expect(t, &r).ToMatchRegex(`^#[0-9a-f]{6}$`)
+			gt.Expect(tHc, &r).ToMatchRegex(`^#[0-9a-f]{6}$`)
+		})
+
+	})
+
+	tShc := gt.CreateTest(testingT)
+	tShc.Describe("SafeHexColor", func() {
+		tShc.It("should return random safe hex color string", func() {
+			r := color.SafeHexColor()
+			// FIXME: this regex is not exactly right.
+			gt.Expect(tShc, &r).ToMatchRegex(`^#[0-9a-f]{6}$`)
+		})
+	})
+
+	// TODO: 他のテスト
+
+	tRgbaCss := gt.CreateTest(testingT)
+	tRgbaCss.Describe("RgbaCssColor", func() {
+		tRgbaCss.It("should return random rgba css color string", func() {
+			r := color.RgbaCssColor()
+			gt.Expect(tRgbaCss, &r).ToMatchRegex(`^rgba\(\d{1,3},\d{1,3},\d{1,3},[01]\.\d{1}\)$`)
 		})
 	})
 }

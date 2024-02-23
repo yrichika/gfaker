@@ -10,7 +10,7 @@ func New() *base.Global {
 
 func CreateColors() *base.Colors {
 	return &base.Colors{
-		SafeColors:    safeColors,
-		AllColorNames: allColorNames,
+		SafeColorNames: safeColorNames,
+		AllColorNames:  allColorNames,
 	}
 }

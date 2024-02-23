@@ -2,6 +2,12 @@ package base
 
 type Global struct {
 	Colors *Colors
+	// 名前は、それぞれのカテゴリーの'複数形'にすること
+}
+
+type Colors struct {
+	SafeColorNames []string
+	AllColorNames  []string
 }
 
 type Localized struct {
@@ -25,9 +31,4 @@ type People struct {
 	FemaleNameFormats    []string
 	CreateNameMale       func(any) any
 	CreateNameFemale     func(any) any
-}
-
-type Colors struct {
-	SafeColors    []string
-	AllColorNames []string
 }

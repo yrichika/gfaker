@@ -1,6 +1,6 @@
 package global
 
-var safeColors = []string{
+var safeColorNames = []string{
 	"black", "maroon", "green", "navy", "olive",
 	"purple", "teal", "lime", "blue", "silver",
 	"gray", "yellow", "fuchsia", "aqua", "white",
