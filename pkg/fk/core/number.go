@@ -33,30 +33,34 @@ func NewRandNum(rand *rand.Rand) *RandNum {
 	}
 }
 
+// min以上max以下のランダムな整数を返す。maxは含まれます。
 func (r *RandNum) IntBt(min int, max int) int {
 	randMax, err := randMaxRange(min, max)
 	if err != nil {
 		return 0
 	}
-	return r.rand.Intn(randMax) + min
+	return r.rand.Intn(randMax+1) + min
 }
 
+// min以上max以下のランダムな整数を返す。maxは含まれます。
 func (r *RandNum) Int32Bt(min int32, max int32) int32 {
 	randMax, err := randMaxRange(min, max)
 	if err != nil {
 		return 0
 	}
-	return r.rand.Int31n(randMax) + min
+	return r.rand.Int31n(randMax+1) + min
 }
 
+// min以上max以下のランダムな整数を返す。maxは含まれます。
 func (r *RandNum) Int64Bt(min int64, max int64) int64 {
 	randMax, err := randMaxRange(min, max)
 	if err != nil {
 		return 0
 	}
-	return r.rand.Int63n(randMax) + min
+	return r.rand.Int63n(randMax+1) + min
 }
 
+// min以上max未満のランダムな浮動小数点数を返す。maxの近似値になることはありますが、maxを返すことはありません。
 func (r *RandNum) Float32Bt(min float32, max float32) float32 {
 	randMax, err := randMaxRange(min, max)
 	if err != nil {
@@ -65,6 +69,7 @@ func (r *RandNum) Float32Bt(min float32, max float32) float32 {
 	return r.rand.Float32()*randMax + min
 }
 
+// min以上max未満のランダムな浮動小数点数を返す。maxの近似値になることはありますが、maxを返すことはありません。
 func (r *RandNum) Float64Bt(min float64, max float64) float64 {
 	randMax, err := randMaxRange(min, max)
 	if err != nil {
@@ -86,4 +91,14 @@ func randMaxRange[N orderable](min N, max N) (N, error) {
 	return max - min, err
 }
 
-// inや、floatやcomplexなども作る
+// TODO: inや、floatやcomplexなども作る
+
+// alias of rand.Rand.Int
+func (r *RandNum) Int() int {
+	return r.rand.Int()
+}
+
+// alias of rand.Rand.Intn
+func (r *RandNum) Intn(n int) int {
+	return r.rand.Intn(n)
+}

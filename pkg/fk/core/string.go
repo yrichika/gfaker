@@ -43,13 +43,14 @@ func (r *RandStr) Digit() string {
 	return string(numberRunes[r.rand.Intn(len(numberRunes))])
 }
 
+// min以上max以下のランダムな長さの文字列を返す。maxで指定した長さは含まれる。
 func (r *RandStr) AlphaRange(min int, max int) string {
 	if (min < 0) || (max < 0) || (min > max) || (min == max) {
 		errMsg := fmt.Sprintf("Invalid range: min=%d, max=%d", min, max)
 		log.WrongUsage(errMsg, 1)
 		return ""
 	}
-	randomMax := r.rand.Intn(max-min) + min
+	randomMax := r.rand.Intn(max-min+1) + min
 	var result string
 	for i := 0; i < randomMax; i++ {
 		result += r.Letter()

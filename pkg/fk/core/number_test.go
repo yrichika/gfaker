@@ -1,17 +1,16 @@
 package core
 
 import (
-	"math/rand"
 	"testing"
-	"time"
 
 	"github.com/yrichika/gest/pkg/gt"
+	"github.com/yrichika/gfaker/pkg/fk/common/util"
 )
 
 func TestRandNum(testingT *testing.T) {
 	t := gt.CreateTest(testingT)
 
-	randNum := NewRandNum(rand.New(rand.NewSource(time.Now().UnixNano())))
+	randNum := NewRandNum(util.RandSeed())
 	t.Describe("IntBt", func() {
 		t.It("should return int value in given range", func() {
 			r := randNum.IntBt(1, 10)

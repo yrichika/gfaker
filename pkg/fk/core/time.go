@@ -96,12 +96,12 @@ func (r *RandTime) DurationHour() time.Duration {
 	return r.DurationTo(24 * time.Hour)
 }
 
-// 指定した時間以下のランダムな時間を返す
+// 指定した時間以下のランダムな時間を返す。toで指定した時間も含まれる
 func (r *RandTime) DurationTo(to time.Duration) time.Duration {
-	return time.Duration(r.rand.Int63n(int64(to)))
+	return time.Duration(r.rand.Int63n(int64(to + 1)))
 }
 
-// 指定した範囲の中でランダムな時間を返す
+// 指定した範囲の中でランダムな時間を返す。fromとtoで指定した時間も含まれる
 func (r *RandTime) DurationRange(from time.Duration, to time.Duration) time.Duration {
 	if from > to {
 		errMsg := fmt.Sprintf("Invalid range: from=%#v, to=%#v", from, to)
@@ -109,6 +109,6 @@ func (r *RandTime) DurationRange(from time.Duration, to time.Duration) time.Dura
 		return 0
 	}
 	diff := to - from
-	randomDiff := time.Duration(r.rand.Int63n(int64(diff)))
+	randomDiff := time.Duration(r.rand.Int63n(int64(diff + 1)))
 	return from + randomDiff
 }

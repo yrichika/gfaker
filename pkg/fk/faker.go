@@ -1,9 +1,7 @@
 package fk
 
 import (
-	"math/rand"
-	"time"
-
+	"github.com/yrichika/gfaker/pkg/fk/common/util"
 	"github.com/yrichika/gfaker/pkg/fk/core"
 	"github.com/yrichika/gfaker/pkg/fk/provider/base"
 	"github.com/yrichika/gfaker/pkg/fk/provider/base/color"
@@ -32,8 +30,7 @@ func Create() *Faker {
 }
 
 func CreateWithLocale(localized *base.Localized) *Faker {
-	rand := rand.New(rand.NewSource(time.Now().UnixNano()))
-	coreRand := core.NewRand(rand)
+	coreRand := core.NewRand(util.RandSeed())
 	global := global.New()
 	return &Faker{
 		Rand:   coreRand,
