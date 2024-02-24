@@ -6,8 +6,8 @@ import (
 	"github.com/yrichika/gfaker/pkg/fk/generator/color"
 	"github.com/yrichika/gfaker/pkg/fk/generator/person"
 	"github.com/yrichika/gfaker/pkg/fk/provider"
+	"github.com/yrichika/gfaker/pkg/fk/provider/global"
 	"github.com/yrichika/gfaker/pkg/fk/provider/locale/en_US"
-	"github.com/yrichika/gfaker/pkg/fk/provider/locale/global"
 )
 
 type Faker struct {
