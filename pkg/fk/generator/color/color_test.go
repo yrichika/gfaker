@@ -22,16 +22,18 @@ func TestColor(testingT *testing.T) {
 	tScn := gt.CreateTest(testingT)
 	tScn.Describe("SafeColorName", func() {
 		tScn.It("should return random safe color name", func() {
-			r := color.SafeColorName()
-			testutil.Output("Color.SafeColorName", r)
+			colorName := color.SafeColorName()
+			r := testutil.IsInArray(colorName, global.Colors.SafeColorNames)
+			gt.Expect(tScn, &r).ToBe(true)
 		})
 	})
 
 	tCn := gt.CreateTest(testingT)
 	tCn.Describe("ColorName", func() {
 		tCn.It("should return random color name", func() {
-			r := color.ColorName()
-			testutil.Output("Color.ColorName", r)
+			colorName := color.ColorName()
+			r := testutil.IsInArray(colorName, global.Colors.AllColorNames)
+			gt.Expect(tCn, &r).ToBe(true)
 		})
 	})
 
