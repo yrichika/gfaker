@@ -21,12 +21,12 @@ func New(rand *core.Rand, global *provider.Global) *Color {
 
 // example 'blue'
 func (c *Color) SafeColorName() string {
-	return c.rand.Arr.StrElem(c.data.SafeColorNames)
+	return c.rand.Slice.StrElem(c.data.SafeColorNames)
 }
 
 // example 'NavajoWhite'
 func (c *Color) ColorName() string {
-	return c.rand.Arr.StrElem(c.data.AllColorNames)
+	return c.rand.Slice.StrElem(c.data.AllColorNames)
 }
 
 // example '#fa3cc2'
@@ -56,9 +56,9 @@ func (c *Color) RgbColorAsStr() string {
 }
 
 // example [0, 255, 122]
-func (c *Color) RgbColorAsArr() []int {
+func (c *Color) RgbColorAsArr() [3]int {
 	r, g, b := c.RgbColorAsNum()
-	return []int{r, g, b}
+	return [3]int{r, g, b}
 
 }
 
@@ -86,7 +86,7 @@ func (c *Color) HslColorAsStr() string {
 }
 
 // example [340, 50, 20]
-func (c *Color) HslColorAsArr() []int {
+func (c *Color) HslColorAsArr() [3]int {
 	h, s, l := c.HslColorAsNum()
-	return []int{h, s, l}
+	return [3]int{h, s, l}
 }

@@ -12,7 +12,7 @@ import (
 
 // []string, []intなどの配列を[]anyに変換する
 // 便利だが、パフォーマンスコストがかかるので、使いどころに注意
-func ConvertToAnyArray[S ~[]E, E any](s S) []any {
+func ConvertToAnySlice[S ~[]E, E any](s S) []any {
 	r := make([]any, len(s))
 	for i, e := range s {
 		r[i] = e

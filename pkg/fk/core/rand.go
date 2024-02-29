@@ -5,19 +5,19 @@ import (
 )
 
 type Rand struct {
-	Str  *RandStr
-	Num  *RandNum
-	Bool *RandBool
-	Arr  *RandArray
-	Time *RandTime
+	Str   *RandStr
+	Num   *RandNum
+	Bool  *RandBool
+	Slice *RandSlice
+	Time  *RandTime
 }
 
 func NewRand(rand *rand.Rand) *Rand {
 	return &Rand{
-		Str:  NewRandStr(rand),
-		Num:  NewRandNum(rand),
-		Bool: NewRandBool(rand),
-		Arr:  NewRandArray(rand),
-		Time: NewRandTime(rand),
+		Str:   NewRandStr(rand),
+		Num:   NewRandNum(rand),
+		Bool:  NewRandBool(rand),
+		Slice: NewRandSlice(rand),
+		Time:  NewRandTime(rand),
 	}
 }

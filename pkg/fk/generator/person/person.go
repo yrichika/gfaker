@@ -24,7 +24,7 @@ func (p *Person) FirstNameMale() string {
 		log.UnavailableLocale(1)
 		return ""
 	}
-	return p.rand.Arr.StrElem(p.data.FirstNameMales)
+	return p.rand.Slice.StrElem(p.data.FirstNameMales)
 }
 
 func (p *Person) FirstNameFemale() string {
@@ -32,7 +32,7 @@ func (p *Person) FirstNameFemale() string {
 		log.UnavailableLocale(1)
 		return ""
 	}
-	return p.rand.Arr.StrElem(p.data.FirstNameFemales)
+	return p.rand.Slice.StrElem(p.data.FirstNameFemales)
 }
 
 func (p *Person) FirstName() string {
@@ -42,9 +42,9 @@ func (p *Person) FirstName() string {
 	}
 
 	if p.rand.Bool.Evenly() {
-		return p.rand.Arr.StrElem(p.data.FirstNameMales)
+		return p.rand.Slice.StrElem(p.data.FirstNameMales)
 	}
-	return p.rand.Arr.StrElem(p.data.FirstNameFemales)
+	return p.rand.Slice.StrElem(p.data.FirstNameFemales)
 }
 
 func (p *Person) LastName() string {
@@ -53,7 +53,7 @@ func (p *Person) LastName() string {
 		return ""
 	}
 
-	return p.rand.Arr.StrElem(p.data.LastNames)
+	return p.rand.Slice.StrElem(p.data.LastNames)
 }
 
 func (p *Person) TitleMale() string {
@@ -61,7 +61,7 @@ func (p *Person) TitleMale() string {
 		log.UnavailableLocale(1)
 		return ""
 	}
-	return p.rand.Arr.StrElem(p.data.TitleMales)
+	return p.rand.Slice.StrElem(p.data.TitleMales)
 }
 
 func (p *Person) TitleFemale() string {
@@ -69,7 +69,7 @@ func (p *Person) TitleFemale() string {
 		log.UnavailableLocale(1)
 		return ""
 	}
-	return p.rand.Arr.StrElem(p.data.TitleFemales)
+	return p.rand.Slice.StrElem(p.data.TitleFemales)
 }
 
 func (p *Person) Title() string {
@@ -79,9 +79,9 @@ func (p *Person) Title() string {
 	}
 
 	if p.rand.Bool.Evenly() {
-		return p.rand.Arr.StrElem(p.data.TitleMales)
+		return p.rand.Slice.StrElem(p.data.TitleMales)
 	}
-	return p.rand.Arr.StrElem(p.data.TitleFemales)
+	return p.rand.Slice.StrElem(p.data.TitleFemales)
 }
 
 func (p *Person) Suffix() string {
@@ -90,7 +90,7 @@ func (p *Person) Suffix() string {
 		return ""
 	}
 
-	return p.rand.Arr.StrElem(p.data.Suffixes)
+	return p.rand.Slice.StrElem(p.data.Suffixes)
 }
 
 func (p *Person) FullNameOf(format string, nameData any) string {
@@ -103,7 +103,7 @@ func (p *Person) MaleName() string {
 		return ""
 	}
 
-	format := p.rand.Arr.StrElem(p.data.MaleNameFormats)
+	format := p.rand.Slice.StrElem(p.data.MaleNameFormats)
 	nameData := p.data.CreateNameMale(p)
 	return p.FullNameOf(format, nameData)
 }
@@ -114,7 +114,7 @@ func (p *Person) FemaleName() string {
 		return ""
 	}
 
-	format := p.rand.Arr.StrElem(p.data.FemaleNameFormats)
+	format := p.rand.Slice.StrElem(p.data.FemaleNameFormats)
 	nameData := p.data.CreateNameFemale(p)
 	return p.FullNameOf(format, nameData)
 }
@@ -140,7 +140,7 @@ func (p *Person) FirstKanaNameMale() string {
 		log.UnavailableLocale(1)
 		return ""
 	}
-	return p.rand.Arr.StrElem(p.data.FirstKanaNameMales)
+	return p.rand.Slice.StrElem(p.data.FirstKanaNameMales)
 }
 
 func (p *Person) FirstKanaNameFemale() string {
@@ -148,7 +148,7 @@ func (p *Person) FirstKanaNameFemale() string {
 		log.UnavailableLocale(1)
 		return ""
 	}
-	return p.rand.Arr.StrElem(p.data.FirstKanaNameFemales)
+	return p.rand.Slice.StrElem(p.data.FirstKanaNameFemales)
 }
 
 func (p *Person) FirstKanaName() string {
@@ -158,9 +158,9 @@ func (p *Person) FirstKanaName() string {
 	}
 
 	if p.rand.Bool.Evenly() {
-		return p.rand.Arr.StrElem(p.data.FirstKanaNameMales)
+		return p.rand.Slice.StrElem(p.data.FirstKanaNameMales)
 	}
-	return p.rand.Arr.StrElem(p.data.FirstKanaNameFemales)
+	return p.rand.Slice.StrElem(p.data.FirstKanaNameFemales)
 }
 
 func (p *Person) LastKanaName() string {
@@ -169,7 +169,7 @@ func (p *Person) LastKanaName() string {
 		return ""
 	}
 
-	return p.rand.Arr.StrElem(p.data.LastKanaNames)
+	return p.rand.Slice.StrElem(p.data.LastKanaNames)
 }
 
 func (p *Person) MaleKanaName() string {
@@ -178,7 +178,7 @@ func (p *Person) MaleKanaName() string {
 		return ""
 	}
 
-	format := p.rand.Arr.StrElem(p.data.MaleNameFormats)
+	format := p.rand.Slice.StrElem(p.data.MaleNameFormats)
 	nameData := p.data.CreateKanaNameMale(p)
 	return p.FullNameOf(format, nameData)
 }
@@ -189,7 +189,7 @@ func (p *Person) FemaleKanaName() string {
 		return ""
 	}
 
-	format := p.rand.Arr.StrElem(p.data.FemaleNameFormats)
+	format := p.rand.Slice.StrElem(p.data.FemaleNameFormats)
 	nameData := p.data.CreateKanaNameFemale(p)
 	return p.FullNameOf(format, nameData)
 }
