@@ -8,7 +8,6 @@ import (
 	"github.com/yrichika/gfaker/pkg/fk/core"
 	"github.com/yrichika/gfaker/pkg/fk/provider"
 	"github.com/yrichika/gfaker/pkg/fk/provider/global"
-	"github.com/yrichika/gfaker/pkg/fk/testutil"
 )
 
 func TestColor(testingT *testing.T) {
@@ -23,8 +22,7 @@ func TestColor(testingT *testing.T) {
 	tScn.Describe("SafeColorName", func() {
 		tScn.It("should return random safe color name", func() {
 			colorName := color.SafeColorName()
-			r := testutil.IsInSlice(colorName, global.Colors.SafeColorNames)
-			gt.Expect(tScn, &r).ToBe(true)
+			gt.Expect(tScn, &colorName).ToBeIn(global.Colors.SafeColorNames)
 		})
 	})
 
@@ -32,8 +30,7 @@ func TestColor(testingT *testing.T) {
 	tCn.Describe("ColorName", func() {
 		tCn.It("should return random color name", func() {
 			colorName := color.ColorName()
-			r := testutil.IsInSlice(colorName, global.Colors.AllColorNames)
-			gt.Expect(tCn, &r).ToBe(true)
+			gt.Expect(tCn, &colorName).ToBeIn(global.Colors.AllColorNames)
 		})
 	})
 
