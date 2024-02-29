@@ -8,3 +8,5 @@ github.com/yrichika/gest v0.2.0 h1:w+Tkhbas3vBrmuadhKHhuLf/uyyiHZnwWdtDt8HNaxI=
 github.com/yrichika/gest v0.2.0/go.mod h1:EIOXf7TjxclH0GRrP2k8Jt6iQ4gldySGu1x8EIlbu0c=
 github.com/yrichika/gest v0.2.1 h1:BKnLX/p5CVekf2AtbLcXwM4u3Gaxy4a6iU9G2Hh+Rk4=
 github.com/yrichika/gest v0.2.1/go.mod h1:EIOXf7TjxclH0GRrP2k8Jt6iQ4gldySGu1x8EIlbu0c=
+github.com/yrichika/gest v0.2.2 h1:jC/foszmVV8k6l2t4oqRDiy2BErw/nqFVMY5bzGTuA8=
+github.com/yrichika/gest v0.2.2/go.mod h1:EIOXf7TjxclH0GRrP2k8Jt6iQ4gldySGu1x8EIlbu0c=
