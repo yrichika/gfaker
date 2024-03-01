@@ -20,7 +20,7 @@ func TestPerson(testingT *testing.T) {
 	t1.Describe("FirstNameMale", func() {
 		t1.It("should return a male first name", func() {
 			r := person.FirstNameMale()
-			testutil.Output("Person.FirstNameMale", r)
+			gt.Expect(t1, &r).ToBeIn(en_US.FirstNameMales)
 		})
 	})
 
@@ -28,7 +28,7 @@ func TestPerson(testingT *testing.T) {
 	t2.Describe("FirstNameFemale", func() {
 		t2.It("should return a female first name", func() {
 			r := person.FirstNameFemale()
-			testutil.Output("Person.FirstNameFemale", r)
+			gt.Expect(t2, &r).ToBeIn(en_US.FirstNameFemales)
 		})
 	})
 
@@ -44,7 +44,7 @@ func TestPerson(testingT *testing.T) {
 	t4.Describe("LastName", func() {
 		t4.It("should return a last name", func() {
 			r := person.LastName()
-			testutil.Output("Person.LastName", r)
+			gt.Expect(t4, &r).ToBeIn(en_US.LastNames)
 		})
 	})
 
@@ -52,7 +52,7 @@ func TestPerson(testingT *testing.T) {
 	t5.Describe("TitleMale", func() {
 		t5.It("should return a male title", func() {
 			r := person.TitleMale()
-			testutil.Output("Person.TitleMale", r)
+			gt.Expect(t5, &r).ToBeIn(en_US.TitleMales)
 		})
 	})
 
@@ -60,7 +60,7 @@ func TestPerson(testingT *testing.T) {
 	t6.Describe("TitleFemale", func() {
 		t6.It("should return a female title", func() {
 			r := person.TitleFemale()
-			testutil.Output("Person.TitleFemale", r)
+			gt.Expect(t6, &r).ToBeIn(en_US.TitleFemales)
 		})
 	})
 
@@ -76,7 +76,7 @@ func TestPerson(testingT *testing.T) {
 	t8.Describe("Suffix", func() {
 		t8.It("should return a suffix", func() {
 			r := person.Suffix()
-			testutil.Output("Person.Suffix", r)
+			gt.Expect(t8, &r).ToBeIn(en_US.Suffixes)
 		})
 	})
 
@@ -118,7 +118,7 @@ func TestPerson(testingT *testing.T) {
 	t13.Describe("FirstKanaNameMale", func() {
 		t13.It("should return a male first kana name", func() {
 			r := personJaJp.FirstKanaNameMale()
-			testutil.Output("Person.FirstKanaNameMale", r)
+			gt.Expect(t13, &r).ToBeIn(ja_JP.FirstKanaNameMales)
 		})
 	})
 
@@ -126,7 +126,7 @@ func TestPerson(testingT *testing.T) {
 	t14.Describe("FirstKanaNameFemale", func() {
 		t14.It("should return a female first kana name", func() {
 			r := personJaJp.FirstKanaNameFemale()
-			testutil.Output("Person.FirstKanaNameFemale", r)
+			gt.Expect(t14, &r).ToBeIn(ja_JP.FirstKanaNameFemales)
 		})
 	})
 
@@ -142,7 +142,7 @@ func TestPerson(testingT *testing.T) {
 	t16.Describe("LastKanaName", func() {
 		t16.It("should return a last kana name", func() {
 			r := personJaJp.LastKanaName()
-			testutil.Output("Person.LastKanaName", r)
+			gt.Expect(t16, &r).ToBeIn(ja_JP.LastKanaNames)
 		})
 	})
 

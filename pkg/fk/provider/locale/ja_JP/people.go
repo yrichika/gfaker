@@ -6,14 +6,14 @@ import (
 
 func CreatePeople() *provider.People {
 	return &provider.People{
-		FirstNameMales:       firstNameMales,
-		FirstNameFemales:     firstNameFemales,
-		LastNames:            lastNames,
-		FirstKanaNameMales:   firstKanaNameMales,
-		FirstKanaNameFemales: firstKanaNameFemales,
-		LastKanaNames:        lastKanaNames,
-		MaleNameFormats:      nameFormats,
-		FemaleNameFormats:    nameFormats,
+		FirstNameMales:       FirstNameMales,
+		FirstNameFemales:     FirstNameFemales,
+		LastNames:            LastNames,
+		FirstKanaNameMales:   FirstKanaNameMales,
+		FirstKanaNameFemales: FirstKanaNameFemales,
+		LastKanaNames:        LastKanaNames,
+		MaleNameFormats:      NameFormats,
+		FemaleNameFormats:    NameFormats,
 		CreateNameMale:       createJaJpNameMale,
 		CreateNameFemale:     createJaJpNameFemale,
 		CreateKanaNameMale:   createKanaNameMale,
@@ -21,17 +21,17 @@ func CreatePeople() *provider.People {
 	}
 }
 
-var firstNameMales = []string{
+var FirstNameMales = []string{
 	"晃", "篤司", "治", "和也", "京助", "健一", "修平", "翔太", "淳", "聡太郎", "太一", "太郎", "拓真", "翼", "智也",
 	"直樹", "直人", "英樹", "浩", "学", "充", "稔", "裕樹", "裕太", "康弘", "陽一", "洋介", "亮介", "涼平", "零",
 }
 
-var firstNameFemales = []string{
+var FirstNameFemales = []string{
 	"明美", "あすか", "香織", "加奈", "くみ子", "さゆり", "知実", "千代",
 	"直子", "七夏", "花子", "春香", "真綾", "舞", "美加子", "幹", "桃子", "結衣", "裕美子", "陽子", "里佳",
 }
 
-var lastNames = []string{
+var LastNames = []string{
 	"青田", "青山", "石田", "井高", "伊藤", "井上", "宇野", "江古田", "大垣",
 	"加藤", "加納", "喜嶋", "木村", "桐山", "工藤", "小泉", "小林", "近藤",
 	"斉藤", "坂本", "佐々木", "佐藤", "笹田", "鈴木", "杉山",
@@ -43,18 +43,18 @@ var lastNames = []string{
 	"若松", "渡辺",
 }
 
-var firstKanaNameMales = []string{
+var FirstKanaNameMales = []string{
 	"アキラ", "アツシ", "オサム", "カズヤ", "キョウスケ", "ケンイチ", "シュウヘイ", "ショウタ", "ジュン", "ソウタロウ",
 	"タイチ", "タロウ", "タクマ", "ツバサ", "トモヤ", "ナオキ", "ナオト", "ヒデキ", "ヒロシ", "マナブ", "ミツル", "ミノル",
 	"ユウキ", "ユウタ", "ヤスヒロ", "ヨウイチ", "ヨウスケ", "リョウスケ", "リョウヘイ", "レイ",
 }
 
-var firstKanaNameFemales = []string{
+var FirstKanaNameFemales = []string{
 	"アケミ", "アスカ", "カオリ", "カナ", "クミコ", "サユリ", "サトミ", "チヨ",
 	"ナオコ", "ナナミ", "ハナコ", "ハルカ", "マアヤ", "マイ", "ミカコ", "ミキ", "モモコ", "ユイ", "ユミコ", "ヨウコ", "リカ",
 }
 
-var lastKanaNames = []string{
+var LastKanaNames = []string{
 	"アオタ", "アオヤマ", "イシダ", "イダカ", "イトウ", "ウノ", "エコダ", "オオガキ",
 	"カノウ", "カノウ", "キジマ", "キムラ", "キリヤマ", "クドウ", "コイズミ", "コバヤシ", "コンドウ",
 	"サイトウ", "サカモト", "ササキ", "サトウ", "ササダ", "スズキ", "スギヤマ",
@@ -66,7 +66,7 @@ var lastKanaNames = []string{
 	"ワカマツ", "ワタナベ",
 }
 
-var nameFormats = []string{
+var NameFormats = []string{
 	"{{.LastName}} {{.FirstName}}",
 }
 

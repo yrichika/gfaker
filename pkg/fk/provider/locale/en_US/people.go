@@ -6,28 +6,28 @@ import (
 
 func CreatePeople() *provider.People {
 	return &provider.People{
-		FirstNameMales:    firstNameMales,
-		FirstNameFemales:  firstNameFemales,
-		LastNames:         lastNames,
-		TitleMales:        titleMales,
-		TitleFemales:      titleFemales,
-		Suffixes:          suffixes,
-		MaleNameFormats:   maleNameFormats,
-		FemaleNameFormats: femaleNameFormats,
+		FirstNameMales:    FirstNameMales,
+		FirstNameFemales:  FirstNameFemales,
+		LastNames:         LastNames,
+		TitleMales:        TitleMales,
+		TitleFemales:      TitleFemales,
+		Suffixes:          Suffixes,
+		MaleNameFormats:   MaleNameFormats,
+		FemaleNameFormats: FemaleNameFormats,
 		CreateNameMale:    createEnUsNameMale,
 		CreateNameFemale:  createEnUsNameFeMale,
 	}
 }
 
-var titleMales = []string{
+var TitleMales = []string{
 	"Mr.", "Dr.", "Prof.", "Rev.",
 }
 
-var titleFemales = []string{
+var TitleFemales = []string{
 	"Mrs.", "Ms.", "Miss", "Dr.", "Prof.", "Rev.",
 }
 
-var firstNameMales = []string{
+var FirstNameMales = []string{
 	"Aaron", "Abdiel", "Abdul", "Abdullah", "Abe", "Abel", "Abelardo", "Abner", "Abraham", "Adalberto", "Adam", "Adan", "Adelbert", "Adolfo", "Adolphus", "Adonis", "Adrain", "Adrian", "Adriel", "Adrien", "Afton", "Agustin", "Ahmad", "Ahmed", "Aidan", "Aiden", "Akeem", "Al", "Alan", "Albert", "Alberto", "Albin", "Alden", "Alec", "Alejandrin", "Alek", "Alessandro", "Alex", "Alexander", "Alexandre", "Alexandro", "Alexie", "Alexis", "Alexys", "Alexzander", "Alf", "Alfonso", "Alfonzo", "Alford", "Alfred", "Alfredo", "Ali", "Allan", "Allen", "Alphonso", "Alvah", "Alvis", "Amani", "Amari", "Ambrose", "Americo", "Amir", "Amos", "Amparo", "Anastacio", "Anderson", "Andre", "Andres", "Andrew", "Andy", "Angel", "Angelo", "Angus", "Anibal", "Ansel", "Ansley", "Anthony", "Antone", "Antonio", "Antwan", "Antwon", "Arch", "Archibald", "Arden", "Arely", "Ari", "Aric", "Ariel", "Arjun", "Arlo", "Armand", "Armando", "Armani", "Arnaldo", "Arne", "Arno", "Arnold", "Arnoldo", "Arnulfo", "Aron", "Art", "Arthur", "Arturo", "Arvel", "Arvid", "Ashton", "August", "Augustus", "Aurelio", "Austen", "Austin", "Austyn", "Avery", "Axel", "Ayden",
 	"Bailey", "Barney", "Baron", "Barrett", "Barry", "Bart", "Bartholome", "Barton", "Baylee", "Beau", "Bell", "Ben", "Benedict", "Benjamin", "Bennett", "Bennie", "Benny", "Benton", "Bernard", "Bernardo", "Bernhard", "Bernie", "Berry", "Berta", "Bertha", "Bertram", "Bertrand", "Bill", "Billy", "Blair", "Blaise", "Blake", "Blaze", "Bo", "Bobbie", "Bobby", "Boris", "Boyd", "Brad", "Braden", "Bradford", "Bradley", "Bradly", "Brady", "Braeden", "Brain", "Brando", "Brandon", "Brandt", "Brannon", "Branson", "Brant", "Braulio", "Braxton", "Brayan", "Brendan", "Brenden", "Brendon", "Brennan", "Brennon", "Brent", "Bret", "Brett", "Brian", "Brice", "Brock", "Broderick", "Brody", "Brook", "Brooks", "Brown", "Bruce", "Bryce", "Brycen", "Bryon", "Buck", "Bud", "Buddy", "Buford", "Burley", "Buster",
 	"Cade", "Caden", "Caesar", "Cale", "Caleb", "Camden", "Cameron", "Camren", "Camron", "Camryn", "Candelario", "Candido", "Carey", "Carleton", "Carlo", "Carlos", "Carmel", "Carmelo", "Carmine", "Carol", "Carroll", "Carson", "Carter", "Cary", "Casey", "Casimer", "Casimir", "Casper", "Ceasar", "Cecil", "Cedrick", "Celestino", "Cesar", "Chad", "Chadd", "Chadrick", "Chaim", "Chance", "Chandler", "Charles", "Charley", "Charlie", "Chase", "Chauncey", "Chaz", "Chelsey", "Chesley", "Chester", "Chet", "Chris", "Christ", "Christian", "Christop", "Christophe", "Christopher", "Cicero", "Cielo", "Clair", "Clark", "Claud", "Claude", "Clay", "Clemens", "Clement", "Cleo", "Cletus", "Cleve", "Cleveland", "Clifford", "Clifton", "Clint", "Clinton", "Clovis", "Cloyd", "Clyde", "Coby", "Cody", "Colby", "Cole", "Coleman", "Colin", "Collin", "Colt", "Colten", "Colton", "Columbus", "Conner", "Connor", "Conor", "Conrad", "Constantin", "Consuelo", "Cooper", "Corbin", "Cordelia", "Cordell", "Cornelius", "Cornell", "Cortez", "Cory", "Coty", "Coy", "Craig", "Crawford", "Cristian", "Cristina", "Cristobal", "Cristopher", "Cruz", "Cullen", "Curt", "Curtis", "Cyril", "Cyrus",
@@ -55,7 +55,7 @@ var firstNameMales = []string{
 	"Zachariah", "Zachary", "Zachery", "Zack", "Zackary", "Zackery", "Zakary", "Zander", "Zane", "Zechariah", "Zion",
 }
 
-var firstNameFemales = []string{
+var FirstNameFemales = []string{
 	"Aaliyah", "Abagail", "Abbey", "Abbie", "Abbigail", "Abby", "Abigail", "Abigale", "Abigayle", "Ada", "Adah", "Adaline", "Addie", "Addison", "Adela", "Adele", "Adelia", "Adeline", "Adell", "Adella", "Adelle", "Aditya", "Adriana", "Adrianna", "Adrienne", "Aglae", "Agnes", "Agustina", "Aida", "Aileen", "Aimee", "Aisha", "Aiyana", "Alaina", "Alana", "Alanis", "Alanna", "Alayna", "Alba", "Alberta", "Albertha", "Albina", "Alda", "Aleen", "Alejandra", "Alena", "Alene", "Alessandra", "Alessia", "Aletha", "Alexa", "Alexandra", "Alexandrea", "Alexandria", "Alexandrine", "Alexane", "Alexanne", "Alfreda", "Alia", "Alice", "Alicia", "Alisa", "Alisha", "Alison", "Alivia", "Aliya", "Aliyah", "Aliza", "Alize", "Allene", "Allie", "Allison", "Ally", "Alta", "Althea", "Alva", "Alvena", "Alvera", "Alverta", "Alvina", "Alyce", "Alycia", "Alysa", "Alysha", "Alyson", "Alysson", "Amalia", "Amanda", "Amara", "Amaya", "Amber", "Amelia", "Amelie", "Amely", "America", "Amie", "Amina", "Amira", "Amiya", "Amy", "Amya", "Ana", "Anabel", "Anabelle", "Anahi", "Anais", "Anastasia", "Andreane", "Andreanne", "Angela", "Angelica", "Angelina", "Angeline", "Angelita", "Angie", "Anika", "Anissa", "Anita", "Aniya", "Aniyah", "Anjali", "Anna", "Annabel", "Annabell", "Annabelle", "Annalise", "Annamae", "Annamarie", "Anne", "Annetta", "Annette", "Annie", "Antoinette", "Antonetta", "Antonette", "Antonia", "Antonietta", "Antonina", "Anya", "April", "Ara", "Araceli", "Aracely", "Ardella", "Ardith", "Ariane", "Arianna", "Arielle", "Arlene", "Arlie", "Arvilla", "Aryanna", "Asa", "Asha", "Ashlee", "Ashleigh", "Ashley", "Ashly", "Ashlynn", "Ashtyn", "Asia", "Assunta", "Astrid", "Athena", "Aubree", "Aubrey", "Audie", "Audra", "Audreanne", "Audrey", "Augusta", "Augustine", "Aurelia", "Aurelie", "Aurore", "Autumn", "Ava", "Avis", "Ayana", "Ayla", "Aylin",
 	"Baby", "Bailee", "Barbara", "Beatrice", "Beaulah", "Bella", "Belle", "Berenice", "Bernadette", "Bernadine", "Berneice", "Bernice", "Berniece", "Bernita", "Bert", "Beryl", "Bessie", "Beth", "Bethany", "Bethel", "Betsy", "Bette", "Bettie", "Betty", "Bettye", "Beulah", "Beverly", "Bianka", "Billie", "Birdie", "Blanca", "Blanche", "Bonita", "Bonnie", "Brandi", "Brandy", "Brandyn", "Breana", "Breanna", "Breanne", "Brenda", "Brenna", "Bria", "Briana", "Brianne", "Bridget", "Bridgette", "Bridie", "Brielle", "Brigitte", "Brionna", "Brisa", "Britney", "Brittany", "Brooke", "Brooklyn", "Bryana", "Bulah", "Burdette", "Burnice",
 	"Caitlyn", "Caleigh", "Cali", "Calista", "Callie", "Camila", "Camilla", "Camille", "Camylle", "Candace", "Candice", "Candida", "Cara", "Carissa", "Carlee", "Carley", "Carli", "Carlie", "Carlotta", "Carmela", "Carmella", "Carmen", "Carolanne", "Carole", "Carolina", "Caroline", "Carolyn", "Carolyne", "Carrie", "Casandra", "Cassandra", "Cassandre", "Cassidy", "Cassie", "Catalina", "Caterina", "Catharine", "Catherine", "Cathrine", "Cathryn", "Cathy", "Cayla", "Cecelia", "Cecile", "Cecilia", "Celestine", "Celia", "Celine", "Chanel", "Chanelle", "Charity", "Charlene", "Charlotte", "Chasity", "Chaya", "Chelsea", "Chelsie", "Cheyanne", "Cheyenne", "Chloe", "Christa", "Christelle", "Christiana", "Christina", "Christine", "Christy", "Chyna", "Ciara", "Cierra", "Cindy", "Citlalli", "Claire", "Clara", "Clarabelle", "Clare", "Clarissa", "Claudia", "Claudie", "Claudine", "Clementina", "Clementine", "Clemmie", "Cleora", "Cleta", "Clotilde", "Colleen", "Concepcion", "Connie", "Constance", "Cora", "Coralie", "Cordia", "Cordie", "Corene", "Corine", "Corrine", "Cortney", "Courtney", "Creola", "Cristal", "Crystal", "Crystel", "Cydney", "Cynthia",
@@ -83,7 +83,7 @@ var firstNameFemales = []string{
 	"Zaria", "Zelda", "Zella", "Zelma", "Zena", "Zetta", "Zita", "Zoe", "Zoey", "Zoie", "Zoila", "Zola", "Zora", "Zula",
 }
 
-var lastNames = []string{
+var LastNames = []string{
 	"Abbott", "Abernathy", "Abshire", "Adams", "Altenwerth", "Anderson", "Ankunding", "Armstrong", "Auer", "Aufderhar",
 	"Bahringer", "Bailey", "Balistreri", "Barrows", "Bartell", "Bartoletti", "Barton", "Bashirian", "Batz", "Bauch", "Baumbach", "Bayer", "Beahan", "Beatty", "Bechtelar", "Becker", "Bednar", "Beer", "Beier", "Berge", "Bergnaum", "Bergstrom", "Bernhard", "Bernier", "Bins", "Blanda", "Blick", "Block", "Bode", "Boehm", "Bogan", "Bogisich", "Borer", "Bosco", "Botsford", "Boyer", "Boyle", "Bradtke", "Brakus", "Braun", "Breitenberg", "Brekke", "Brown", "Bruen", "Buckridge",
 	"Carroll", "Carter", "Cartwright", "Casper", "Cassin", "Champlin", "Christiansen", "Cole", "Collier", "Collins", "Conn", "Connelly", "Conroy", "Considine", "Corkery", "Cormier", "Corwin", "Cremin", "Crist", "Crona", "Cronin", "Crooks", "Cruickshank", "Cummerata", "Cummings",
@@ -110,11 +110,11 @@ var lastNames = []string{
 	"Zboncak", "Zemlak", "Ziemann", "Zieme", "Zulauf",
 }
 
-var suffixes = []string{
+var Suffixes = []string{
 	"Jr.", "Sr.", "I", "II", "III", "IV", "V", "MD", "DDS", "PhD", "DVM",
 }
 
-var maleNameFormats = []string{
+var MaleNameFormats = []string{
 	"{{.FirstName}} {{.LastName}}",
 	"{{.FirstName}} {{.LastName}}",
 	"{{.FirstName}} {{.LastName}}",
@@ -124,7 +124,7 @@ var maleNameFormats = []string{
 	"{{.Title}} {{.FirstName}} {{.LastName}} {{.Suffix}}",
 }
 
-var femaleNameFormats = []string{
+var FemaleNameFormats = []string{
 	"{{.FirstName}} {{.LastName}}",
 	"{{.FirstName}} {{.LastName}}",
 	"{{.FirstName}} {{.LastName}}",
