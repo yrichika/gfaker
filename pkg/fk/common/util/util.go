@@ -3,6 +3,7 @@ package util
 import (
 	"bytes"
 	"fmt"
+	"math"
 	"math/rand"
 	"text/template"
 	"time"
@@ -42,4 +43,9 @@ func RenderTemplate(format string, data interface{}) string {
 
 func RandSeed() *rand.Rand {
 	return rand.New(rand.NewSource(time.Now().UnixNano()))
+}
+
+func TruncateToPrecision(val float64, precision int) float64 {
+	multiplier := math.Pow(10, float64(precision))
+	return math.Trunc(val*multiplier) / multiplier
 }

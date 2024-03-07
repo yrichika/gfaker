@@ -91,7 +91,7 @@ func randMaxRange[N orderable](min N, max N) (N, error) {
 	return max - min, err
 }
 
-// TODO: inや、floatやcomplexなども作る
+// TODO: floatなども作る
 
 // alias of rand.Rand.Int
 func (r *RandNum) Int() int {

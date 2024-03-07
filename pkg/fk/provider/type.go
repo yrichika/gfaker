@@ -37,5 +37,23 @@ type People struct {
 }
 
 type Addresses struct {
-	//
+	CityPrefixes            []string
+	CitySuffixes            []string
+	CityNames               []string
+	BuildingNumbers         []string
+	StreetSuffixes          []string
+	Postcodes               []string
+	States                  []string
+	StateAbbrs              []string
+	Prefectures             []string
+	Countries               []string
+	CityFormats             []string
+	StreetNameFormats       []string
+	StreetAddressFormats    []string
+	SecondaryAddressFormats []string
+	AddressFormats          []string
+	CreateCityFullName      func(any) any
+	CreateStreetName        func(any) any
+	CreateStreetAddress     func(any) any
+	CreateAddress           func(any) any
 }

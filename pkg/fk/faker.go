@@ -3,6 +3,7 @@ package fk
 import (
 	"github.com/yrichika/gfaker/pkg/fk/common/util"
 	"github.com/yrichika/gfaker/pkg/fk/core"
+	"github.com/yrichika/gfaker/pkg/fk/generator/address"
 	"github.com/yrichika/gfaker/pkg/fk/generator/color"
 	"github.com/yrichika/gfaker/pkg/fk/generator/person"
 	"github.com/yrichika/gfaker/pkg/fk/provider"
@@ -11,12 +12,11 @@ import (
 )
 
 type Faker struct {
-	Rand   *core.Rand
-	Person *person.Person
-	Color  *color.Color
+	Rand    *core.Rand
+	Person  *person.Person
+	Color   *color.Color
+	Address *address.Address
 	// TODO: Faker/Factoryの $defaultProvidersの変数にあるものをここに入れる
-	// Address *provider.Address
-	// Color  *provider.Color
 	// Company *provider.Company
 	// ...et
 

@@ -6,6 +6,7 @@ import (
 
 func New() *provider.Localized {
 	return &provider.Localized{
-		People: CreatePeople(),
+		People:    CreatePeople(),
+		Addresses: CreateAddresses(),
 	}
 }
