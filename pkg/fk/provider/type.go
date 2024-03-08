@@ -40,6 +40,10 @@ type Addresses struct {
 	CityPrefixes            []string
 	CitySuffixes            []string
 	CityNames               []string
+	WardSuffixes            []string
+	WardNames               []string
+	AreaNames               []string
+	AreaNumbers             []string
 	BuildingNumbers         []string
 	StreetSuffixes          []string
 	Postcodes               []string

@@ -93,6 +93,7 @@ func (p *Person) Suffix() string {
 	return p.rand.Slice.StrElem(p.data.Suffixes)
 }
 
+// DELETE: util.RenderTemplateをそのまま使えばいいので、メソッドにする必要ない
 func (p *Person) FullNameOf(format string, nameData any) string {
 	return util.RenderTemplate(format, nameData)
 }
