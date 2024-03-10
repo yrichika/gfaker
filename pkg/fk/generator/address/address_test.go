@@ -7,6 +7,7 @@ import (
 	"github.com/yrichika/gfaker/pkg/fk/common/util"
 	"github.com/yrichika/gfaker/pkg/fk/core"
 	"github.com/yrichika/gfaker/pkg/fk/provider/locale/en_US"
+	"github.com/yrichika/gfaker/pkg/fk/provider/locale/ja_JP"
 	"github.com/yrichika/gfaker/pkg/fk/testutil"
 )
 
@@ -166,6 +167,16 @@ func TestAddress(testingT *testing.T) {
 			lonLength := testutil.GetDecimalLength(lon)
 			gt.Expect(t17, &lonLength).ToBe(6)
 
+		})
+	})
+
+	localizedJaJp := ja_JP.New()
+	addressJaJp := New(coreRand, localizedJaJp)
+	t18 := gt.CreateTest(testingT)
+	t18.Describe("Prefecture", func() {
+		t18.It("should return a prefecture", func() {
+			r := addressJaJp.Prefecture()
+			gt.Expect(t18, &r).ToBeIn(ja_JP.Prefectures)
 		})
 	})
 }

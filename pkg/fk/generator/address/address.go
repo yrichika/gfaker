@@ -153,6 +153,14 @@ func (a *Address) Country() string {
 	return a.rand.Slice.StrElem(a.data.Countries)
 }
 
+func (a *Address) Prefecture() string {
+	if len(a.data.Prefectures) == 0 {
+		log.UnavailableLocale(1)
+		return ""
+	}
+	return a.rand.Slice.StrElem(a.data.Prefectures)
+}
+
 // example: 35.785163
 func (a *Address) Latitude() float64 {
 	val := a.rand.Num.Float64Bt(-90, 90)
