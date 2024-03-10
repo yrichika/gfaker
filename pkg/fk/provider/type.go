@@ -37,25 +37,25 @@ type People struct {
 }
 
 type Addresses struct {
-	CityPrefixes            []string
-	CitySuffixes            []string
-	CityNames               []string
-	WardSuffixes            []string
-	WardNames               []string
-	AreaNames               []string
-	AreaNumbers             []string
-	BuildingNumbers         []string
-	StreetSuffixes          []string
+	Countries               []string
 	Postcodes               []string
 	States                  []string
 	StateAbbrs              []string
 	Prefectures             []string
-	Countries               []string
+	CityNames               []string
+	CityPrefixes            []string
+	CitySuffixes            []string
+	WardNames               []string
+	WardSuffixes            []string
+	AreaNames               []string
+	AreaNumbers             []string
+	StreetSuffixes          []string
+	BuildingNumbers         []string
 	CityFormats             []string
-	StreetNameFormats       []string
-	StreetAddressFormats    []string
-	SecondaryAddressFormats []string
 	AddressFormats          []string
+	StreetAddressFormats    []string
+	StreetNameFormats       []string
+	SecondaryAddressFormats []string
 	CreateCityFullName      func(any) any
 	CreateStreetName        func(any) any
 	CreateStreetAddress     func(any) any
