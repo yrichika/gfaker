@@ -50,14 +50,22 @@ type Addresses struct {
 	AreaNames               []string
 	AreaNumbers             []string
 	StreetSuffixes          []string
+	BuildingNames           []string
 	BuildingNumbers         []string
+	RoomNumbers             []string
 	CityFormats             []string
+	WardFormats             []string
+	AreaFormats             []string
 	AddressFormats          []string
 	StreetAddressFormats    []string
 	StreetNameFormats       []string
 	SecondaryAddressFormats []string
-	CreateCityFullName      func(any) any
+	CreateAddress           func(any) any
+	CreateCity              func(any) any
+	CreateWard              func(any) any
+	CreateArea              func(any) any
 	CreateStreetName        func(any) any
 	CreateStreetAddress     func(any) any
-	CreateAddress           func(any) any
+	CreateRoom              func(any) any
+	CreateSecondaryAddress  func(any) any
 }

@@ -51,7 +51,7 @@ func (a *Address) City() string {
 		return ""
 	}
 	format := a.rand.Slice.StrElem(a.data.CityFormats)
-	cityNameData := a.data.CreateCityFullName(a)
+	cityNameData := a.data.CreateCity(a)
 	return util.RenderTemplate(format, cityNameData)
 }
 
@@ -92,7 +92,8 @@ func (a *Address) SecondaryAddress() string {
 		return ""
 	}
 	format := a.rand.Slice.StrElem(a.data.SecondaryAddressFormats)
-	return a.rand.Str.AlphaDigitsLike(format)
+	data := a.data.CreateSecondaryAddress(a)
+	return util.RenderTemplate(format, data)
 }
 
 func (a *Address) StreetAddress() string {
@@ -159,6 +160,78 @@ func (a *Address) Prefecture() string {
 		return ""
 	}
 	return a.rand.Slice.StrElem(a.data.Prefectures)
+}
+
+func (a *Address) WardSuffix() string {
+	if len(a.data.WardSuffixes) == 0 {
+		log.UnavailableLocale(1)
+		return ""
+	}
+	return a.rand.Slice.StrElem(a.data.WardSuffixes)
+}
+
+func (a *Address) WardName() string {
+	if len(a.data.WardNames) == 0 {
+		log.UnavailableLocale(1)
+		return ""
+	}
+	return a.rand.Slice.StrElem(a.data.WardNames)
+}
+
+func (a *Address) Ward() string {
+	if len(a.data.WardFormats) == 0 {
+		log.UnavailableLocale(1)
+		return ""
+	}
+	format := a.rand.Slice.StrElem(a.data.WardFormats)
+	wardData := a.data.CreateWard(a)
+	return util.RenderTemplate(format, wardData)
+}
+
+func (a *Address) AreaName() string {
+	if len(a.data.AreaNames) == 0 {
+		log.UnavailableLocale(1)
+		return ""
+	}
+	return a.rand.Slice.StrElem(a.data.AreaNames)
+}
+
+func (a *Address) AreaNumber() string {
+	if len(a.data.AreaNumbers) == 0 {
+		log.UnavailableLocale(1)
+		return ""
+	}
+	// FIXME: 0丁目0番地0号のような表記も含まれてしまう
+	format := a.rand.Slice.StrElem(a.data.AreaNumbers)
+	return a.rand.Str.AlphaDigitsLike(format)
+}
+
+func (a *Address) Area() string {
+	if len(a.data.AreaFormats) == 0 {
+		log.UnavailableLocale(1)
+		return ""
+	}
+	format := a.rand.Slice.StrElem(a.data.AreaFormats)
+	areaData := a.data.CreateArea(a)
+	return util.RenderTemplate(format, areaData)
+
+}
+
+func (a *Address) BuildingName() string {
+	if len(a.data.BuildingNames) == 0 {
+		log.UnavailableLocale(1)
+		return ""
+	}
+	return a.rand.Slice.StrElem(a.data.BuildingNames)
+}
+
+func (a *Address) RoomNumber() string {
+	if len(a.data.RoomNumbers) == 0 {
+		log.UnavailableLocale(1)
+		return ""
+	}
+	format := a.rand.Slice.StrElem(a.data.RoomNumbers)
+	return a.rand.Str.AlphaDigitsLike(format)
 }
 
 // example: 35.785163

@@ -18,10 +18,11 @@ func CreateAddresses() *provider.Addresses {
 		StreetAddressFormats:    StreetAddressFormats,
 		SecondaryAddressFormats: SecondaryAddressFormats,
 		AddressFormats:          AddressFormats,
-		CreateCityFullName:      CreateUSCityFullName,
+		CreateCity:              CreateUSCityFullName,
 		CreateStreetName:        CreateUSStreetName,
 		CreateStreetAddress:     CreateUSStreetAddress,
 		CreateAddress:           CreateUSAddress,
+		CreateSecondaryAddress:  CreateEnUsSecondaryAddress,
 	}
 }
 
@@ -123,7 +124,9 @@ var StreetAddressFormats = []string{
 	"{{.BuildingNumber}} {{.StreetName}}",
 	"{{.BuildingNumber}} {{.StreetName}} {{.SecondaryAddress}}",
 }
-var SecondaryAddressFormats = []string{"Apt. ###", "Suite ###"}
+var SecondaryAddressFormats = []string{
+	"Apt. {{.BuildingNumber}}", "Suite {{.BuildingNumber}}",
+}
 
 var AddressFormats = []string{
 	"{{.StreetAddress}}\n{{.City}}, {{.StateAbbr}} {{.Postcode}}",
@@ -210,5 +213,21 @@ func CreateUSAddress(a any) any {
 		City:          g.City(),
 		StateAbbr:     g.StateAbbr(),
 		Postcode:      g.Postcode(),
+	}
+}
+
+type SecondaryAddress struct {
+	BuildingNumber string
+}
+
+type SecondaryAddressGenerator interface {
+	BuildingNumber() string
+}
+
+func CreateEnUsSecondaryAddress(a any) any {
+	g := a.(SecondaryAddressGenerator)
+
+	return &SecondaryAddress{
+		BuildingNumber: g.BuildingNumber(),
 	}
 }

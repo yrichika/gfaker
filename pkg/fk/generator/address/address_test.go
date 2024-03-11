@@ -135,8 +135,8 @@ func TestAddress(testingT *testing.T) {
 
 			gt.Expect(t15, &r).ToBe_(gt.Between(-90.0), 90.0)
 			// FIXME: testutil.GetDecimalLength is not accurate when the end of the number is 0
-			length := testutil.GetDecimalLength(r)
-			gt.Expect(t15, &length).ToBe(6)
+			// length := testutil.GetDecimalLength(r)
+			// gt.Expect(t15, &length).ToBe(6)
 		})
 	})
 
@@ -147,8 +147,8 @@ func TestAddress(testingT *testing.T) {
 
 			gt.Expect(t16, &r).ToBe_(gt.Between(-180.0), 180.0)
 			// FIXME: testutil.GetDecimalLength is not accurate when the end of the number is 0
-			length := testutil.GetDecimalLength(r)
-			gt.Expect(t16, &length).ToBe(6)
+			// length := testutil.GetDecimalLength(r)
+			// gt.Expect(t16, &length).ToBe(6)
 		})
 	})
 
@@ -159,13 +159,13 @@ func TestAddress(testingT *testing.T) {
 
 			gt.Expect(t17, &lat).ToBe_(gt.Between(-90.0), 90.0)
 			// FIXME: testutil.GetDecimalLength is not accurate when the end of the number is 0
-			latLength := testutil.GetDecimalLength(lat)
-			gt.Expect(t17, &latLength).ToBe(6)
+			// latLength := testutil.GetDecimalLength(lat)
+			// gt.Expect(t17, &latLength).ToBe(6)
 
 			gt.Expect(t17, &lon).ToBe_(gt.Between(-180.0), 180.0)
 			// FIXME: testutil.GetDecimalLength is not accurate when the end of the number is 0
-			lonLength := testutil.GetDecimalLength(lon)
-			gt.Expect(t17, &lonLength).ToBe(6)
+			// lonLength := testutil.GetDecimalLength(lon)
+			// gt.Expect(t17, &lonLength).ToBe(6)
 
 		})
 	})
@@ -177,6 +177,86 @@ func TestAddress(testingT *testing.T) {
 		t18.It("should return a prefecture", func() {
 			r := addressJaJp.Prefecture()
 			gt.Expect(t18, &r).ToBeIn(ja_JP.Prefectures)
+		})
+	})
+
+	t19 := gt.CreateTest(testingT)
+	t19.Describe("WardSuffix", func() {
+		t19.It("should return a ward suffix", func() {
+			r := addressJaJp.WardSuffix()
+			gt.Expect(t19, &r).ToBeIn(ja_JP.WardSuffixes)
+		})
+	})
+
+	t20 := gt.CreateTest(testingT)
+	t20.Describe("WardName", func() {
+		t20.It("should return a ward name", func() {
+			r := addressJaJp.WardName()
+			gt.Expect(t20, &r).ToBeIn(ja_JP.WardNames)
+		})
+	})
+
+	t21 := gt.CreateTest(testingT)
+	t21.Describe("AreaName", func() {
+		t21.It("should return an area name", func() {
+			r := addressJaJp.AreaName()
+			gt.Expect(t21, &r).ToBeIn(ja_JP.AreaNames)
+		})
+	})
+
+	t22 := gt.CreateTest(testingT)
+	t22.Describe("AreaNumber", func() {
+		t22.It("should return an area number", func() {
+			r := addressJaJp.AreaNumber()
+			testutil.Output("Address.AreaNumber", r)
+		})
+	})
+
+	t23 := gt.CreateTest(testingT)
+	t23.Describe("BuildingName", func() {
+		t23.It("should return a building name", func() {
+			r := addressJaJp.BuildingName()
+			gt.Expect(t23, &r).ToBeIn(ja_JP.BuildingNames)
+		})
+	})
+
+	t26 := gt.CreateTest(testingT)
+	t26.Describe("RoomNumber", func() {
+		t26.It("should return a room number", func() {
+			r := addressJaJp.RoomNumber()
+			testutil.Output("Address.RoomNumber", r)
+		})
+	})
+
+	t27 := gt.CreateTest(testingT)
+	t27.Describe("SecondaryAddress for ja_JP", func() {
+		t27.It("should return a secondary address", func() {
+			r := addressJaJp.SecondaryAddress()
+			testutil.Output("Address.SecondaryAddress", r)
+		})
+	})
+
+	t28 := gt.CreateTest(testingT)
+	t28.Describe("Address for ja_JP", func() {
+		t28.It("should return an address", func() {
+			r := addressJaJp.Address()
+			testutil.Output("Address.Address", r)
+		})
+	})
+
+	t24 := gt.CreateTest(testingT)
+	t24.Describe("Ward", func() {
+		t24.It("should return a ward", func() {
+			r := addressJaJp.Ward()
+			testutil.Output("Address.Ward", r)
+		})
+	})
+
+	t25 := gt.CreateTest(testingT)
+	t25.Describe("Area", func() {
+		t25.It("should return an area", func() {
+			r := addressJaJp.Area()
+			testutil.Output("Address.Area", r)
 		})
 	})
 }
