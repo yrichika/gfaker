@@ -19,53 +19,61 @@ type Localized struct {
 }
 
 type People struct {
-	FirstNameMales       []string
-	FirstNameFemales     []string
-	LastNames            []string
-	TitleMales           []string
-	TitleFemales         []string
-	Suffixes             []string
+	FirstNameMales    []string
+	FirstNameFemales  []string
+	LastNames         []string
+	TitleMales        []string
+	TitleFemales      []string
+	Suffixes          []string
+	MaleNameFormats   []string
+	CreateNameMale    func(any) any
+	FemaleNameFormats []string
+	CreateNameFemale  func(any) any
+	// ja_JP
 	FirstKanaNameMales   []string
 	FirstKanaNameFemales []string
 	LastKanaNames        []string
-	MaleNameFormats      []string
-	FemaleNameFormats    []string
-	CreateNameMale       func(any) any
-	CreateNameFemale     func(any) any
 	CreateKanaNameMale   func(any) any
 	CreateKanaNameFemale func(any) any
 }
 
 type Addresses struct {
-	Countries               []string
-	Postcodes               []string
-	States                  []string
-	StateAbbrs              []string
-	Prefectures             []string
-	CityNames               []string
-	CityPrefixes            []string
-	CitySuffixes            []string
-	WardNames               []string
-	WardSuffixes            []string
-	AreaNames               []string
-	AreaNumbers             []string
-	StreetSuffixes          []string
+	Countries   []string
+	Postcodes   []string
+	States      []string
+	StateAbbrs  []string
+	Prefectures []string
+	// city
+	CityNames    []string
+	CityPrefixes []string
+	CitySuffixes []string
+	CityFormats  []string
+	CreateCity   func(any) any
+	// ward
+	WardNames    []string
+	WardSuffixes []string
+	WardFormats  []string
+	CreateWard   func(any) any
+	// area
+	AreaNames   []string
+	AreaNumbers []string
+	AreaFormats []string
+	CreateArea  func(any) any
+	// street
+	StreetNames    []string
+	StreetSuffixes []string
+	StreetFormats  []string
+	CreateStreet   func(any) any
+	// street address
+	StreetAddressFormats []string
+	CreateStreetAddress  func(any) any
+	// secondary address
 	BuildingNames           []string
 	BuildingNumbers         []string
 	RoomNumbers             []string
-	CityFormats             []string
-	WardFormats             []string
-	AreaFormats             []string
-	AddressFormats          []string
-	StreetAddressFormats    []string
-	StreetNameFormats       []string
 	SecondaryAddressFormats []string
-	CreateAddress           func(any) any
-	CreateCity              func(any) any
-	CreateWard              func(any) any
-	CreateArea              func(any) any
-	CreateStreetName        func(any) any
-	CreateStreetAddress     func(any) any
-	CreateRoom              func(any) any
 	CreateSecondaryAddress  func(any) any
+
+	AddressFormats []string
+	CreateAddress  func(any) any
 }

@@ -70,6 +70,8 @@ var Prefectures = []string{
 	"沖縄県",
 }
 
+// City
+
 var CityNames = []string{
 	"札幌", "函館", "室蘭", "浦河", "旭川", "留萌", "稚内", "網走", "帯広",
 	"釧路", "根室", "江別", "千歳", "札幌", "岩見沢", "滝川", "深川", "小樽",
@@ -97,12 +99,51 @@ var CityNames = []string{
 	"三島", "只見", "双葉", "浪江", "須賀川", "喜多方", "会津美里", "本宮", "国見", "天栄",
 	"下郷", "北塩原", "金山", "昭和", "泉崎", "矢吹", "鮫川", "玉川", "平田", "古殿",
 }
-
 var CitySuffixes = []string{"市", "町", "村"}
+var CityFormats = []string{"{{.CityName}}{{.CitySuffix}}"}
+
+type City struct {
+	CityName   string
+	CitySuffix string
+}
+
+type CityGenerator interface {
+	CityName() string
+	CitySuffix() string
+}
+
+func CreateJaJpCity(a any) any {
+	return &City{
+		CityName:   a.(CityGenerator).CityName(),
+		CitySuffix: a.(CityGenerator).CitySuffix(),
+	}
+}
+
+// Ward
 
 var WardNames = []string{"中央", "北", "東", "南", "西", "中", "港"}
-
 var WardSuffixes = []string{"区"}
+var WardFormats = []string{"{{.WardName}}{{.WardSuffix}}"}
+
+type Ward struct {
+	WardName   string
+	WardSuffix string
+}
+
+type WardGenerator interface {
+	WardName() string
+	WardSuffix() string
+}
+
+func CreateJaJpWard(a any) any {
+	g := a.(WardGenerator)
+	return &Ward{
+		WardName:   g.WardName(),
+		WardSuffix: g.WardSuffix(),
+	}
+}
+
+// Area
 
 var AreaNames = []string{
 	"玉植", "花立", "竪大恩寺", "大炊", "弁財天", "二条新", "桝屋", "亀屋", "大黒", "田中",
@@ -125,7 +166,6 @@ var AreaNames = []string{
 	"城山町", "新西", "振甫町", "末盛通", "清明山", "園山町", "高見", "高峯町",
 	"竹越", "田代町", "田代本通", "谷口町", "茶屋が坂", "千代が丘", "千代田橋",
 }
-
 var AreaNumbers = []string{
 	"#丁目#番地#", "#丁目#番地##", "#丁目#番地###",
 	"#丁目##番地#", "#丁目##番地##", "#丁目##番地###",
@@ -134,57 +174,7 @@ var AreaNumbers = []string{
 	"#-##-#", "#-##-##", "#-##-###",
 	"#-###-#", "#-###-##", "#-###-###",
 }
-
-var BuildingNames = []string{
-	"青田", "青山", "石田", "井高", "伊藤", "井上", "宇野", "江古田", "大垣",
-	"加藤", "加納", "喜嶋", "木村", "桐山", "工藤", "小泉", "小林", "近藤",
-	"斉藤", "坂本", "佐々木", "佐藤", "笹田", "鈴木", "杉山",
-	"高橋", "田中", "田辺", "津田",
-	"中島", "中村", "渚", "中津川", "西之園", "野村",
-	"原田", "浜田", "廣川", "藤本",
-	"松本", "三宅", "宮沢", "村山",
-	"山岸", "山口", "山田", "山本", "吉田", "吉本",
-	"若松", "渡辺",
-}
-
-var RoomNumbers = []string{"#0#", "###", "#?", "####", "###?"}
-
-var CityFormats = []string{"{{.CityName}}{{.CitySuffix}}"}
-var WardFormats = []string{"{{.WardName}}{{.WardSuffix}}"}
 var AreaFormats = []string{"{{.AreaName}}{{.AreaNumber}}"}
-
-var SecondaryAddressFormats = []string{
-	"ハイツ{{.BuildingName}}{{.RoomNumbers}}号",
-	"コーポ{{.BuildingName}}{{.RoomNumbers}}号",
-	"メゾン{{.BuildingName}}{{.RoomNumbers}}号",
-	"カーサ{{.BuildingName}}{{.RoomNumbers}}号",
-	"レジデンス{{.BuildingName}}{{.RoomNumbers}}号",
-	"{{.BuildingName}}荘{{.RoomNumbers}}号",
-}
-
-var AddressFormats = []string{
-	"{{.Postcode}}  {{.Prefecture}}{{.City}}{{.Area}}",
-	"{{.Postcode}}  {{.Prefecture}}{{.City}}{{.Ward}}{{.Area}}",
-	"{{.Postcode}}  {{.Prefecture}}{{.City}}{{.Ward}}{{.Area}} {{.SecondaryAddress}}",
-}
-
-type Ward struct {
-	WardName   string
-	WardSuffix string
-}
-
-type WardGenerator interface {
-	WardName() string
-	WardSuffix() string
-}
-
-func CreateJaJpWard(a any) any {
-	g := a.(WardGenerator)
-	return &Ward{
-		WardName:   g.WardName(),
-		WardSuffix: g.WardSuffix(),
-	}
-}
 
 type Area struct {
 	AreaName   string
@@ -204,6 +194,29 @@ func CreateJaJpArea(a any) any {
 	}
 }
 
+// Secondary Address
+
+var BuildingNames = []string{
+	"青田", "青山", "石田", "井高", "伊藤", "井上", "宇野", "江古田", "大垣",
+	"加藤", "加納", "喜嶋", "木村", "桐山", "工藤", "小泉", "小林", "近藤",
+	"斉藤", "坂本", "佐々木", "佐藤", "笹田", "鈴木", "杉山",
+	"高橋", "田中", "田辺", "津田",
+	"中島", "中村", "渚", "中津川", "西之園", "野村",
+	"原田", "浜田", "廣川", "藤本",
+	"松本", "三宅", "宮沢", "村山",
+	"山岸", "山口", "山田", "山本", "吉田", "吉本",
+	"若松", "渡辺",
+}
+var RoomNumbers = []string{"#0#", "###", "#?", "####", "###?"}
+var SecondaryAddressFormats = []string{
+	"ハイツ{{.BuildingName}}{{.RoomNumbers}}号",
+	"コーポ{{.BuildingName}}{{.RoomNumbers}}号",
+	"メゾン{{.BuildingName}}{{.RoomNumbers}}号",
+	"カーサ{{.BuildingName}}{{.RoomNumbers}}号",
+	"レジデンス{{.BuildingName}}{{.RoomNumbers}}号",
+	"{{.BuildingName}}荘{{.RoomNumbers}}号",
+}
+
 type SecondaryAddress struct {
 	BuildingName string
 	RoomNumbers  string
@@ -220,6 +233,14 @@ func CreateJaJpSecondaryAddress(a any) any {
 		BuildingName: g.BuildingName(),
 		RoomNumbers:  g.RoomNumber(),
 	}
+}
+
+// Address
+
+var AddressFormats = []string{
+	"{{.Postcode}}  {{.Prefecture}}{{.City}}{{.Area}}",
+	"{{.Postcode}}  {{.Prefecture}}{{.City}}{{.Ward}}{{.Area}}",
+	"{{.Postcode}}  {{.Prefecture}}{{.City}}{{.Ward}}{{.Area}} {{.SecondaryAddress}}",
 }
 
 type Address struct {
@@ -249,22 +270,5 @@ func CreateJaJpAddress(a any) any {
 		Ward:             g.Ward(),
 		Area:             g.Area(),
 		SecondaryAddress: g.SecondaryAddress(),
-	}
-}
-
-type City struct {
-	CityName   string
-	CitySuffix string
-}
-
-type CityGenerator interface {
-	CityName() string
-	CitySuffix() string
-}
-
-func CreateJaJpCity(a any) any {
-	return &City{
-		CityName:   a.(CityGenerator).CityName(),
-		CitySuffix: a.(CityGenerator).CitySuffix(),
 	}
 }

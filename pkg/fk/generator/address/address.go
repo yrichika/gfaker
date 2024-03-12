@@ -64,14 +64,22 @@ func (a *Address) StreetSuffix() string {
 	return a.rand.Slice.StrElem(a.data.StreetSuffixes)
 }
 
-// example: 'Lindgren Dam'
 func (a *Address) StreetName() string {
-	if len(a.data.StreetNameFormats) == 0 {
+	if len(a.data.StreetNames) == 0 {
 		log.UnavailableLocale(1)
 		return ""
 	}
-	format := a.rand.Slice.StrElem(a.data.StreetNameFormats)
-	streetNameData := a.data.CreateStreetName(a)
+	return a.rand.Slice.StrElem(a.data.StreetNames)
+}
+
+// example: 'Lindgren Dam'
+func (a *Address) Street() string {
+	if len(a.data.StreetFormats) == 0 {
+		log.UnavailableLocale(1)
+		return ""
+	}
+	format := a.rand.Slice.StrElem(a.data.StreetFormats)
+	streetNameData := a.data.CreateStreet(a)
 	return util.RenderTemplate(format, streetNameData)
 }
 
@@ -201,7 +209,7 @@ func (a *Address) AreaNumber() string {
 		log.UnavailableLocale(1)
 		return ""
 	}
-	// FIXME: 0丁目0番地0号のような表記も含まれてしまう
+	// TODO: 0丁目0番地0号のような表記も含まれてしまうが問題ないか?
 	format := a.rand.Slice.StrElem(a.data.AreaNumbers)
 	return a.rand.Str.AlphaDigitsLike(format)
 }
