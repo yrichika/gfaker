@@ -4,6 +4,7 @@ import (
 	"github.com/yrichika/gfaker/pkg/fk/common/util"
 	"github.com/yrichika/gfaker/pkg/fk/core"
 	"github.com/yrichika/gfaker/pkg/fk/generator/address"
+	"github.com/yrichika/gfaker/pkg/fk/generator/barcode"
 	"github.com/yrichika/gfaker/pkg/fk/generator/color"
 	"github.com/yrichika/gfaker/pkg/fk/generator/person"
 	"github.com/yrichika/gfaker/pkg/fk/provider"
@@ -16,6 +17,7 @@ type Faker struct {
 	Person  *person.Person
 	Color   *color.Color
 	Address *address.Address
+	Barcode *barcode.Barcode
 	// TODO: Faker/Factoryの $defaultProvidersの変数にあるものをここに入れる
 	// Company *provider.Company
 	// ...et
@@ -33,8 +35,10 @@ func CreateWithLocale(localized *provider.Localized) *Faker {
 	coreRand := core.NewRand(util.RandSeed())
 	global := global.New()
 	return &Faker{
-		Rand:   coreRand,
-		Person: person.New(coreRand, localized),
-		Color:  color.New(coreRand, global),
+		Rand:    coreRand,
+		Barcode: barcode.New(coreRand),
+		Color:   color.New(coreRand, global),
+		Person:  person.New(coreRand, localized),
+		Address: address.New(coreRand, localized),
 	}
 }
