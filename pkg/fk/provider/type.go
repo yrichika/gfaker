@@ -15,6 +15,7 @@ type Localized struct {
 	// 名前は、それぞれのカテゴリーの'複数形'にすること
 	People    *People
 	Addresses *Addresses
+	Companies *Companies
 	// TODO: 全部のロケールのデータを持つ
 }
 
@@ -76,4 +77,19 @@ type Addresses struct {
 
 	AddressFormats []string
 	CreateAddress  func(any) any
+}
+
+type Companies struct {
+	// company name
+	CompanyNames    []string
+	CompanyPrefixes []string
+	CompanySuffixes []string
+	CompanyFormats  []string
+	CreateCompany   func(any) any
+	// job title
+	JobTitleNames   []string
+	JobTitleFormats []string
+	CreateJobTitle  func(any) any
+	// EIN
+	EinPrefixes []string
 }

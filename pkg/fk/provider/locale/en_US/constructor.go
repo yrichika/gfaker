@@ -8,5 +8,6 @@ func New() *provider.Localized {
 	return &provider.Localized{
 		People:    CreatePeople(),
 		Addresses: CreateAddresses(),
+		Companies: CreateCompanies(),
 	}
 }
