@@ -2,12 +2,19 @@ package provider
 
 type Global struct {
 	Colors *Colors
+	Files  *Files
 	// 名前は、それぞれのカテゴリーの'複数形'にすること
 }
 
 type Colors struct {
 	SafeColorNames []string
 	AllColorNames  []string
+}
+
+type Files struct {
+	// MimeTypes type should be map[string][]string
+	// because of type restriction, it is set as map[any][]any
+	MimeTypes map[any][]any
 }
 
 type Localized struct {

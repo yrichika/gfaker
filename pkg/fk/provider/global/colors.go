@@ -1,5 +1,14 @@
 package global
 
+import "github.com/yrichika/gfaker/pkg/fk/provider"
+
+func CreateColors() *provider.Colors {
+	return &provider.Colors{
+		SafeColorNames: safeColorNames,
+		AllColorNames:  allColorNames,
+	}
+}
+
 var safeColorNames = []string{
 	"black", "maroon", "green", "navy", "olive",
 	"purple", "teal", "lime", "blue", "silver",
