@@ -8,7 +8,6 @@ import (
 	"github.com/yrichika/gfaker/pkg/fk/core"
 	"github.com/yrichika/gfaker/pkg/fk/provider"
 	"github.com/yrichika/gfaker/pkg/fk/provider/global"
-	"github.com/yrichika/gfaker/pkg/fk/testutil"
 )
 
 func TestFile(testingT *testing.T) {
@@ -23,15 +22,15 @@ func TestFile(testingT *testing.T) {
 	t.Describe("File", func() {
 		t.Test("MimeType should return a string", func() {
 			mimeType := file.MimeType()
-			// TODO: アサートする
 
-			testutil.Output("File.MimeType", mimeType)
+			_, exists := global.Files.MimeTypes[mimeType]
+			gt.Expect(t, &exists).ToBe(true)
 		})
 
 		t.Test("Extension should return a string", func() {
 			extension := file.Extension()
 
-			testutil.Output("File.Extension", extension)
+			gt.Expect(t, &extension).ToMatchRegex(`^[0-9a-z-]{3,10}$`)
 		})
 	})
 }

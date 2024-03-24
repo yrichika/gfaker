@@ -8,6 +8,9 @@ func CreateFiles() *provider.Files {
 	}
 }
 
+// FIXME: Not sure if this should be a map.
+// Should split mime types and extensions into 2 separate slices?
+//
 // MIME types from the apache.org file. Some types are truncated.
 // See http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types
 var MimeTypes = map[any][]any{
