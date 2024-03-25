@@ -1,6 +1,11 @@
 package file
 
 import (
+	"io"
+	"os"
+	"path/filepath"
+
+	"github.com/google/uuid"
 	"github.com/yrichika/gfaker/pkg/fk/core"
 	"github.com/yrichika/gfaker/pkg/fk/provider"
 )
@@ -34,7 +39,75 @@ func (f *File) Extension() string {
 	return f.rand.Slice.StrElem(strExtensions)
 }
 
-// TODO:
-func (f *File) File() string {
-	return ""
+// Create a file with the given content and extension.
+// File name will be a UUID.
+// extension should be without "."
+func (f *File) WriteWithText(
+	destDir string,
+	content string,
+	extension string,
+	returnFullPath bool,
+) (string, error) {
+
+	DirErr := os.MkdirAll(destDir, 0777)
+	if DirErr != nil {
+		return "", DirErr
+	}
+
+	uuid := uuid.New()
+	fileName := uuid.String() + "." + extension
+	filePath := filepath.Join(destDir, fileName)
+
+	data := []byte(content)
+	FileErr := os.WriteFile(filePath, data, 0777)
+	if FileErr != nil {
+		return "", FileErr
+	}
+
+	if returnFullPath {
+		return filepath.Abs(filePath)
+	}
+
+	return filePath, nil
+}
+
+// Create a file and copy the content from the source file.
+// File name will be a UUID.
+// Specify `srcFilePath` the path to the source file. Not directory name.
+// extension should be without "."
+func (f *File) CopyFrom(
+	destDir string,
+	srcFilePath string,
+	extension string,
+	returnFullPath bool,
+) (string, error) {
+	srcFile, openErr := os.Open(srcFilePath)
+	if openErr != nil {
+		return "", openErr
+	}
+	defer srcFile.Close()
+
+	fileName := uuid.New().String() + "." + extension
+	DirErr := os.MkdirAll(destDir, 0777)
+	if DirErr != nil {
+		return "", DirErr
+	}
+
+	filePath := filepath.Join(destDir, fileName)
+	destFile, createErr := os.Create(filePath)
+	if createErr != nil {
+		return "", createErr
+	}
+	defer destFile.Close()
+
+	_, copyErr := io.Copy(destFile, srcFile)
+	if copyErr != nil {
+		return "", copyErr
+	}
+
+	if returnFullPath {
+		return filepath.Abs(filePath)
+	}
+
+	return filePath, nil
 }
