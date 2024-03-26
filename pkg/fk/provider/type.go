@@ -3,7 +3,8 @@ package provider
 type Global struct {
 	Colors *Colors
 	Files  *Files
-	// 名前は、それぞれのカテゴリーの'複数形'にすること
+	Images *Images
+	// NOTICE: All fields name should be PLURAL
 }
 
 type Colors struct {
@@ -12,18 +13,19 @@ type Colors struct {
 }
 
 type Files struct {
+	// REFACTOR: MimeTypes should be `MimeTypesAndExtensions`?
 	// MimeTypes type should be map[string][]string
 	// because of type restriction, it is set as map[any][]any
 	MimeTypes map[any][]any
 }
 
+type Images struct{}
+
 type Localized struct {
-	// People, Addressesごとに、入れ子の構造体を作る
-	// 名前は、それぞれのカテゴリーの'複数形'にすること
 	People    *People
 	Addresses *Addresses
 	Companies *Companies
-	// TODO: 全部のロケールのデータを持つ
+	// NOTICE: All fields name should be PLURAL
 }
 
 type People struct {
@@ -32,7 +34,7 @@ type People struct {
 	LastNames         []string
 	TitleMales        []string
 	TitleFemales      []string
-	Suffixes          []string
+	Suffixes          []string // REFACTOR: Rename to `PersonNameSuffixes``
 	MaleNameFormats   []string
 	CreateNameMale    func(any) any
 	FemaleNameFormats []string

@@ -87,12 +87,11 @@ func (f *File) CopyFrom(
 	}
 	defer srcFile.Close()
 
-	fileName := uuid.New().String() + "." + extension
 	DirErr := os.MkdirAll(destDir, 0777)
 	if DirErr != nil {
 		return "", DirErr
 	}
-
+	fileName := uuid.New().String() + "." + extension
 	filePath := filepath.Join(destDir, fileName)
 	destFile, createErr := os.Create(filePath)
 	if createErr != nil {

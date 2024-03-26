@@ -8,6 +8,7 @@ import (
 	"github.com/yrichika/gfaker/pkg/fk/generator/color"
 	"github.com/yrichika/gfaker/pkg/fk/generator/company"
 	"github.com/yrichika/gfaker/pkg/fk/generator/file"
+	"github.com/yrichika/gfaker/pkg/fk/generator/image"
 	"github.com/yrichika/gfaker/pkg/fk/generator/person"
 	"github.com/yrichika/gfaker/pkg/fk/provider"
 	"github.com/yrichika/gfaker/pkg/fk/provider/global"
@@ -22,6 +23,7 @@ type Faker struct {
 	Barcode *barcode.Barcode
 	Company *company.Company
 	File    *file.File
+	Image   *image.Image
 	// TODO: Faker/Factoryの $defaultProvidersの変数にあるものをここに入れる
 	// ...et
 
@@ -45,5 +47,6 @@ func CreateWithLocale(localized *provider.Localized) *Faker {
 		Address: address.New(coreRand, localized),
 		Company: company.New(coreRand, localized),
 		File:    file.New(coreRand, global),
+		Image:   image.New(coreRand, global),
 	}
 }

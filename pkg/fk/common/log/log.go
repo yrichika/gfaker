@@ -33,5 +33,5 @@ func WrongUsage(msg string, skip int) {
 func GeneralError(msg string, skip int) {
 	trueSkip := skip + 1
 	caller, file, line := GetCallerInfo(trueSkip)
-	log.Printf("%s at [%s]: line [%d]: called: [%s]:", msg, file, line, caller.Name())
+	log.Printf("%s at [%s]: line [%d]: called: [%s]", msg, file, line, caller.Name())
 }
