@@ -123,7 +123,7 @@ func TestAddress(testingT *testing.T) {
 		tLat.It("should return a latitude", func() {
 			r := address.Latitude()
 
-			gt.Expect(tLat, &r).ToBe_(gt.Between(-90.0), 90.0)
+			gt.Expect(tLat, &r).ToBe_(gt.Between(-90.0, 90.0))
 			// FIXME: testutil.GetDecimalLength is not accurate when the end of the number is 0
 			// length := testutil.GetDecimalLength(r)
 			// gt.Expect(t15, &length).ToBe(6)
@@ -135,7 +135,7 @@ func TestAddress(testingT *testing.T) {
 		tLon.It("should return a longitude", func() {
 			r := address.Longitude()
 
-			gt.Expect(tLon, &r).ToBe_(gt.Between(-180.0), 180.0)
+			gt.Expect(tLon, &r).ToBe_(gt.Between(-180.0, 180.0))
 			// FIXME: testutil.GetDecimalLength is not accurate when the end of the number is 0
 			// length := testutil.GetDecimalLength(r)
 			// gt.Expect(t16, &length).ToBe(6)
@@ -147,12 +147,12 @@ func TestAddress(testingT *testing.T) {
 		tCoord.It("should return a coordinate", func() {
 			lat, lon := address.LocalCoordinates()
 
-			gt.Expect(tCoord, &lat).ToBe_(gt.Between(-90.0), 90.0)
+			gt.Expect(tCoord, &lat).ToBe_(gt.Between(-90.0, 90.0))
 			// FIXME: testutil.GetDecimalLength is not accurate when the end of the number is 0
 			// latLength := testutil.GetDecimalLength(lat)
 			// gt.Expect(t17, &latLength).ToBe(6)
 
-			gt.Expect(tCoord, &lon).ToBe_(gt.Between(-180.0), 180.0)
+			gt.Expect(tCoord, &lon).ToBe_(gt.Between(-180.0, 180.0))
 			// FIXME: testutil.GetDecimalLength is not accurate when the end of the number is 0
 			// lonLength := testutil.GetDecimalLength(lon)
 			// gt.Expect(t17, &lonLength).ToBe(6)

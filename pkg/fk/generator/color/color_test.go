@@ -56,9 +56,9 @@ func TestColor(testingT *testing.T) {
 	tRCN.Describe("RgbColorAsNum", func() {
 		tRCN.It("should return random rgb color as numbers", func() {
 			r, g, b := color.RgbColorAsNum()
-			gt.Expect(tRCN, &r).ToBe_(gt.Between(0), 255)
-			gt.Expect(tRCN, &g).ToBe_(gt.Between(0), 255)
-			gt.Expect(tRCN, &b).ToBe_(gt.Between(0), 255)
+			gt.Expect(tRCN, &r).ToBe_(gt.Between(0, 255))
+			gt.Expect(tRCN, &g).ToBe_(gt.Between(0, 255))
+			gt.Expect(tRCN, &b).ToBe_(gt.Between(0, 255))
 		})
 	})
 
@@ -77,9 +77,9 @@ func TestColor(testingT *testing.T) {
 	tRCA.Describe("RgbColorAsArr", func() {
 		tRCA.It("should return random rgb color as array", func() {
 			r := color.RgbColorAsArr()
-			gt.Expect(tRCA, &r[0]).ToBe_(gt.Between(0), 255)
-			gt.Expect(tRCA, &r[1]).ToBe_(gt.Between(0), 255)
-			gt.Expect(tRCA, &r[2]).ToBe_(gt.Between(0), 255)
+			gt.Expect(tRCA, &r[0]).ToBe_(gt.Between(0, 255))
+			gt.Expect(tRCA, &r[1]).ToBe_(gt.Between(0, 255))
+			gt.Expect(tRCA, &r[2]).ToBe_(gt.Between(0, 255))
 		})
 	})
 
@@ -103,9 +103,9 @@ func TestColor(testingT *testing.T) {
 	tHCN.Describe("HslColorAsNum", func() {
 		tHCN.It("should return random hsl color as numbers", func() {
 			h, s, l := color.HslColorAsNum()
-			gt.Expect(tHCN, &h).ToBe_(gt.Between(0), 360)
-			gt.Expect(tHCN, &s).ToBe_(gt.Between(0), 100)
-			gt.Expect(tHCN, &l).ToBe_(gt.Between(0), 100)
+			gt.Expect(tHCN, &h).ToBe_(gt.Between(0, 360))
+			gt.Expect(tHCN, &s).ToBe_(gt.Between(0, 100))
+			gt.Expect(tHCN, &l).ToBe_(gt.Between(0, 100))
 		})
 	})
 
@@ -124,9 +124,9 @@ func TestColor(testingT *testing.T) {
 	tHCA.Describe("HslColorAsArr", func() {
 		tHCA.It("should return random hsl color as array", func() {
 			r := color.HslColorAsArr()
-			gt.Expect(tHCA, &r[0]).ToBe_(gt.Between(0), 360)
-			gt.Expect(tHCA, &r[1]).ToBe_(gt.Between(0), 100)
-			gt.Expect(tHCA, &r[2]).ToBe_(gt.Between(0), 100)
+			gt.Expect(tHCA, &r[0]).ToBe_(gt.Between(0, 360))
+			gt.Expect(tHCA, &r[1]).ToBe_(gt.Between(0, 100))
+			gt.Expect(tHCA, &r[2]).ToBe_(gt.Between(0, 100))
 		})
 	})
 }

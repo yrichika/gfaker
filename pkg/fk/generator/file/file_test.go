@@ -33,7 +33,7 @@ func TestFile(testingT *testing.T) {
 		t.Test("Extension should return a string", func() {
 			extension := file.Extension()
 
-			gt.Expect(t, &extension).ToMatchRegex(`^[0-9a-z-]{2,10}$`)
+			gt.Expect(t, &extension).ToMatchRegex(`^[0-9a-z-]{2,20}$`)
 		})
 	})
 

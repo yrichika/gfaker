@@ -20,7 +20,7 @@ func TestRandTime(testingT *testing.T) {
 		tPF.It("should return any random past/future time", func() {
 			r := randTime.PastFuture()
 
-			gt.Expect(tPF, &r).ToBe_(gt.TimeBetween(past30Years), future30Years)
+			gt.Expect(tPF, &r).ToBe_(gt.TimeBetween(past30Years, future30Years))
 		})
 	})
 
@@ -29,7 +29,7 @@ func TestRandTime(testingT *testing.T) {
 		tPFr.It("should return any random past time from the given time", func() {
 			r := randTime.PastFrom(past30Years)
 
-			gt.Expect(tPFr, &r).ToBe_(gt.TimeBetween(past30Years), time.Now())
+			gt.Expect(tPFr, &r).ToBe_(gt.TimeBetween(past30Years, time.Now()))
 		})
 	})
 
@@ -38,7 +38,7 @@ func TestRandTime(testingT *testing.T) {
 		tP.It("should return any random past time", func() {
 			r := randTime.Past()
 
-			gt.Expect(tP, &r).ToBe_(gt.After, past30Years)
+			gt.Expect(tP, &r).ToBe_(gt.After(past30Years))
 		})
 	})
 
@@ -47,7 +47,7 @@ func TestRandTime(testingT *testing.T) {
 		tFT.It("should return any random future time to the given time", func() {
 			r := randTime.FutureTo(future30Years)
 
-			gt.Expect(tFT, &r).ToBe_(gt.TimeBetween(time.Now()), future30Years)
+			gt.Expect(tFT, &r).ToBe_(gt.TimeBetween(time.Now(), future30Years))
 		})
 	})
 
@@ -56,7 +56,7 @@ func TestRandTime(testingT *testing.T) {
 		tF.It("should return any random future time", func() {
 			r := randTime.Future()
 
-			gt.Expect(tF, &r).ToBe_(gt.Before, future30Years)
+			gt.Expect(tF, &r).ToBe_(gt.Before(future30Years))
 		})
 	})
 
@@ -65,7 +65,7 @@ func TestRandTime(testingT *testing.T) {
 		tTR.It("should return any random time between the given range", func() {
 			r := randTime.TimeRange(past30Years, future30Years)
 
-			gt.Expect(tTR, &r).ToBe_(gt.TimeBetween(past30Years), future30Years)
+			gt.Expect(tTR, &r).ToBe_(gt.TimeBetween(past30Years, future30Years))
 		})
 	})
 
@@ -107,12 +107,12 @@ func TestRandTime(testingT *testing.T) {
 	tDTo := gt.CreateTest(testingT)
 	tDTo.Describe("DurationTo", func() {
 		r := randTime.DurationTo(1 * time.Second)
-		gt.Expect(tDTo, &r).ToBe_(gt.LessThanOrEq, 1*time.Second)
+		gt.Expect(tDTo, &r).ToBe_(gt.LessThanOrEq(1 * time.Second))
 	})
 
 	tDRange := gt.CreateTest(testingT)
 	tDRange.Describe("DurationRange", func() {
 		r := randTime.DurationRange(1*time.Second, 2*time.Second)
-		gt.Expect(tDRange, &r).ToBe_(gt.Between(1*time.Second), 2*time.Second)
+		gt.Expect(tDRange, &r).ToBe_(gt.Between(1*time.Second, 2*time.Second))
 	})
 }

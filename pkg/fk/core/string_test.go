@@ -43,7 +43,7 @@ func TestRandStr(testingT *testing.T) {
 		tAlphaRange.It("should return a string with random length", func() {
 			r := randStr.AlphaRange(1, 5)
 			length := len(r)
-			gt.Expect(tAlphaRange, &length).ToBe_(gt.Between(1), 5)
+			gt.Expect(tAlphaRange, &length).ToBe_(gt.Between(1, 5))
 			// check output
 			testutil.Output("RandStr.AlphaRange", r)
 		})
