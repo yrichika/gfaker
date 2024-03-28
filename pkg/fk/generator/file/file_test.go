@@ -52,7 +52,7 @@ func TestFile(testingT *testing.T) {
 
 			r := FileExists(filePath)
 			gt.Expect(t2, &r).ToBe(true)
-			gt.Expect(t2, &filePath).ToMatchRegex(`^..\/..\/..\/..\/tmp/[0-9a-z-]{36}\.txt$`)
+			gt.Expect(t2, &filePath).ToMatchRegex(`^..\/..\/..\/..\/tmp/[\d\w]{16}\.txt$`)
 
 			// This does not work because of type mismatch:
 			// gt.Expect(t2, &err).ToBe(nil)
@@ -74,7 +74,7 @@ func TestFile(testingT *testing.T) {
 			gt.Expect(t2, &errString).ToBe("<nil>")
 		})
 
-		srcFilePath := "../../../../test_resources/files/sample.txt"
+		srcFilePath := "../../../../testdata/files/sample.txt"
 		t2.Test("CopyFrom should copy file from src to dest and should return relative path if returnFullPath is false", func() {
 			returnFullPath := false
 			extension := "txt"
@@ -82,7 +82,7 @@ func TestFile(testingT *testing.T) {
 
 			r := FileExists(filePath)
 			gt.Expect(t2, &r).ToBe(true)
-			gt.Expect(t2, &filePath).ToMatchRegex(`^..\/..\/..\/..\/tmp/[0-9a-z-]{36}\.txt$`)
+			gt.Expect(t2, &filePath).ToMatchRegex(`^..\/..\/..\/..\/tmp/[\d\w]{16}\.txt$`)
 
 			errString := fmt.Sprint(err)
 			gt.Expect(t2, &errString).ToBe("<nil>")

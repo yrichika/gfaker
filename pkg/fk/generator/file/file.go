@@ -5,7 +5,6 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/google/uuid"
 	"github.com/yrichika/gfaker/pkg/fk/core"
 	"github.com/yrichika/gfaker/pkg/fk/provider"
 )
@@ -54,8 +53,8 @@ func (f *File) WriteWithText(
 		return "", DirErr
 	}
 
-	uuid := uuid.New()
-	fileName := uuid.String() + "." + extension
+	// 16 letters
+	fileName := f.rand.Str.AlphaDigitsLike("****************") + "." + extension
 	filePath := filepath.Join(destDir, fileName)
 
 	data := []byte(content)
@@ -91,7 +90,8 @@ func (f *File) CopyFrom(
 	if DirErr != nil {
 		return "", DirErr
 	}
-	fileName := uuid.New().String() + "." + extension
+	// 16 letters
+	fileName := f.rand.Str.AlphaDigitsLike("****************") + "." + extension
 	filePath := filepath.Join(destDir, fileName)
 	destFile, createErr := os.Create(filePath)
 	if createErr != nil {

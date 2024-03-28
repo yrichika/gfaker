@@ -66,5 +66,10 @@ func TestRandStr(testingT *testing.T) {
 			r := randStr.AlphaDigitsLike("abc-###-???")
 			gt.Expect(tAlDgLike, &r).ToMatchRegex("abc-[0-9]{3}-[a-zA-Z]{3}")
 		})
+		tAlDgLike.It("should return a string with specified alpha and digits", func() {
+			r := randStr.AlphaDigitsLike("***")
+			gt.Expect(tAlDgLike, &r).ToMatchRegex(`[\d\w]{3}`)
+			testutil.Output("RandStr.AlphaDigitsLike", r)
+		})
 	})
 }

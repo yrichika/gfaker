@@ -74,6 +74,7 @@ func (r *RandStr) AlphaFixedLength(length int) string {
 
 // 指定した文字列の'?'の部分をランダムなアルファベットに置き換えて返し、
 // '#'の部分をランダムな数字に置き換えて返す。
+// '*'の部分はアルファベットと数字のどちらかにランダムに置き換える。
 // 例えば、likeが"??-??1??X##"の場合、"ab-cd1efX35"のような文字列を返す。
 func (r *RandStr) AlphaDigitsLike(like string) string {
 	result := ""
@@ -83,6 +84,12 @@ func (r *RandStr) AlphaDigitsLike(like string) string {
 			result += r.Letter()
 		case '#':
 			result += r.Digit()
+		case '*':
+			tmp := r.Letter()
+			if r.rand.Intn(2) == 0 {
+				tmp = r.Digit()
+			}
+			result += tmp
 		default:
 			result += string(char)
 		}
