@@ -1,7 +1,6 @@
 package file
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 	"testing"
@@ -38,6 +37,9 @@ func TestFile(testingT *testing.T) {
 	})
 
 	t2 := gt.CreateTest(testingT)
+	// NOTICE: you could use `t.TempDir() to create a temporary directory.
+	// But sometimes I want to see what's in the directory for debugging.
+	// So I'm using a fixed directory here.
 	destDir := "../../../../tmp"
 	t2.AfterAll(func() {
 		// Clean up
@@ -54,10 +56,8 @@ func TestFile(testingT *testing.T) {
 			gt.Expect(t2, &r).ToBe(true)
 			gt.Expect(t2, &filePath).ToMatchRegex(`^..\/..\/..\/..\/tmp/[\d\w]{16}\.txt$`)
 
-			// This does not work because of type mismatch:
-			// gt.Expect(t2, &err).ToBe(nil)
-			errString := fmt.Sprint(err)
-			gt.Expect(t2, &errString).ToBe("<nil>")
+			gt.Expect(t2, &err).Not().ToContainError()
+
 		})
 
 		t2.Test("WriteWithText should return absolute path if returnFullPath true", func() {
@@ -70,8 +70,7 @@ func TestFile(testingT *testing.T) {
 			absPath, _ := filepath.Abs(filePath)
 			gt.Expect(t2, &filePath).ToBe(absPath)
 
-			errString := fmt.Sprint(err)
-			gt.Expect(t2, &errString).ToBe("<nil>")
+			gt.Expect(t2, &err).Not().ToContainError()
 		})
 
 		srcFilePath := "../../../../testdata/files/sample.txt"
@@ -84,8 +83,7 @@ func TestFile(testingT *testing.T) {
 			gt.Expect(t2, &r).ToBe(true)
 			gt.Expect(t2, &filePath).ToMatchRegex(`^..\/..\/..\/..\/tmp/[\d\w]{16}\.txt$`)
 
-			errString := fmt.Sprint(err)
-			gt.Expect(t2, &errString).ToBe("<nil>")
+			gt.Expect(t2, &err).Not().ToContainError()
 
 		})
 
@@ -100,8 +98,7 @@ func TestFile(testingT *testing.T) {
 			absPath, _ := filepath.Abs(filePath)
 			gt.Expect(t2, &filePath).ToBe(absPath)
 
-			errString := fmt.Sprint(err)
-			gt.Expect(t2, &errString).ToBe("<nil>")
+			gt.Expect(t2, &err).Not().ToContainError()
 
 		})
 	})
