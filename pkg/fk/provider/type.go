@@ -1,9 +1,10 @@
 package provider
 
 type Global struct {
-	Colors *Colors
-	Files  *Files
-	Images *Images
+	Colors    *Colors
+	Files     *Files
+	Images    *Images
+	Internets *Internets
 	// NOTICE: All fields name should be PLURAL
 }
 
@@ -20,6 +21,15 @@ type Files struct {
 }
 
 type Images struct{}
+
+type Internets struct {
+	FreeEmailDomains []string
+	Tld              []string
+	LocalIpBlocks    [][]string
+	UserNameFormats  []string
+	EmailFormats     []string
+	UrlFormats       []string
+}
 
 type Localized struct {
 	People    *People
