@@ -23,12 +23,19 @@ type Files struct {
 type Images struct{}
 
 type Internets struct {
+	// username
+	FirstNames      []string
+	LastNames       []string
+	UserNameFormats []string
+	CreateUserName  func(any) any
+	// email
 	FreeEmailDomains []string
-	Tld              []string
-	LocalIpBlocks    [][]string
-	UserNameFormats  []string
 	EmailFormats     []string
-	UrlFormats       []string
+	Tld              []string
+	CreateEmail      func(any) any
+	//
+	UrlFormats    []string
+	LocalIpBlocks [][]string
 }
 
 type Localized struct {
