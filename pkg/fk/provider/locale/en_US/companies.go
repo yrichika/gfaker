@@ -4,7 +4,7 @@ import "github.com/yrichika/gfaker/pkg/fk/provider"
 
 func CreateCompanies() *provider.Companies {
 	return &provider.Companies{
-		CompanyNames:    CompanyNames,
+		CompanyNames:    *CompanyNames,
 		CompanySuffixes: CompanySuffixes,
 		CompanyFormats:  CompanyFormats,
 		CreateCompany:   CreateEnUsCompany,
@@ -15,7 +15,7 @@ func CreateCompanies() *provider.Companies {
 	}
 }
 
-var CompanyNames = LastNames
+var CompanyNames = &LastNames
 
 var CompanySuffixes = []string{"Inc", "and Sons", "LLC", "Group", "PLC", "Ltd"}
 

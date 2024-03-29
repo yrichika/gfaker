@@ -20,7 +20,7 @@ func TestCompany(testingT *testing.T) {
 	t1.Describe("Company", func() {
 		t1.Test("CompanyName should return a company name", func() {
 			r := company.CompanyName()
-			gt.Expect(t1, &r).ToBeIn(en_US.CompanyNames)
+			gt.Expect(t1, &r).ToBeIn(*en_US.CompanyNames)
 		})
 
 		t1.Test("CompanySuffix should return a company suffix", func() {

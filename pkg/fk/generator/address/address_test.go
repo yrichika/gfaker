@@ -52,7 +52,7 @@ func TestAddress(testingT *testing.T) {
 	tCity.Describe("City", func() {
 		tCity.Test("CityName should return a city name", func() {
 			r := address.CityName()
-			gt.Expect(tCity, &r).ToBeIn(en_US.CityNames)
+			gt.Expect(tCity, &r).ToBeIn(*en_US.CityNames)
 		})
 
 		tCity.Test("CitySuffix should return a city suffix", func() {
@@ -75,7 +75,7 @@ func TestAddress(testingT *testing.T) {
 	tStreet.Describe("Street", func() {
 		tStreet.Test("StreetName should return a street name", func() {
 			r := address.StreetName()
-			gt.Expect(tStreet, &r).ToBeIn(en_US.StreetNames)
+			gt.Expect(tStreet, &r).ToBeIn(*en_US.StreetNames)
 		})
 
 		tStreet.Test("StreetSuffix should return a street suffix", func() {
@@ -211,7 +211,7 @@ func TestAddress(testingT *testing.T) {
 	tSecJaJp.Describe("SecondaryAddress for ja_JP", func() {
 		tSecJaJp.Test("BuildingName should return a building name", func() {
 			r := addressJaJp.BuildingName()
-			gt.Expect(tSecJaJp, &r).ToBeIn(ja_JP.BuildingNames)
+			gt.Expect(tSecJaJp, &r).ToBeIn(*ja_JP.BuildingNames)
 		})
 		tSecJaJp.Test("RoomNumber should return a room number", func() {
 			r := addressJaJp.RoomNumber()

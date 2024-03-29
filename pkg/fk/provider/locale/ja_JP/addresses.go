@@ -10,7 +10,7 @@ func CreateAddresses() *provider.Addresses {
 		CityNames:               CityNames,
 		AreaNames:               AreaNames,
 		AreaNumbers:             AreaNumbers,
-		BuildingNames:           BuildingNames,
+		BuildingNames:           *BuildingNames,
 		RoomNumbers:             RoomNumbers,
 		Postcodes:               Postcodes,
 		Prefectures:             Prefectures,
@@ -196,7 +196,7 @@ func CreateJaJpArea(a any) any {
 
 // Secondary Address
 
-var BuildingNames = LastNames
+var BuildingNames = &LastNames
 var RoomNumbers = []string{"#0#", "###", "#?", "####", "###?"}
 var SecondaryAddressFormats = []string{
 	"ハイツ{{.BuildingName}}{{.RoomNumbers}}号",

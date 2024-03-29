@@ -6,7 +6,7 @@ func CreateAddresses() *provider.Addresses {
 	return &provider.Addresses{
 		CityPrefixes:            CityPrefixes,
 		CitySuffixes:            CitySuffixes,
-		CityNames:               CityNames,
+		CityNames:               *CityNames,
 		BuildingNumbers:         BuildingNumbers,
 		StreetSuffixes:          StreetSuffixes,
 		Postcodes:               Postcodes,
@@ -15,7 +15,7 @@ func CreateAddresses() *provider.Addresses {
 		Countries:               Countries,
 		CityFormats:             CityFormats,
 		StreetFormats:           StreetFormats,
-		StreetNames:             StreetNames,
+		StreetNames:             *StreetNames,
 		StreetAddressFormats:    StreetAddressFormats,
 		SecondaryAddressFormats: SecondaryAddressFormats,
 		AddressFormats:          AddressFormats,
@@ -69,7 +69,7 @@ var StateAbbrs = []string{
 
 // City
 
-var CityNames = LastNames
+var CityNames = &LastNames
 var CityPrefixes = []string{
 	"North", "East", "West", "South", "New", "Lake", "Port",
 }
