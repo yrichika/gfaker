@@ -27,7 +27,7 @@ func TestImage(testingT *testing.T) {
 			r, err := image.Binary(100, 100, JPG)
 			img, format, _ := stdimage.Decode(bytes.NewReader(r))
 
-			gt.Expect(tBin, &err).Not().ToContainError()
+			gt.Expect(tBin, &err).ToBeNilInterface()
 			gt.Expect(tBin, &format).ToBe("jpeg")
 
 			bounds := img.Bounds()
@@ -68,7 +68,7 @@ func TestImage(testingT *testing.T) {
 		tObj.Test("should return specified image object", func() {
 			img, err := image.Object(100, 100, JPG)
 
-			gt.Expect(tObj, &err).Not().ToContainError()
+			gt.Expect(tObj, &err).ToBeNilInterface()
 
 			bounds := img.Bounds()
 			width := bounds.Dx()
@@ -92,7 +92,7 @@ func TestImage(testingT *testing.T) {
 			r, err := image.Base64(100, 100, JPG)
 			img, _ := base64ToImage(r)
 
-			gt.Expect(t64, &err).Not().ToContainError()
+			gt.Expect(t64, &err).ToBeNilInterface()
 
 			bounds := img.Bounds()
 			width := bounds.Dx()

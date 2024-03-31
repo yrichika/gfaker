@@ -56,7 +56,7 @@ func TestFile(testingT *testing.T) {
 			gt.Expect(t2, &r).ToBe(true)
 			gt.Expect(t2, &filePath).ToMatchRegex(`^..\/..\/..\/..\/tmp/[\d\w]{16}\.txt$`)
 
-			gt.Expect(t2, &err).Not().ToContainError()
+			gt.Expect(t2, &err).ToBeNilInterface()
 
 		})
 
@@ -70,7 +70,7 @@ func TestFile(testingT *testing.T) {
 			absPath, _ := filepath.Abs(filePath)
 			gt.Expect(t2, &filePath).ToBe(absPath)
 
-			gt.Expect(t2, &err).Not().ToContainError()
+			gt.Expect(t2, &err).ToBeNilInterface()
 		})
 
 		srcFilePath := "../../../../testdata/files/sample.txt"
@@ -83,7 +83,7 @@ func TestFile(testingT *testing.T) {
 			gt.Expect(t2, &r).ToBe(true)
 			gt.Expect(t2, &filePath).ToMatchRegex(`^..\/..\/..\/..\/tmp/[\d\w]{16}\.txt$`)
 
-			gt.Expect(t2, &err).Not().ToContainError()
+			gt.Expect(t2, &err).ToBeNilInterface()
 
 		})
 
@@ -98,7 +98,7 @@ func TestFile(testingT *testing.T) {
 			absPath, _ := filepath.Abs(filePath)
 			gt.Expect(t2, &filePath).ToBe(absPath)
 
-			gt.Expect(t2, &err).Not().ToContainError()
+			gt.Expect(t2, &err).ToBeNilInterface()
 
 		})
 	})
