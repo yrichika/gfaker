@@ -29,10 +29,9 @@ type Internets struct {
 	UserNameFormats []string
 	CreateUserName  func(any) any
 	// email
-	FreeEmailDomains []string
-	EmailFormats     []string
-	Tld              []string
-	CreateEmail      func(any) any
+	EmailFormats []string
+	Tld          []string
+	CreateEmail  func(any) any
 	//
 	UrlFormats    []string
 	LocalIpBlocks [][]string

@@ -16,10 +16,9 @@ func CreateInternets() *provider.Internets {
 		EmailFormats: EmailFormats,
 		CreateEmail:  CreateEmail,
 		//
-		FreeEmailDomains: FreeEmailDomains,
-		Tld:              Tld,
-		UrlFormats:       UrlFormats,
-		LocalIpBlocks:    LocalIpBlocks,
+		Tld:           Tld,
+		UrlFormats:    UrlFormats,
+		LocalIpBlocks: LocalIpBlocks,
 		// TODO: 他のlocaleのデータも見て、globalで必要そうなら追加する
 	}
 }
@@ -54,49 +53,35 @@ func CreateUserName(i any) any {
 	}
 }
 
-// Email
-var FreeEmailDomains = []string{
-	"gmail.com", "yahoo.com", "hotmail.com",
-}
-
+// TODO: add more
 var Tld = []string{
-	"com", "com", "com", "com", "com", "com", "biz", "info", "net", "org",
+	"com", "biz", "info", "net", "org",
 }
 
 var EmailFormats = []string{
 	"{{.UserName}}@{{.DomainName}}",
-	"{{.UserName}}@{{.FreeEmailDomain}}",
 }
 
 type Email struct {
-	UserName        string
-	DomainName      string
-	FreeEmailDomain string
+	UserName   string
+	DomainName string
 }
 
 type EmailGenerator interface {
 	UserName() string
 	DomainName() string
-	FreeEmailDomain() string
 }
 
 func CreateEmail(i any) any {
 	g := i.(EmailGenerator)
 	return &Email{
-		UserName:        g.UserName(),
-		DomainName:      g.DomainName(),
-		FreeEmailDomain: g.FreeEmailDomain(),
+		UserName:   g.UserName(),
+		DomainName: g.DomainName(),
 	}
 }
 
-// WORKING:
-
-var LocalIpBlocks = [][]string{
-	{"10.0.0.0", "10.255.255.255"},
-	{"172.16.0.0", "172.31.255.255"},
-	{"192.168.0.0", "192.168.255.255"},
-}
-
+// TODO:
+// var Slugs = []string{}
 var UrlFormats = []string{
 	"http://www.{{.DomainName}}/",
 	"http://{{.DomainName}}/",
@@ -108,4 +93,10 @@ var UrlFormats = []string{
 	"http://{{.DomainName}}/{{.Slug}}",
 	"http://{{.DomainName}}/{{.Slug}}.html",
 	"https://{{.DomainName}}/{{.Slug}}.html",
+}
+
+var LocalIpBlocks = [][]string{
+	{"10.0.0.0", "10.255.255.255"},
+	{"172.16.0.0", "172.31.255.255"},
+	{"192.168.0.0", "192.168.255.255"},
 }
