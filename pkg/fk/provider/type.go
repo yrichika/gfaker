@@ -41,6 +41,7 @@ type Localized struct {
 	People    *People
 	Addresses *Addresses
 	Companies *Companies
+	Lorems    *Lorems
 	// NOTICE: All fields name should be PLURAL
 }
 
@@ -117,4 +118,8 @@ type Companies struct {
 	CreateJobTitle  func(any) any
 	// EIN
 	EinPrefixes []string
+}
+
+type Lorems struct {
+	// WORKING:
 }
