@@ -53,13 +53,12 @@ func (l *Lorem) Words(num int) string {
 }
 
 // 指定した文字数でランダムな文字列を返す
+// Words()との違いは、最初の文字を大文字になっていることと、最後にピリオドがついていること。
 func (l *Lorem) SentenceFixedLength(wordNum int) string {
 	words := l.WordSliceFixedLength(wordNum)
 	words[0] = util.CapFirstLetter(words[0])
 	return strings.Join(words, " ") + "."
 }
-
-// WORKING: 以下の関数からやりなおし
 
 // 文字数の最大値を指定して、それ以下の文字数でランダムな文字列を返す
 func (l *Lorem) Sentence(maxWordCount int) string {
@@ -98,7 +97,6 @@ func (l *Lorem) Sentences(sentenceMaxNum int, wordMaxNum int) string {
 	return strings.Join(sentences, " ")
 }
 
-// TEST:
 // paragraphNum must be greater than or eq 1
 // sentenceMaxNum must be greater than or eq 2
 func (l *Lorem) ParagraphSliceFixedLength(paragraphNum int, sentenceMaxNum int) []string {
@@ -118,22 +116,18 @@ func (l *Lorem) ParagraphSliceFixedLength(paragraphNum int, sentenceMaxNum int) 
 	return paragraphs
 }
 
-// TEST:
-// func (l *Lorem) ParagraphSlice(paragraphMaxNum int, sentenceMaxNum int) []string {
-// 	if paragraphMaxNum < 2 {
-// 		paragraphMaxNum = 2
-// 	}
-// 	if sentenceMaxNum < 2 {
-// 		sentenceMaxNum = 2
-// 	}
-// 	paragraphNum := l.rand.Num.IntBt(1, paragraphMaxNum)
-// 	return l.ParagraphSliceFixedLength(paragraphNum, sentenceMaxNum)
-// }
+func (l *Lorem) ParagraphSlice(paragraphMaxNum int, sentenceMaxNum int) []string {
+	if paragraphMaxNum < 2 {
+		paragraphMaxNum = 2
+	}
+	if sentenceMaxNum < 2 {
+		sentenceMaxNum = 2
+	}
+	paragraphNum := l.rand.Num.IntBt(1, paragraphMaxNum)
+	return l.ParagraphSliceFixedLength(paragraphNum, sentenceMaxNum)
+}
 
-// TEST:
-// func (l *Lorem) Paragraphs(paragraphMaxNum int, sentenceMaxNum int) string {
-// 	paragraphs := l.ParagraphSlice(paragraphMaxNum, sentenceMaxNum)
-// 	return strings.Join(paragraphs, "\n") // TODO: 改行は1つでいいか、2つでいいか試す
-// }
-
-// text
+func (l *Lorem) Paragraphs(paragraphMaxNum int, sentenceMaxNum int) string {
+	paragraphs := l.ParagraphSlice(paragraphMaxNum, sentenceMaxNum)
+	return strings.Join(paragraphs, "\n")
+}
