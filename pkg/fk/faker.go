@@ -10,6 +10,7 @@ import (
 	"github.com/yrichika/gfaker/pkg/fk/generator/file"
 	"github.com/yrichika/gfaker/pkg/fk/generator/image"
 	"github.com/yrichika/gfaker/pkg/fk/generator/internet"
+	"github.com/yrichika/gfaker/pkg/fk/generator/lorem"
 	"github.com/yrichika/gfaker/pkg/fk/generator/person"
 	"github.com/yrichika/gfaker/pkg/fk/provider"
 	"github.com/yrichika/gfaker/pkg/fk/provider/global"
@@ -26,6 +27,7 @@ type Faker struct {
 	File     *file.File
 	Image    *image.Image
 	Internet *internet.Internet
+	Lorem    *lorem.Lorem
 	// TODO: Faker/Factoryの $defaultProvidersの変数にあるものをここに入れる
 	// ...et
 
@@ -51,5 +53,6 @@ func CreateWithLocale(localized *provider.Localized) *Faker {
 		File:     file.New(coreRand, global),
 		Image:    image.New(coreRand, global),
 		Internet: internet.New(coreRand, global),
+		Lorem:    lorem.New(coreRand, global),
 	}
 }

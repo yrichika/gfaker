@@ -8,5 +8,6 @@ func New() *provider.Global {
 		Files:     CreateFiles(),
 		Images:    CreateImages(),
 		Internets: CreateInternets(),
+		Lorems:    CreateLorems(),
 	}
 }

@@ -28,4 +28,15 @@ func TestUtil(testingT *testing.T) {
 			gt.Expect(t2, &decimalLength).ToBe(precision)
 		})
 	})
+
+	t3 := gt.CreateTest(testingT)
+	t3.Describe("CapFirstLetter", func() {
+		t3.It("should capitalize the first letter", func() {
+			r := CapFirstLetter("hello")
+			gt.Expect(t3, &r).ToBe("Hello")
+
+			r2 := CapFirstLetter("world")
+			gt.Expect(t3, &r2).ToBe("World")
+		})
+	})
 }

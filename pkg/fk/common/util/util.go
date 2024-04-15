@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"math"
 	"math/rand"
+	"strings"
 	"text/template"
 	"time"
 
@@ -48,4 +49,11 @@ func RandSeed() *rand.Rand {
 func TruncateToPrecision(val float64, precision int) float64 {
 	multiplier := math.Pow(10, float64(precision))
 	return math.Trunc(val*multiplier) / multiplier
+}
+
+func CapFirstLetter(s string) string {
+	if len(s) == 0 {
+		return ""
+	}
+	return strings.ToUpper(string(s[0])) + s[1:]
 }

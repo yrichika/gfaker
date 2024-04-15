@@ -1,1 +1,0 @@
-package ja_JP
