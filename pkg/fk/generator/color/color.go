@@ -20,73 +20,73 @@ func New(rand *core.Rand, global *provider.Global) *Color {
 }
 
 // example 'blue'
-func (c *Color) SafeColorName() string {
+func (c *Color) SafeName() string {
 	return c.rand.Slice.StrElem(c.data.SafeColorNames)
 }
 
 // example 'NavajoWhite'
-func (c *Color) ColorName() string {
+func (c *Color) Name() string {
 	return c.rand.Slice.StrElem(c.data.AllColorNames)
 }
 
 // example '#fa3cc2'
-func (c *Color) HexColor() string {
+func (c *Color) Hex() string {
 	number := c.rand.Num.IntBt(1, 16777215)
 	return fmt.Sprintf("#%06x", number)
 }
 
 // example '#ff0044'
-func (c *Color) SafeHexColor() string {
+func (c *Color) SafeHex() string {
 	number := c.rand.Num.Intn(256)
 	color := fmt.Sprintf("%03x", number)
 	return "#" + string(color[0]) + string(color[0]) + string(color[1]) + string(color[1]) + string(color[2]) + string(color[2])
 }
 
 // example 0, 255, 122
-func (c *Color) RgbColorAsNum() (int, int, int) {
+func (c *Color) RgbAsNum() (int, int, int) {
 	return c.rand.Num.IntBt(0, 255),
 		c.rand.Num.IntBt(0, 255),
 		c.rand.Num.IntBt(0, 255)
 }
 
 // example '0,255,122'
-func (c *Color) RgbColorAsStr() string {
-	r, g, b := c.RgbColorAsNum()
+func (c *Color) RgbAsStr() string {
+	r, g, b := c.RgbAsNum()
 	return fmt.Sprintf("%d,%d,%d", r, g, b)
 }
 
 // example [0, 255, 122]
-func (c *Color) RgbColorAsArr() [3]int {
-	r, g, b := c.RgbColorAsNum()
+func (c *Color) RgbAsArr() [3]int {
+	r, g, b := c.RgbAsNum()
 	return [3]int{r, g, b}
 
 }
 
 // example 'rgb(0,255,122)'
-func (c *Color) RgbCssColor() string {
-	return "rgb(" + c.RgbColorAsStr() + ")"
+func (c *Color) RgbCss() string {
+	return "rgb(" + c.RgbAsStr() + ")"
 }
 
 // example 'rgba(0,255,122,0.8)'
-func (c *Color) RgbaCssColor() string {
-	return "rgba(" + c.RgbColorAsStr() + "," + fmt.Sprintf("%.1f", c.rand.Num.Float32Bt(0, 1)) + ")"
+func (c *Color) RgbaCss() string {
+	return "rgba(" + c.RgbAsStr() + "," + fmt.Sprintf("%.1f", c.rand.Num.Float32Bt(0, 1)) + ")"
 }
 
 // example 340, 50, 20
-func (c *Color) HslColorAsNum() (int, int, int) {
+func (c *Color) HslAsNum() (int, int, int) {
 	return c.rand.Num.IntBt(0, 360),
 		c.rand.Num.IntBt(0, 100),
 		c.rand.Num.IntBt(0, 100)
 }
 
 // example '340,50,20'
-func (c *Color) HslColorAsStr() string {
-	h, s, l := c.HslColorAsNum()
+func (c *Color) HslAsStr() string {
+	h, s, l := c.HslAsNum()
 	return fmt.Sprintf("%d,%d,%d", h, s, l)
 }
 
 // example [340, 50, 20]
-func (c *Color) HslColorAsArr() [3]int {
-	h, s, l := c.HslColorAsNum()
+func (c *Color) HslAsArr() [3]int {
+	h, s, l := c.HslAsNum()
 	return [3]int{h, s, l}
 }
