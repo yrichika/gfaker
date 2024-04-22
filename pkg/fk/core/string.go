@@ -29,7 +29,7 @@ func NewRandStr(rand *rand.Rand) *RandStr {
 }
 
 // 以下のは全部coreに入れる
-// こっちはアルファベット、数字、特殊文字を含むランダムな文字列を返す
+// アルファベット、数字、特殊文字を含むランダムな文字を返す
 func (r *RandStr) Char() string {
 	return string(allRunes[r.rand.Intn(len(allRunes))])
 }
