@@ -209,12 +209,56 @@ obj, err := f.Image.Object(100, 100, image.JPG)
 ### Internet
 
 ```go
+f.Internet.UserName()
+
+f.Internet.DomainWord()
+
+f.Internet.Tld()
+
+f.Internet.DomainName()
+
+f.Internet.Email()
+
+f.Internet.Password()
+
+f.Internet.Ipv4()
+
+f.Internet.Ipv6()
+
+f.Internet.LocalIpv4()
+
+f.Internet.MacAddress()
+
 
 ```
 
 ### Lorem
 
 ```go
+f.Lorem.Word()
+
+f.Lorem.WordSliceFixedLength(5)
+
+f.Lorem.WordSlice(5)
+
+f.Lorem.Words(5)
+
+f.Lorem.SentenceFixedLength(5)
+
+f.Lorem.Sentence(5)
+
+f.Lorem.SentenceSliceFixedLength(5, 5)
+
+f.Lorem.SentenceSlice(5, 5)
+
+f.Lorem.Sentences(5, 5)
+
+f.Lorem.ParagraphSliceFixedLength(5, 5)
+
+f.Lorem.ParagraphSlice(5, 5)
+
+f.Lorem.Paragraphs(5, 5)
+
 
 ```
 
@@ -226,12 +270,81 @@ obj, err := f.Image.Object(100, 100, image.JPG)
 ### Address
 
 ```go
+f.Address.CitySuffix()
+
+f.Address.CityPrefix()
+
+f.Address.CityName()
+
+f.Address.City()
+
+f.Address.StreetSuffix()
+
+f.Address.StreetName()
+
+f.Address.Street()
+
+f.Address.BuildingNumber()
+
+f.Address.SecondaryAddress()
+
+f.Address.StreetAddress()
+
+f.Address.Postcode()
+
+f.Address.StateAbbr()
+
+f.Address.State()
+
+f.Address.Address()
+
+f.Address.Country()
+
+f.Address.Prefecture()
+
+f.Address.WardSuffix()
+
+f.Address.WardName()
+
+f.Address.Ward()
+
+f.Address.AreaName()
+
+f.Address.AreaNumber()
+
+f.Address.Area()
+
+f.Address.BuildingName()
+
+f.Address.RoomNumber()
+
+f.Address.Latitude()
+
+f.Address.Longitude()
+
+f.Address.LocalCoordinates()
+
 
 ```
 
 ### Company
 
 ```go
+f.Company.CompanyName()
+
+f.Company.CompanyPrefix()
+
+f.Company.CompanySuffix()
+
+f.Company.Name()
+
+f.Company.JobTitleName()
+
+f.Company.JobTitle()
+
+f.Company.EinPrefix()
+
+f.Company.Ein()
 
 ```
 
@@ -239,6 +352,44 @@ obj, err := f.Image.Object(100, 100, image.JPG)
 
 
 ```go
+f.Person.FirstNameMale()
+
+f.Person.FirstNameFemale()
+
+f.Person.FirstName()
+
+f.Person.LastName()
+
+f.Person.TitleMale()
+
+f.Person.TitleFemale()
+
+f.Person.Title()
+
+f.Person.Suffix()
+
+f.Person.MaleName()
+
+f.Person.FemaleName()
+
+f.Person.Name()
+
+f.Person.Ssn()
+
+f.Person.FirstKanaNameMale()
+
+f.Person.FirstKanaNameFemale()
+
+f.Person.FirstKanaName()
+
+f.Person.LastKanaName()
+
+f.Person.MaleKanaName()
+
+f.Person.FemaleKanaName()
+
+f.Person.KanaName()
+
 
 ```
 

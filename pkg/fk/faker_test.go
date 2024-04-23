@@ -27,7 +27,18 @@ func TestFaker(testingT *testing.T) {
 			// rand.Randのメソッドを使いたい場合は、エイリアスが用意されています
 			f.Rand.Num.Int()
 			f.Rand.Num.Intn(10)
+			f.Rand.Str.Char()
+			f.Rand.Time.PastFuture()
 
+			f.Rand.Slice.IntElem([]int{1, 2, 3})
+			f.Barcode.Ean13()
+			f.Color.Hex()
+			f.File.MimeType()
+			f.Image.Binary(100, 100, "jpg")
+			f.Internet.FirstName()
+			f.Lorem.Word()
+			f.Address.City()
+			f.Company.Name()
 		})
 
 	})
