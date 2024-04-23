@@ -93,11 +93,6 @@ func (p *Person) Suffix() string {
 	return p.rand.Slice.StrElem(p.data.Suffixes)
 }
 
-// DELETE: util.RenderTemplateをそのまま使えばいいので、メソッドにする必要ない
-func (p *Person) FullNameOf(format string, nameData any) string {
-	return util.RenderTemplate(format, nameData)
-}
-
 func (p *Person) MaleName() string {
 	if len(p.data.MaleNameFormats) == 0 {
 		log.UnavailableLocale(1)
@@ -106,7 +101,7 @@ func (p *Person) MaleName() string {
 
 	format := p.rand.Slice.StrElem(p.data.MaleNameFormats)
 	nameData := p.data.CreateNameMale(p)
-	return p.FullNameOf(format, nameData)
+	return util.RenderTemplate(format, nameData)
 }
 
 func (p *Person) FemaleName() string {
@@ -117,7 +112,7 @@ func (p *Person) FemaleName() string {
 
 	format := p.rand.Slice.StrElem(p.data.FemaleNameFormats)
 	nameData := p.data.CreateNameFemale(p)
-	return p.FullNameOf(format, nameData)
+	return util.RenderTemplate(format, nameData)
 }
 
 func (p *Person) Name() string {
@@ -181,7 +176,7 @@ func (p *Person) MaleKanaName() string {
 
 	format := p.rand.Slice.StrElem(p.data.MaleNameFormats)
 	nameData := p.data.CreateKanaNameMale(p)
-	return p.FullNameOf(format, nameData)
+	return util.RenderTemplate(format, nameData)
 }
 
 func (p *Person) FemaleKanaName() string {
@@ -192,7 +187,7 @@ func (p *Person) FemaleKanaName() string {
 
 	format := p.rand.Slice.StrElem(p.data.FemaleNameFormats)
 	nameData := p.data.CreateKanaNameFemale(p)
-	return p.FullNameOf(format, nameData)
+	return util.RenderTemplate(format, nameData)
 }
 
 func (p *Person) KanaName() string {
