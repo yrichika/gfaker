@@ -1,8 +1,23 @@
 # gfaker
 
+gfakerは、ランダムなダミーデータを作成するためのライブラリです。
+テストのためなどに、適当なダミーデータを簡単に作成することができます。
 
+このライブラリはPHPの[Faker](https://github.com/fzaninotto/Faker)を、修正と変更を加え、Goへ移植したものになります。
 
-## 
+## Requirements
+
+```
+Go >= 1.22
+```
+
+## Installation
+
+```
+go get github.com/yrichika/gfaker/pkg/fk
+```
+
+## gfakerのインスタンス作成
 
 ```go
 // デフォルトでは、localeがen_USで作成されます
@@ -125,7 +140,7 @@ sliceValues := map[any][]any{
 		2: {"value21", "value22"},
 }
 
-f.Rand.Map.KeySliceValue(arrayedValues)
+f.Rand.Map.KeySliceValue(sliceValues)
 
 ```
 
@@ -189,7 +204,7 @@ returnFullPath := false
 f.File.WriteWithText(destDir, content, "txt", returnFullPath)
 
 srcFilePath := "./file/sample.txt"
-f.File.CopyFrom(destDir, srcFilePath, "txt", returnFillPath)
+f.File.CopyFrom(destDir, srcFilePath, "txt", returnFullPath)
 ```
 
 ### Image
