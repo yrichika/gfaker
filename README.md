@@ -41,10 +41,10 @@ jp := fk.CreateWithLocale(j)
 f := fk.Create()
 
 // true/falseが50%ずつの確率
-fake := f.Rand.Bool.Evenly()
+fake := f.Rand.Bool.Evenly() // example: true
 
 // trueが80%, falseが20の確率で返ります
-fake := f.Rand.Bool.WeightedToTrue(0.8)
+fake := f.Rand.Bool.WeightedToTrue(0.8) // example: true
 ```
 
 #### Num
@@ -52,11 +52,15 @@ fake := f.Rand.Bool.WeightedToTrue(0.8)
 ```go
 // 1から10までのIntを返します。引数に渡した数字が含まれた、ランダムなIntです。
 // 例えば、ここでは、1と10は、ランダムな値に含まれます。
-f.Rand.Num.IntBt(1, 10)
-f.Rand.Num.Int32Bt(1, 10)
-f.Rand.Num.Int64Bt(1, 10)
-f.Rand.Num.Float32Bt(1.0, 10.0)
-f.Rand.Num.Float64Bt(1.0, 10.0)
+f.Rand.Num.IntBt(1, 10) // example: 5
+
+f.Rand.Num.Int32Bt(1, 10) // example: 4
+
+f.Rand.Num.Int64Bt(1, 10) // example: 3
+
+f.Rand.Num.Float32Bt(1.0, 10.0) // example: +2.056392e+000
+
+f.Rand.Num.Float64Bt(1.0, 10.0) // example: +3.627652e+000
 
 // rand.Randのメソッドを使いたい場合は、エイリアスが用意されています
 f.Rand.Num.Int()
@@ -67,16 +71,15 @@ f.Rand.Num.Intn(10)
 
 ```go
 // アルファベット、数字、特殊文字を含むランダムな文字
-f.Rand.Str.Char()
+f.Rand.Str.Char() // example: "y"
 // アルファベット1文字
-f.Rand.Str.Letter()
+f.Rand.Str.Letter() // example: "a"
 // 数字1文字
-f.Rand.Str.Digit()
-
-f.Rand.Str.AlphaRange(5, 10)
-
-f.Rand.Str.AlphaFixedLength(10)
-f.Rand.Str.AlphaDigitsLike("###-???-***")
+f.Rand.Str.Digit() // example: "1"
+f.Rand.Str.AlphaRange(5, 10) // example: "VLkwXtKTJ""
+f.Rand.Str.AlphaFixedLength(10) // example: "PQRpBVWHow"
+// #は数字に、?はアルファベットに、*の英数のどちらかに置き換わります
+f.Rand.Str.AlphaDigitsLike("###-???-***") // example: "391-lwe-11u"
 
 ```
 
@@ -86,29 +89,29 @@ f.Rand.Str.AlphaDigitsLike("###-???-***")
 past30Years := time.Now().Add(-30 * 365 * 24 * time.Hour)
 future30Years := time.Now().Add(30 * 365 * 24 * time.Hour)
 
-f.Rand.Time.PastFuture()
+f.Rand.Time.PastFuture() // example: 2022-01-08 12:24:06.622832978 +0900 JST
 
-f.Rand.Time.PastFrom(past30Years)
+f.Rand.Time.PastFrom(past30Years) // example: 1995-05-25 20:49:02.288568665 +0900 JST m=-912941844.443213042
 
-f.Rand.Time.Past()
+f.Rand.Time.Past() // example: 2002-10-09 19:18:57.246421312 +0900 JST m=-680185687.650174271
 
-f.Rand.Time.FutureTo(future30Years)
+f.Rand.Time.FutureTo(future30Years) // example: 2045-03-13 10:18:07.04601675 +0900 JST m=+658635502.851367918
 
-f.Rand.Time.Future()
+f.Rand.Time.Future() // example: 2041-07-25 21:11:12.119502619 +0900 JST m=+544021834.272691954
 
-f.Rand.Time.TimeRange(past30Years, future30Years)
+f.Rand.Time.TimeRange(past30Years, future30Years) // example: 2016-02-24 08:21:32.32422701 +0900 JST m=-258075587.937158531
 
-f.Rand.Time.Duration()
+f.Rand.Time.Duration() // example: 309679h21m56.609248762s
 
-f.Rand.Time.DurationMilliSec()
+f.Rand.Time.DurationMilliSec() // example: 875.892572ms
 
-f.Rand.Time.DurationMin()
+f.Rand.Time.DurationMin() // example: 46m29.429733821s
 
-f.Rand.Time.DurationHour()
+f.Rand.Time.DurationHour() // example: 8h19m52.645864323s
 
-f.Rand.Time.DurationTo(1 * time.Second)
+f.Rand.Time.DurationTo(1 * time.Second) // example: 798.391093ms
 
-f.Rand.Time.DurationRange(1*time.Second, 2*time.Second)
+f.Rand.Time.DurationRange(1*time.Second, 2*time.Second) // example: 1.818209421s
 
 
 ```
@@ -117,9 +120,9 @@ f.Rand.Time.DurationRange(1*time.Second, 2*time.Second)
 
 ```go
 
-f.Rand.Slice.IntElem([]int{1, 2, 3})
+f.Rand.Slice.IntElem([]int{1, 2, 3}) // example: 2
 
-f.Rand.Slice.StrElem([]string{"foo", "bar", "bazz"})
+f.Rand.Slice.StrElem([]string{"foo", "bar", "bazz"}) // example: "foo"
 
 ```
 
@@ -133,14 +136,14 @@ simpleValues := map[any]any{
   "key4": "value4",
 }
 
-f.Rand.Map.KeyValue(simpleValues)
+f.Rand.Map.KeyValue(simpleValues) // example: key4, value4
 
 sliceValues := map[any][]any{
 		1: {"value11", "value12"},
 		2: {"value21", "value22"},
 }
 
-f.Rand.Map.KeySliceValue(sliceValues)
+f.Rand.Map.KeySliceValue(sliceValues) // example: 1, [value11 value12]
 
 ```
 
@@ -153,50 +156,50 @@ f.Rand.Map.KeySliceValue(sliceValues)
 ### Barcode
 
 ```go
-f.Barcode.Ean8()
+f.Barcode.Ean8() // example: "58594605"
 
-f.Barcode.Ean13()
+f.Barcode.Ean13() // example: 5945059001019
 
-f.Barcode.Isbn10()
+f.Barcode.Isbn10() // example: 4509472889
 
-f.Barcode.Isbn13()
+f.Barcode.Isbn13() // example: 9787672549372
 
 ```
 
 ### Color
 
 ```go
-f.Color.SafeName()
+f.Color.SafeName() // example: 
 
-f.Color.Name()
+f.Color.Name() // example: 
 
-f.Color.Hex()
+f.Color.Hex() // example: 
 
-f.Color.SafeHex()
+f.Color.SafeHex() // example: 
 
-f.Color.RgbAsNum()
+f.Color.RgbAsNum() // example: 
 
-f.Color.RgbAsStr()
+f.Color.RgbAsStr() // example: 
 
-f.Color.RgbAsArr()
+f.Color.RgbAsArr() // example: 
 
-f.Color.RgbCss()
+f.Color.RgbCss() // example: 
 
-f.Color.RgbaCss()
+f.Color.RgbaCss() // example: 
 
-f.Color.HslAsNum()
+f.Color.HslAsNum() // example: 
 
-f.Color.HslAsStr()
+f.Color.HslAsStr() // example: 
 
-f.Color.HslAsArr()
+f.Color.HslAsArr() // example: 
 ```
 
 ### File
 
 ```go
-f.File.MimeType()
+f.File.MimeType() // example: 
 
-f.File.Extension()
+f.File.Extension() // example: 
 
 destDir := "./tmp"
 content := "Hello, World!"
@@ -224,25 +227,25 @@ obj, err := f.Image.Object(100, 100, image.JPG)
 ### Internet
 
 ```go
-f.Internet.UserName()
+f.Internet.UserName() // example: 
 
-f.Internet.DomainWord()
+f.Internet.DomainWord() // example: 
 
-f.Internet.Tld()
+f.Internet.Tld() // example: 
 
-f.Internet.DomainName()
+f.Internet.DomainName() // example: 
 
-f.Internet.Email()
+f.Internet.Email() // example: 
 
-f.Internet.Password()
+f.Internet.Password() // example: 
 
-f.Internet.Ipv4()
+f.Internet.Ipv4() // example: 
 
-f.Internet.Ipv6()
+f.Internet.Ipv6() // example: 
 
-f.Internet.LocalIpv4()
+f.Internet.LocalIpv4() // example: 
 
-f.Internet.MacAddress()
+f.Internet.MacAddress() // example: 
 
 
 ```
@@ -250,29 +253,29 @@ f.Internet.MacAddress()
 ### Lorem
 
 ```go
-f.Lorem.Word()
+f.Lorem.Word() // example: 
 
-f.Lorem.WordSliceFixedLength(5)
+f.Lorem.WordSliceFixedLength(5) // example: 
 
-f.Lorem.WordSlice(5)
+f.Lorem.WordSlice(5) // example: 
 
-f.Lorem.Words(5)
+f.Lorem.Words(5) // example: 
 
-f.Lorem.SentenceFixedLength(5)
+f.Lorem.SentenceFixedLength(5) // example: 
 
-f.Lorem.Sentence(5)
+f.Lorem.Sentence(5) // example: 
 
-f.Lorem.SentenceSliceFixedLength(5, 5)
+f.Lorem.SentenceSliceFixedLength(5, 5) // example: 
 
-f.Lorem.SentenceSlice(5, 5)
+f.Lorem.SentenceSlice(5, 5) // example: 
 
-f.Lorem.Sentences(5, 5)
+f.Lorem.Sentences(5, 5) // example: 
 
-f.Lorem.ParagraphSliceFixedLength(5, 5)
+f.Lorem.ParagraphSliceFixedLength(5, 5) // example: 
 
-f.Lorem.ParagraphSlice(5, 5)
+f.Lorem.ParagraphSlice(5, 5) // example: 
 
-f.Lorem.Paragraphs(5, 5)
+f.Lorem.Paragraphs(5, 5) // example: 
 
 
 ```
