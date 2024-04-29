@@ -32,7 +32,7 @@ var UserNameFormats = []string{
 	"{{.LastName}}.{{.FirstName}}",
 	"{{.FirstName}}.{{.LastName}}",
 	"{{.FirstName}}##",
-	"?{{.LastName}}",
+	"{{.LastName}}##",
 }
 
 type UserName struct {
