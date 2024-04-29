@@ -169,37 +169,37 @@ f.Barcode.Isbn13() // example: 9787672549372
 ### Color
 
 ```go
-f.Color.SafeName() // example: 
+f.Color.SafeName() // example: "silver"
 
-f.Color.Name() // example: 
+f.Color.Name() // example: "Gainsboro"
 
-f.Color.Hex() // example: 
+f.Color.Hex() // example: "#0e457a"
 
-f.Color.SafeHex() // example: 
+f.Color.SafeHex() // example: "#00dd22"
 
-f.Color.RgbAsNum() // example: 
+f.Color.RgbAsNum() // example: 15, 247, 177
 
-f.Color.RgbAsStr() // example: 
+f.Color.RgbAsStr() // example: "161,181,228"
 
-f.Color.RgbAsArr() // example: 
+f.Color.RgbAsArr() // example: [98 35 65]
 
-f.Color.RgbCss() // example: 
+f.Color.RgbCss() // example: "rgb(223,67,224)"
 
-f.Color.RgbaCss() // example: 
+f.Color.RgbaCss() // example: "rgba(66,112,144,0.3)"
 
-f.Color.HslAsNum() // example: 
+f.Color.HslAsNum() // example: 153, 97, 56
 
-f.Color.HslAsStr() // example: 
+f.Color.HslAsStr() // example: "149,85,59"
 
-f.Color.HslAsArr() // example: 
+f.Color.HslAsArr() // example: [31 69 46]
 ```
 
 ### File
 
 ```go
-f.File.MimeType() // example: 
+f.File.MimeType() // example: "application/widget"
 
-f.File.Extension() // example: 
+f.File.Extension() // example: "tga"
 
 destDir := "./tmp"
 content := "Hello, World!"
@@ -227,25 +227,25 @@ obj, err := f.Image.Object(100, 100, image.JPG)
 ### Internet
 
 ```go
-f.Internet.UserName() // example: 
+f.Internet.UserName() // example: ayla.prosacco
 
-f.Internet.DomainWord() // example: 
+f.Internet.DomainWord() // example: klein
 
-f.Internet.Tld() // example: 
+f.Internet.Tld() // example: com
 
-f.Internet.DomainName() // example: 
+f.Internet.DomainName() // example: gutkowski.info
 
-f.Internet.Email() // example: 
+f.Internet.Email() // example: charity.ziemann@mertz.net
 
-f.Internet.Password() // example: 
+f.Internet.Password() // example: 9AYD57IF580tD76p55y
 
-f.Internet.Ipv4() // example: 
+f.Internet.Ipv4() // example: 190.238.68.2
 
-f.Internet.Ipv6() // example: 
+f.Internet.Ipv6() // example: 112a:792e:884c:99e5:d7a0:2b2c:df2b:9c48
 
-f.Internet.LocalIpv4() // example: 
+f.Internet.LocalIpv4() // example: 172.27.204.249
 
-f.Internet.MacAddress() // example: 
+f.Internet.MacAddress() // example: 01:ED:77:9F:1C:E1
 
 
 ```

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/yrichika/gfaker/pkg/fk"
@@ -72,34 +73,22 @@ func main() {
 	f.Barcode.Isbn13()
 
 	// color
-	r := f.Color.SafeName()
-	println(r)
-	// f.Color.Name()
+	f.Color.SafeName()
+	f.Color.Name()
+	f.Color.Hex()
+	f.Color.SafeHex()
+	f.Color.RgbAsNum()
+	f.Color.RgbAsStr()
+	f.Color.RgbAsArr()
+	f.Color.RgbCss()
+	f.Color.RgbaCss()
+	f.Color.HslAsNum()
+	f.Color.HslAsStr()
+	f.Color.HslAsArr()
 
-	// f.Color.Hex()
-
-	// f.Color.SafeHex()
-
-	// f.Color.RgbAsNum()
-
-	// f.Color.RgbAsStr()
-
-	// f.Color.RgbAsArr()
-
-	// f.Color.RgbCss()
-
-	// f.Color.RgbaCss()
-
-	// f.Color.HslAsNum()
-
-	// f.Color.HslAsStr()
-
-	// f.Color.HslAsArr()
-
-	// // file
-	// f.File.MimeType()
-
-	// f.File.Extension()
+	//  file
+	f.File.MimeType()
+	f.File.Extension()
 
 	// destDir := "./tmp"
 	// content := "Hello, World!"
@@ -109,29 +98,21 @@ func main() {
 	// srcFilePath := "./file/sample.txt"
 	// f.File.CopyFrom(destDir, srcFilePath, "txt", returnFullPath)
 
-	// // internet
-	// f.Internet.UserName()
+	// internet
+	f.Internet.UserName()
+	f.Internet.DomainWord()
+	f.Internet.Tld()
+	f.Internet.DomainName()
+	f.Internet.Email()
+	f.Internet.Password()
+	f.Internet.Ipv4()
+	f.Internet.Ipv6()
+	f.Internet.LocalIpv4()
+	f.Internet.MacAddress()
 
-	// f.Internet.DomainWord()
-
-	// f.Internet.Tld()
-
-	// f.Internet.DomainName()
-
-	// f.Internet.Email()
-
-	// f.Internet.Password()
-
-	// f.Internet.Ipv4()
-
-	// f.Internet.Ipv6()
-
-	// f.Internet.LocalIpv4()
-
-	// f.Internet.MacAddress()
-
-	// // lorem
+	// lorem
 	// f.Lorem.Word()
+	fmt.Printf("%s\n", r)
 
 	// f.Lorem.WordSliceFixedLength(5)
 
