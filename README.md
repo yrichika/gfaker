@@ -139,8 +139,8 @@ simpleValues := map[any]any{
 f.Rand.Map.KeyValue(simpleValues) // example: key4, value4
 
 sliceValues := map[any][]any{
-		1: {"value11", "value12"},
-		2: {"value21", "value22"},
+  1: {"value11", "value12"},
+  2: {"value21", "value22"},
 }
 
 f.Rand.Map.KeySliceValue(sliceValues) // example: 1, [value11 value12]
@@ -253,30 +253,35 @@ f.Internet.MacAddress() // example: 01:ED:77:9F:1C:E1
 ### Lorem
 
 ```go
-f.Lorem.Word() // example: 
+f.Lorem.Word() // example: "qui"
+// 指定した個数の文字列の配列を返す
 
-f.Lorem.WordSliceFixedLength(5) // example: 
+f.Lorem.WordSliceFixedLength(5) // example: [consectetur quia reprehenderit est consectetur]
 
-f.Lorem.WordSlice(5) // example: 
+// 指定した文字数を上限としてランダムな個数の文字列のスライスを返す
+f.Lorem.WordSlice(5) // example: [nisi porro]
 
-f.Lorem.Words(5) // example: 
+// 指定した文字数を上限としてランダムな個数の文字列を返す
+f.Lorem.Words(5) // example: "sint officia eveniet ut sint"
 
-f.Lorem.SentenceFixedLength(5) // example: 
+f.Lorem.SentenceFixedLength(5) // example: "Aut corrupti ullam delectus exercitationem."
 
-f.Lorem.Sentence(5) // example: 
+f.Lorem.Sentence(5) // example: "Vel."
 
-f.Lorem.SentenceSliceFixedLength(5, 5) // example: 
+f.Lorem.SentenceSliceFixedLength(5, 5) // example: ["Quis." "Vitae et quisquam." "Earum." "Omnis." "Perferendis eius fugit voluptas qui."]
 
-f.Lorem.SentenceSlice(5, 5) // example: 
+f.Lorem.SentenceSlice(5, 5) // example: ["Facilis." "Consequatur sed saepe necessitatibus et."]
 
-f.Lorem.Sentences(5, 5) // example: 
+f.Lorem.Sentences(5, 5) // example: "Voluptatem sed omnis vel repudiandae. Quo et. Sit optio ipsa beatae. Veritatis iusto."
 
 f.Lorem.ParagraphSliceFixedLength(5, 5) // example: 
+// ["Et incidunt quia necessitatibus." "Porro ut ipsa nulla quos et dignissimos in." "Voluptas illo consectetur." "Illo." "Doloremque."" Eos placeat." "Nam nostrum sed necessitatibus voluptas provident est quibusdam saepe reprehenderit ut illum quae consequatur excepturi corporis illo voluptatum sint omnis magni qui adipisci voluptatem." "Sed vel veritatis dolores et voluptatum molestiae sequi aut." "Fugiat est ducimus et eos eligendi." "Omnis molestias dolorem animi sapiente voluptatem soluta nostrum qui reprehenderit." "Enim dolor aliquam mollitia beatae omnis autem sunt perspiciatis corrupti molestiae sunt sed qui id facilis laudantium ut eveniet." "Exercitationem quibusdam corporis alias porro vel." "Aut dolorum magni." "Voluptatem libero ipsa." "Eaque."]
 
 f.Lorem.ParagraphSlice(5, 5) // example: 
+// ["Neque impedit inventore qui repellendus dolores nulla minima nulla ratione similique illum non asperiores error iusto." "Voluptatem soluta adipisci qui odio magnam fuga consequatur pariatur veniam aut quis ipsam quibusdam voluptatibus et sapiente." "Molestiae quaerat consectetur pariatur possimus." "Nisi et eum quia suscipit itaque magnam architecto porro ut earum vel possimus at commodi aliquid possimus est magni sit et molestias odit animi velit eos numquam animi voluptatum voluptatem." "Deserunt error id consequatur." "A quis." "Eius labore molestiae ut omnis." "Et nam." "Qui nobis aut. ""Consectetur eum aut non dolorem enim voluptas vitae." "Alias ullam voluptas est voluptatem dolore reprehenderit." "Voluptate qui possimus animi ut voluptatem quo asperiores." "Veritatis voluptatibus."]
 
 f.Lorem.Paragraphs(5, 5) // example: 
-
+// "Veniam sed enim quidem blanditiis excepturi dicta molestias numquam enim. Nisi ipsum reiciendis vel voluptatum dolorum eum deleniti voluptas eum sed rem nulla."
 
 ```
 

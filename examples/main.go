@@ -111,33 +111,22 @@ func main() {
 	f.Internet.MacAddress()
 
 	// lorem
-	// f.Lorem.Word()
-	fmt.Printf("%s\n", r)
-
-	// f.Lorem.WordSliceFixedLength(5)
-
-	// f.Lorem.WordSlice(5)
-
-	// f.Lorem.Words(5)
-
-	// f.Lorem.SentenceFixedLength(5)
-
-	// f.Lorem.Sentence(5)
-
-	// f.Lorem.SentenceSliceFixedLength(5, 5)
-
-	// f.Lorem.SentenceSlice(5, 5)
-
-	// f.Lorem.Sentences(5, 5)
-
-	// f.Lorem.ParagraphSliceFixedLength(5, 5)
-
-	// f.Lorem.ParagraphSlice(5, 5)
-
-	// f.Lorem.Paragraphs(5, 5)
+	f.Lorem.Word()
+	f.Lorem.WordSliceFixedLength(5)
+	f.Lorem.WordSlice(5)
+	f.Lorem.Words(5)
+	f.Lorem.SentenceFixedLength(5)
+	f.Lorem.Sentence(5)
+	f.Lorem.SentenceSliceFixedLength(5, 5)
+	f.Lorem.SentenceSlice(5, 5)
+	f.Lorem.Sentences(5, 5)
+	f.Lorem.ParagraphSliceFixedLength(5, 5)
+	f.Lorem.ParagraphSlice(5, 5)
+	f.Lorem.Paragraphs(5, 5)
 
 	// // address
 	// f.Address.CitySuffix()
+	fmt.Printf("%s\n", r)
 
 	// f.Address.CityPrefix()
 
