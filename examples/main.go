@@ -1,14 +1,15 @@
 package main
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/yrichika/gfaker/pkg/fk"
+	"github.com/yrichika/gfaker/pkg/fk/provider/locale/ja_JP"
 )
 
 func main() {
 	f := fk.Create()
+	jf := fk.CreateWithLocale(ja_JP.New())
 
 	// bool
 	f.Rand.Bool.Evenly()
@@ -124,61 +125,36 @@ func main() {
 	f.Lorem.ParagraphSlice(5, 5)
 	f.Lorem.Paragraphs(5, 5)
 
-	// // address
-	// f.Address.CitySuffix()
-	fmt.Printf("%s\n", r)
+	// address
+	f.Address.CitySuffix()
+	f.Address.CityPrefix()
+	f.Address.CityName()
+	f.Address.City()
+	f.Address.StreetSuffix()
+	f.Address.StreetName()
+	f.Address.Street()
+	f.Address.BuildingNumber()
+	f.Address.SecondaryAddress()
+	f.Address.StreetAddress()
+	jf.Address.Postcode()
+	f.Address.StateAbbr()
+	f.Address.State()
+	f.Address.Address()
+	f.Address.Country()
 
-	// f.Address.CityPrefix()
+	jf.Address.Prefecture()
+	jf.Address.WardSuffix()
+	jf.Address.WardName()
+	jf.Address.Ward()
+	jf.Address.AreaName()
+	jf.Address.AreaNumber()
+	jf.Address.Area()
+	jf.Address.BuildingName()
+	jf.Address.RoomNumber()
 
-	// f.Address.CityName()
-
-	// f.Address.City()
-
-	// f.Address.StreetSuffix()
-
-	// f.Address.StreetName()
-
-	// f.Address.Street()
-
-	// f.Address.BuildingNumber()
-
-	// f.Address.SecondaryAddress()
-
-	// f.Address.StreetAddress()
-
-	// f.Address.Postcode()
-
-	// f.Address.StateAbbr()
-
-	// f.Address.State()
-
-	// f.Address.Address()
-
-	// f.Address.Country()
-
-	// f.Address.Prefecture()
-
-	// f.Address.WardSuffix()
-
-	// f.Address.WardName()
-
-	// f.Address.Ward()
-
-	// f.Address.AreaName()
-
-	// f.Address.AreaNumber()
-
-	// f.Address.Area()
-
-	// f.Address.BuildingName()
-
-	// f.Address.RoomNumber()
-
-	// f.Address.Latitude()
-
-	// f.Address.Longitude()
-
-	// f.Address.LocalCoordinates()
+	f.Address.Latitude()
+	f.Address.Longitude()
+	f.Address.LocalCoordinates()
 
 	// // company
 	// f.Company.CompanyName()

@@ -293,59 +293,70 @@ f.Lorem.Paragraphs(5, 5) // example:
 ### Address
 
 ```go
-f.Address.CitySuffix()
+f.Address.CitySuffix() // example: "land"
+// example ja_Jp: "村"
 
-f.Address.CityPrefix()
+f.Address.CityPrefix() // example: "Port"
 
-f.Address.CityName()
+f.Address.CityName() // example: "Crona"
+// example ja_Jp: "日高"
 
-f.Address.City()
+f.Address.City() // example: "Fayside"
+// example ja_Jp: "天童市"
 
-f.Address.StreetSuffix()
+f.Address.StreetSuffix() // example: "Parkways"
 
-f.Address.StreetName()
 
-f.Address.Street()
+f.Address.StreetName() // example: "Mraz"
 
-f.Address.BuildingNumber()
+f.Address.Street() // example: "Considine Island"
 
-f.Address.SecondaryAddress()
+f.Address.BuildingNumber() // example: "3114"
 
-f.Address.StreetAddress()
+f.Address.SecondaryAddress() // example: "Suite 760"
+// example ja_Jp: "レジデンス加納8K号"
 
-f.Address.Postcode()
+f.Address.StreetAddress() // example: "618 Lynch Apt. 42"
 
-f.Address.StateAbbr()
+f.Address.Postcode() // example: "75602"
+// example ja_Jp: "6858030"
 
-f.Address.State()
+f.Address.StateAbbr() // example: "CA"
 
-f.Address.Address()
+f.Address.State() // example: "Colorado"
 
-f.Address.Country()
+f.Address.Address() // example: 
+// "0730 Gleason Apt. 34\n
+// South West, NM 08956"
+// example ja_Jp: "334-7397  茨城県大仙町東区東夷川3-7-0"
 
-f.Address.Prefecture()
 
-f.Address.WardSuffix()
+f.Address.Country() // example: "United States Minor Outlying Islands"
+// example ja_Jp: "サウジアラビア"
 
-f.Address.WardName()
+f.Address.Prefecture() // example: "佐賀県"
 
-f.Address.Ward()
+f.Address.WardSuffix() // example: "区"
 
-f.Address.AreaName()
+f.Address.WardName() // example: "東"
 
-f.Address.AreaNumber()
+f.Address.Ward() // example: "北区"
 
-f.Address.Area()
+f.Address.AreaName() // example: "北小路"
 
-f.Address.BuildingName()
+f.Address.AreaNumber() // example: "2-8-04"
 
-f.Address.RoomNumber()
+f.Address.Area() // example: "谷口町7丁目1番地610"
 
-f.Address.Latitude()
+f.Address.BuildingName() // example: "笹田"
 
-f.Address.Longitude()
+f.Address.RoomNumber() // example: "804"
 
-f.Address.LocalCoordinates()
+f.Address.Latitude() // example: 54.617171
+
+f.Address.Longitude() // example: 74.851822
+
+f.Address.LocalCoordinates() // example: 82.130718, -121.140770
 
 
 ```
