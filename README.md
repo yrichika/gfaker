@@ -130,7 +130,7 @@ f.Rand.Slice.StrElem([]string{"foo", "bar", "bazz"}) // example: "foo"
 
 ```go
 simpleValues := map[any]any{
-	"key1": "value1",
+  "key1": "value1",
   "key2": "value2",
   "key3": "value3",
   "key4": "value4",
@@ -306,7 +306,6 @@ f.Address.City() // example: "Fayside"
 
 f.Address.StreetSuffix() // example: "Parkways"
 
-
 f.Address.StreetName() // example: "Mraz"
 
 f.Address.Street() // example: "Considine Island"
@@ -329,7 +328,6 @@ f.Address.Address() // example:
 // "0730 Gleason Apt. 34\n
 // South West, NM 08956"
 // example ja_Jp: "334-7397  茨城県大仙町東区東夷川3-7-0"
-
 
 f.Address.Country() // example: "United States Minor Outlying Islands"
 // example ja_Jp: "サウジアラビア"
@@ -358,27 +356,28 @@ f.Address.Longitude() // example: 74.851822
 
 f.Address.LocalCoordinates() // example: 82.130718, -121.140770
 
-
 ```
 
 ### Company
 
 ```go
-f.Company.CompanyName()
+f.Company.CompanyName() // example: "Reichel"
+// example ja_Jp: "山口"
+f.Company.CompanyPrefix() // example: ""
+// example ja_Jp: "株式会社"
 
-f.Company.CompanyPrefix()
+f.Company.CompanySuffix() // example: "Group"
+// example ja_Jp: "有限会社"
 
-f.Company.CompanySuffix()
+f.Company.Name() // example: "Osinski-Schinner"
+// example ja_Jp: "株式会社 小林"
+f.Company.JobTitleName() // example: "Telecommunications Equipment Installer"
 
-f.Company.Name()
+f.Company.JobTitle() // example: "Airframe Mechanic"
 
-f.Company.JobTitleName()
+f.Company.EinPrefix() // example: "54"
 
-f.Company.JobTitle()
-
-f.Company.EinPrefix()
-
-f.Company.Ein()
+f.Company.Ein() // example: "52-9635645"
 
 ```
 
@@ -386,51 +385,64 @@ f.Company.Ein()
 
 
 ```go
-f.Person.FirstNameMale()
+f.Person.FirstNameMale() // example: "Xzavier"
+// example ja_Jp: "直樹"
 
-f.Person.FirstNameFemale()
+f.Person.FirstNameFemale() // example: "Stephany"
+// example ja_Jp: "真綾"
 
-f.Person.FirstName()
+f.Person.FirstName() // example: "Ernesto"
+// example ja_Jp: "学"
 
-f.Person.LastName()
+f.Person.LastName() // example: "Hauck"
+// example ja_Jp: "桐山"
 
-f.Person.TitleMale()
+f.Person.TitleMale() // example: "Prof."
 
-f.Person.TitleFemale()
+f.Person.TitleFemale() // example: "Miss"
 
-f.Person.Title()
+f.Person.Title() // example: "Dr."
 
-f.Person.Suffix()
+f.Person.Suffix() // example: "Jr."
 
-f.Person.MaleName()
+f.Person.MaleName() // example: "Charles Flatley"
+// example ja_Jp: "山口 康弘"
 
-f.Person.FemaleName()
+f.Person.FemaleName() // example: "Esther Rosenbaum"
+// example ja_Jp: "青山 あすか"
 
-f.Person.Name()
+f.Person.Name() // example: "Gregory Braun III"
+// example ja_Jp: "佐藤 智也"
 
-f.Person.Ssn()
+f.Person.Ssn() // example: "733-20-4400"
 
-f.Person.FirstKanaNameMale()
+f.Person.FirstKanaNameMale() // example: ""
+// example ja_Jp: "タクマ"
 
-f.Person.FirstKanaNameFemale()
+f.Person.FirstKanaNameFemale() // example: ""
+// example ja_Jp: "ミキ"
 
-f.Person.FirstKanaName()
+f.Person.FirstKanaName() // example: ""
+// example ja_Jp: "ツバサ"
 
-f.Person.LastKanaName()
+f.Person.LastKanaName() // example: ""
+// example ja_Jp: "スギヤマ"
 
-f.Person.MaleKanaName()
+f.Person.MaleKanaName() // example: ""
+// example ja_Jp: "コンドウ ケンイチ"
 
-f.Person.FemaleKanaName()
+f.Person.FemaleKanaName() // example: ""
+// example ja_Jp: "サトウ ミキ"
 
-f.Person.KanaName()
-
+f.Person.KanaName() // example: ""
+// example ja_Jp: "イダカ サトミ"
 
 ```
 
 
 ---
 
-WORKING: まだこれら以外にもメソッドを追加中です。2024年中には一通り完了する予定です。
+WORKING: まだこれら以外にもメソッドを追加中です。2025年中には一通り完了する予定です。
 
 - Medical
 - Miscellaneous

@@ -156,61 +156,36 @@ func main() {
 	f.Address.Longitude()
 	f.Address.LocalCoordinates()
 
-	// // company
-	// f.Company.CompanyName()
+	// company
+	f.Company.CompanyName()
+	jf.Company.CompanyPrefix()
+	f.Company.CompanySuffix()
+	f.Company.Name()
+	f.Company.JobTitleName()
+	f.Company.JobTitle()
+	f.Company.EinPrefix()
+	f.Company.Ein()
 
-	// f.Company.CompanyPrefix()
-
-	// f.Company.CompanySuffix()
-
-	// f.Company.Name()
-
-	// f.Company.JobTitleName()
-
-	// f.Company.JobTitle()
-
-	// f.Company.EinPrefix()
-
-	// f.Company.Ein()
-
-	// // person
-
-	// f.Person.FirstNameMale()
-
-	// f.Person.FirstNameFemale()
-
-	// f.Person.FirstName()
-
-	// f.Person.LastName()
-
-	// f.Person.TitleMale()
-
-	// f.Person.TitleFemale()
-
-	// f.Person.Title()
-
-	// f.Person.Suffix()
-
-	// f.Person.MaleName()
-
-	// f.Person.FemaleName()
-
-	// f.Person.Name()
-
-	// f.Person.Ssn()
-
-	// f.Person.FirstKanaNameMale()
-
-	// f.Person.FirstKanaNameFemale()
-
-	// f.Person.FirstKanaName()
-
-	// f.Person.LastKanaName()
-
-	// f.Person.MaleKanaName()
-
-	// f.Person.FemaleKanaName()
-
-	// f.Person.KanaName()
+	// person
+	f.Person.FirstNameMale()
+	f.Person.FirstNameFemale()
+	f.Person.FirstName()
+	f.Person.LastName()
+	f.Person.TitleMale()
+	f.Person.TitleFemale()
+	f.Person.Title()
+	f.Person.Suffix()
+	f.Person.MaleName()
+	f.Person.FemaleName()
+	f.Person.Name()
+	f.Person.Ssn()
+	// ja_JP only
+	jf.Person.FirstKanaNameMale()
+	jf.Person.FirstKanaNameFemale()
+	jf.Person.FirstKanaName()
+	jf.Person.LastKanaName()
+	jf.Person.MaleKanaName()
+	jf.Person.FemaleKanaName()
+	jf.Person.KanaName()
 
 }
