@@ -1,9 +1,10 @@
-# gfaker
-
-gfakerは、ランダムなダミーデータを作成するためのライブラリです。
+# faker
+**こちらのプロジェクトは、 https://github.com/nolafw/faker へ移動しました**
+fakerは、ランダムなダミーデータを作成するためのライブラリです。
 テストのためなどに、適当なダミーデータを簡単に作成することができます。
 
 このライブラリはPHPの[Faker](https://github.com/fzaninotto/Faker)を、修正と変更を加え、Goへ移植したものになります。
+
 
 ## Requirements
 
@@ -14,10 +15,10 @@ Go >= 1.22
 ## Installation
 
 ```
-go get github.com/yrichika/gfaker/pkg/fk
+go get github.com/nolafw/faker/pkg/fk
 ```
 
-## gfakerのインスタンス作成
+## fakerのインスタンス作成
 
 ```go
 // デフォルトでは、localeがen_USで作成されます
@@ -439,14 +440,3 @@ f.Person.KanaName() // example: ""
 
 ```
 
-
----
-
-WORKING: まだこれら以外にもメソッドを追加中です。2025年中には一通り完了する予定です。
-
-- Medical
-- Miscellaneous
-- Payment
-- PhoneNumber
-- Text
-- UserAgent
