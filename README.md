@@ -1,5 +1,5 @@
 # faker
-**こちらのプロジェクトは、 https://github.com/nolafw/faker へ移動しました**
+**こちらのプロジェクトは、 https://github.com/ensoria/faker へ移動しました**
 
 fakerは、ランダムなダミーデータを作成するためのライブラリです。
 テストのためなどに、適当なダミーデータを簡単に作成することができます。
@@ -16,7 +16,7 @@ Go >= 1.22
 ## Installation
 
 ```
-go get github.com/nolafw/faker/pkg/fk
+go get github.com/ensoria/faker/pkg/fk
 ```
 
 ## fakerのインスタンス作成
